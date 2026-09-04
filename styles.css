@@ -681,4 +681,3 @@ code {
 }
 .footnote code { font-family: var(--font-mono); font-size: .9em; color: var(--ink-soft); }
 .footnote .fn-star { color: var(--accent); }
-.footnote a { color: var(--ink-soft); }
