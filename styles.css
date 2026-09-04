@@ -659,3 +659,26 @@ code {
   .marg-n { border-left: 0; background: none; padding-top: .4rem; }
   .marg-t { border-top: 1px solid var(--line-soft); }
 }
+
+/* footnote --------------------------------------------------------------- */
+.fn-ref {
+  font-size: .85em;
+  vertical-align: super;
+  line-height: 0;
+  color: var(--accent);
+  text-decoration: none;
+  padding-inline: .12em;
+}
+.fn-ref:hover { text-decoration: underline; }
+.footnote {
+  margin: 1.4rem 0 0;
+  padding-top: 1rem;
+  border-top: 1px solid var(--line-soft);
+  font-size: .82rem;
+  line-height: 1.6;
+  color: var(--ink-mute);
+  max-width: 46rem;
+}
+.footnote code { font-family: var(--font-mono); font-size: .9em; color: var(--ink-soft); }
+.footnote .fn-star { color: var(--accent); }
+.footnote a { color: var(--ink-soft); }
