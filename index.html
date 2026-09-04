@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Alphabet++ — language as the control plane for agents</title>
+<meta name="description" content="Alphabet++ is a method for designing named natural-language concepts as reusable control abstractions for LLM agents. An engineering experiment, with falsifiable hypotheses.">
+<meta name="color-scheme" content="light dark">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Alphabet++">
+<meta property="og:description" content="Structured language for structuring agent behaviour. A method for designing named concepts as reusable control abstractions for LLM agents.">
+<meta property="og:url" content="https://abarbesgaard.github.io/alphabet-plus-plus/">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90' font-family='Georgia,serif' font-style='italic' fill='%23e8e6e1'%3E%CE%B1%3C/text%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Inter:wght@300..800&family=JetBrains+Mono:wght@400;500&display=swap&subset=latin,greek">
+
+<link rel="stylesheet" href="styles.css">
+<script>
+/* Inline, pre-paint: resolve theme and opt into motion.
+   Kept tiny and dependency-free so there is no flash and no
+   JS-dependent invisibility if this or main.js fails to load. */
+(function () {
+  var r = document.documentElement;
+  try {
+    var s = localStorage.getItem("app-theme");
+    if (s === "light" || s === "dark") {
+      r.setAttribute("data-theme", s);
+    } else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+      r.setAttribute("data-theme", "dark");
+    }
+  } catch (e) { /* private mode */ }
+
+  if ("IntersectionObserver" in window &&
+      !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    r.className += " js-anim";
+  }
+})();
+</script>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<div class="grain" aria-hidden="true"></div>
+
+<header class="site-head">
+  <a class="brand" href="#top" aria-label="Alphabet++ — top of page">
+    <span class="brand-mark" aria-hidden="true">&#945;</span>
+    <span class="brand-text">Alphabet<sup>++</sup></span>
+  </a>
+
+  <nav class="site-nav" aria-label="Sections">
+    <a href="#problem">Origin</a>
+    <a href="#collision">Collision</a>
+    <a href="#wrap">Shape</a>
+    <a href="#choosing">Words</a>
+    <a href="#discuss">Discuss</a>
+  </nav>
+
+  <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Switch to light theme" title="Switch theme">
+    <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z"/></svg>
+    <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2.6M12 19.4V22M2 12h2.6M19.4 12H22M4.9 4.9l1.9 1.9M17.2 17.2l1.9 1.9M19.1 4.9l-1.9 1.9M6.8 17.2l-1.9 1.9"/></svg>
+  </button>
+</header>
+
+<main id="main">
+
+  <!-- ================= HERO ================= -->
+  <section class="hero" id="top">
+    <div class="hero-inner">
+      <h1 class="wordmark reveal">
+        <span class="sr-only">Alphabet++</span>
+        <span aria-hidden="true"
+          ><span class="wm-alpha">&#945;</span
+          ><span class="wm-rest">lphabet</span
+          ><span class="wm-plus">++</span
+        ></span>
+      </h1>
+
+      <p class="lede reveal" data-delay="1">
+        Structured language for structuring agent behaviour.
+      </p>
+
+      <div class="cta-row reveal" data-delay="2">
+        <a class="btn btn-primary" href="#problem">Read on</a>
+        <a class="btn btn-ghost" href="https://github.com/Abarbesgaard/alphabet-plus-plus" rel="noopener">
+          GitHub
+          <svg viewBox="0 0 24 24" aria-hidden="true" class="btn-arrow"><path d="M7 17 17 7M9 7h8v8"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="scroll-hint" aria-hidden="true"><span></span></div>
+  </section>
+
+  <!-- ================= PROBLEM ================= -->
+  <section class="band has-deco" id="problem">
+      <div class="band-deco" aria-hidden="true">
+        <svg class="deco-col deco-l" aria-hidden="true" viewBox="0 0 190 680" preserveAspectRatio="xMidYMid slice" focusable="false">
+          <polygon class="sh-tri" points="35,265 48,289 23,289" transform="rotate(8 35 279)"/>
+          <polygon class="sh-tri" points="132,156 142,176 121,176" transform="rotate(-6 132 168)"/>
+          <polygon class="sh-tri" points="50,86 59,103 41,103" transform="rotate(12 50 96)"/>
+          <polygon class="sh-tri" points="140,517 152,539 128,539" transform="rotate(-9 140 530)"/>
+          <polygon class="sh-blob" points="84,419 74,423 71,431 62,430 58,423 62,416 63,409 70,412 81,409"/>
+          <rect class="sh-sq is-ghost" x="135" y="359" width="21" height="21" rx="3" transform="rotate(11 145 370)"/>
+          <rect class="sh-sq is-ghost" x="63" y="638" width="20" height="20" rx="3" transform="rotate(-2 73 648)"/>
+          <polygon class="sh-tri" points="58,492 69,513 46,513" transform="rotate(-7 58 504)"/>
+          <polygon class="sh-tri" points="158,31 168,49 149,49" transform="rotate(13 158 41)"/>
+        </svg>
+        <svg class="deco-col deco-r" aria-hidden="true" viewBox="0 0 190 680" preserveAspectRatio="xMidYMid slice" focusable="false">
+          <rect class="sh-sq is-ghost" x="138" y="68" width="24" height="24" rx="3" transform="rotate(3 150 80)"/>
+          <polygon class="sh-tri" points="32,252 43,274 20,274" transform="rotate(-1 32 265)"/>
+          <polygon class="sh-tri" points="59,87 69,107 48,107" transform="rotate(12 59 99)"/>
+          <polygon class="sh-tri" points="107,499 118,518 97,518" transform="rotate(7 107 510)"/>
+          <polygon class="sh-blob" points="64,580 62,587 55,586 48,589 38,585 47,577 47,568 55,572 63,571"/>
+          <polygon class="sh-tri" points="150,147 158,162 141,162" transform="rotate(-12 150 156)"/>
+          <polygon class="sh-tri" points="153,279 163,298 143,298" transform="rotate(4 153 290)"/>
+          <rect class="sh-sq is-ghost" x="29" y="380" width="20" height="20" rx="3" transform="rotate(3 39 389)"/>
+          <polygon class="sh-tri" points="163,639 172,656 154,656" transform="rotate(6 163 649)"/>
+        </svg>
+      </div>
+    <div class="wrap">
+      <p class="kicker"><span class="num">01</span> Where this came from</p>
+      <h2 class="h2">I kept typing the same five things.</h2>
+
+      <div class="cols">
+        <div class="col">
+          <p>
+            Not domain knowledge &mdash; just method, re-supplied by hand every session:
+          </p>
+          <ul class="ticks">
+            <li>Investigate before you change anything.</li>
+            <li>Reproduce it first &mdash; don&rsquo;t guess at the cause.</li>
+            <li>Write the failing test <em>before</em> the fix.</li>
+            <li>You said it works. Show me the output.</li>
+            <li>That was one step, not the whole task. Keep going.</li>
+          </ul>
+        </div>
+
+        <div class="col">
+          <figure class="quote">
+            <blockquote>It wasn&rsquo;t missing capability. It was missing a <em>protocol</em>.</blockquote>
+          </figure>
+          <p>
+            So I wrote it down: named blocks of work, each with its steps and a definition
+            of done. Then, for my own amusement, I named them in Latin.
+          </p>
+          <p class="note-line">
+            That turned out to be the part that mattered.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= COLLISION ================= -->
+  <section class="band alt" id="collision">
+    <div class="wrap">
+      <p class="kicker"><span class="num">02</span> The thing I didn&rsquo;t expect</p>
+      <h2 class="h2">&ldquo;Fix&rdquo; is the most crowded word in your repository.</h2>
+
+      <p class="lead-para">
+        Here is how I think about it. When an agent works on your code it is handling
+        <strong>triangles</strong> &mdash; <em>fix</em>, <em>check</em>, <em>test</em>,
+        <em>build</em>, <em>done</em>. Thousands of them, in the diff, the log, the tests and
+        my own request. If I write my instruction using those same words, my instruction is
+        just another triangle.
+      </p>
+
+      <figure class="dg">
+        <svg viewBox="0 0 760 292" role="img" aria-labelledby="figSt">
+          <title id="figSt">Two identical fields of small triangles. In the first, the instruction is one of the triangles and cannot be picked out. In the second field one triangle has been replaced by a square, which is found instantly.</title>
+
+          <text class="dg-cap" x="0" y="14">The instruction is a triangle too</text>
+          <g class="sh">
+            <path class="sh-tri" d="M30 37 L38 51 L22 51 Z"/>
+            <path class="sh-tri" d="M95 37 L102 51 L87 51 Z"/>
+            <path class="sh-tri" d="M154 38 L162 51 L146 51 Z"/>
+            <path class="sh-tri" d="M214 37 L222 51 L206 51 Z"/>
+            <path class="sh-tri" d="M279 39 L287 53 L271 53 Z"/>
+            <path class="sh-tri" d="M338 36 L345 50 L330 50 Z"/>
+            <path class="sh-tri" d="M400 39 L407 53 L392 53 Z"/>
+            <path class="sh-tri" d="M465 34 L473 48 L457 48 Z"/>
+            <path class="sh-tri" d="M529 40 L537 54 L521 54 Z"/>
+            <path class="sh-tri" d="M589 38 L597 52 L581 52 Z"/>
+            <path class="sh-tri" d="M648 34 L656 48 L640 48 Z"/>
+            <path class="sh-tri" d="M712 34 L720 48 L704 48 Z"/>
+            <path class="sh-tri" d="M28 79 L36 93 L20 93 Z"/>
+            <path class="sh-tri" d="M89 81 L97 95 L81 95 Z"/>
+            <path class="sh-tri" d="M154 83 L161 97 L146 97 Z"/>
+            <path class="sh-tri" d="M216 82 L224 96 L208 96 Z"/>
+            <path class="sh-tri" d="M278 82 L286 96 L270 96 Z"/>
+            <path class="sh-tri" d="M340 80 L348 94 L332 94 Z"/>
+            <path class="sh-tri" d="M405 84 L413 98 L397 98 Z"/>
+            <path class="sh-tri" d="M466 82 L474 96 L458 96 Z"/>
+            <path class="sh-tri" d="M525 79 L533 93 L517 93 Z"/>
+            <path class="sh-tri" d="M587 78 L595 92 L579 92 Z"/>
+            <path class="sh-tri" d="M652 80 L659 94 L644 94 Z"/>
+            <path class="sh-tri" d="M714 80 L722 94 L706 94 Z"/>
+          </g>
+          <text class="dg-note" x="380" y="124">one of these is my instruction</text>
+
+          <text class="dg-cap" x="0" y="166">The instruction is a square</text>
+          <g class="sh" transform="translate(0,152)">
+            <path class="sh-tri" d="M30 37 L38 51 L22 51 Z"/>
+            <path class="sh-tri" d="M95 37 L102 51 L87 51 Z"/>
+            <path class="sh-tri" d="M154 38 L162 51 L146 51 Z"/>
+            <path class="sh-tri" d="M214 37 L222 51 L206 51 Z"/>
+            <path class="sh-tri" d="M279 39 L287 53 L271 53 Z"/>
+            <path class="sh-tri" d="M338 36 L345 50 L330 50 Z"/>
+            <path class="sh-tri" d="M400 39 L407 53 L392 53 Z"/>
+            <path class="sh-tri" d="M465 34 L473 48 L457 48 Z"/>
+            <path class="sh-tri" d="M529 40 L537 54 L521 54 Z"/>
+            <path class="sh-tri" d="M589 38 L597 52 L581 52 Z"/>
+            <path class="sh-tri" d="M648 34 L656 48 L640 48 Z"/>
+            <path class="sh-tri" d="M712 34 L720 48 L704 48 Z"/>
+            <path class="sh-tri" d="M28 79 L36 93 L20 93 Z"/>
+            <path class="sh-tri" d="M89 81 L97 95 L81 95 Z"/>
+            <path class="sh-tri" d="M154 83 L161 97 L146 97 Z"/>
+            <path class="sh-tri" d="M216 82 L224 96 L208 96 Z"/>
+            <path class="sh-tri" d="M278 82 L286 96 L270 96 Z"/>
+            <path class="sh-tri" d="M340 80 L348 94 L332 94 Z"/>
+            <path class="sh-tri" d="M405 84 L413 98 L397 98 Z"/>
+            <path class="sh-tri" d="M466 82 L474 96 L458 96 Z"/>
+            <rect class="sh-sq" x="517" y="80" width="16" height="16" rx="2"/>
+            <path class="sh-tri" d="M587 78 L595 92 L579 92 Z"/>
+            <path class="sh-tri" d="M652 80 L659 94 L644 94 Z"/>
+            <path class="sh-tri" d="M714 80 L722 94 L706 94 Z"/>
+          </g>
+          <text class="dg-note is-pick" x="380" y="276">found before you finished reading this line</text>
+        </svg>
+        <figcaption>Triangles are the words the work is already made of &mdash; <em>fix</em>, <em>check</em>, <em>test</em>, <em>done</em>. A square is still a shape, made of the same stuff and read the same way. It is simply not one of the triangles.</figcaption>
+      </figure>
+
+      <p class="lead-para">
+        So make it a <strong>square</strong>. Still a shape &mdash; still ordinary language
+        the model reads exactly the same way &mdash; but not one of the triangles. That is
+        the entire trick, and it costs nothing.
+      </p>
+
+      <p class="lead-para narrow">
+        Concretely, this is how crowded a triangle gets. Six places the agent meets the same
+        word before my instruction even arrives:
+      </p>
+
+      <figure class="dg">
+        <svg viewBox="0 0 760 236" role="img" aria-labelledby="fig1t">
+          <title id="fig1t">Two rows of six boxes labelled request, branch, commits, comments, tests and protocol. In the first row every box contains the word "fix", so the protocol's is indistinguishable. In the second row only the protocol box contains the word "Emendatio".</title>
+
+          <text class="dg-cap" x="0" y="12">A word the project already uses</text>
+          <g class="dg-row">
+            <g><rect class="dg-b is-hot" x="0"   y="26" width="112" height="46" rx="8"/><text class="dg-in" x="56"  y="54">fix</text><text class="dg-lb" x="56"  y="88">request</text></g>
+            <g><rect class="dg-b is-hot" x="130" y="26" width="112" height="46" rx="8"/><text class="dg-in" x="186" y="54">fix</text><text class="dg-lb" x="186" y="88">branch</text></g>
+            <g><rect class="dg-b is-hot" x="260" y="26" width="112" height="46" rx="8"/><text class="dg-in" x="316" y="54">fix</text><text class="dg-lb" x="316" y="88">commits</text></g>
+            <g><rect class="dg-b is-hot" x="390" y="26" width="112" height="46" rx="8"/><text class="dg-in" x="446" y="54">fix</text><text class="dg-lb" x="446" y="88">comments</text></g>
+            <g><rect class="dg-b is-hot" x="520" y="26" width="112" height="46" rx="8"/><text class="dg-in" x="576" y="54">fix</text><text class="dg-lb" x="576" y="88">tests</text></g>
+            <g><rect class="dg-b is-hot" x="650" y="26" width="110" height="46" rx="8"/><text class="dg-in" x="705" y="54">fix</text><text class="dg-lb is-mark" x="705" y="88">protocol</text></g>
+          </g>
+
+          <text class="dg-cap" x="0" y="152">A word only the protocol uses</text>
+          <g class="dg-row">
+            <rect class="dg-b" x="0"   y="166" width="112" height="46" rx="8"/><text class="dg-lb" x="56"  y="228">request</text>
+            <rect class="dg-b" x="130" y="166" width="112" height="46" rx="8"/><text class="dg-lb" x="186" y="228">branch</text>
+            <rect class="dg-b" x="260" y="166" width="112" height="46" rx="8"/><text class="dg-lb" x="316" y="228">commits</text>
+            <rect class="dg-b" x="390" y="166" width="112" height="46" rx="8"/><text class="dg-lb" x="446" y="228">comments</text>
+            <rect class="dg-b" x="520" y="166" width="112" height="46" rx="8"/><text class="dg-lb" x="576" y="228">tests</text>
+            <g><rect class="dg-b is-one" x="650" y="166" width="110" height="46" rx="8"/><text class="dg-in is-one" x="705" y="194">Emendatio</text><text class="dg-lb is-mark" x="705" y="228">protocol</text></g>
+          </g>
+        </svg>
+        <figcaption>Six places the agent meets the word. Above, my instruction is one of six identical signals. Below, it is the only one.</figcaption>
+      </figure>
+
+      <p class="lead-para narrow">
+        That is the whole observation. Everything below is me working out what follows from
+        it.
+      </p>
+
+      <p class="lead-para narrow">
+        My squares happen to be <strong>Latin</strong>. <em>Emendatio</em> for a repair,
+        <em>Restitutio</em> for a broken build, <em>Purgatio</em> for an analyser alert.
+        Half a joke that stuck &mdash; those words appear in no repository I have touched,
+        and the model still knows what they mean.
+      </p>
+    </div>
+  </section>
+
+  <!-- ================= WRAP ================= -->
+  <section class="band" id="wrap">
+    <div class="wrap">
+      <p class="kicker"><span class="num">03</span> How it sits around the work</p>
+      <h2 class="h2">A layer of words your code never says.</h2>
+
+      <p class="lead-para">
+        The framework doesn&rsquo;t replace anything or sit inside your language. It wraps
+        it. Inside the blocks, everything is ordinary &mdash; your files, your commands, your
+        commit messages. The <em>edges</em> are made of vocabulary that can&rsquo;t be
+        confused with the contents.
+      </p>
+
+      <figure class="dg">
+        <svg viewBox="0 0 760 210" role="img" aria-labelledby="fig2t">
+          <title id="fig2t">An outer boundary labelled Emendatio, opening at "declared" and closing at "done", containing four plain inner boxes labelled read, reproduce, edit and run — the ordinary work, unchanged.</title>
+
+          <rect class="dg-shell" x="1" y="34" width="758" height="140" rx="16"/>
+          <rect class="dg-cut" x="18" y="24" width="104" height="20"/>
+          <text class="dg-edge" x="30" y="40">Emendatio</text>
+          <rect class="dg-cut" x="640" y="164" width="106" height="20"/>
+          <text class="dg-edge is-end" x="652" y="179">&#183; done</text>
+
+          <g>
+            <rect class="dg-b" x="46"  y="74" width="140" height="58" rx="8"/><text class="dg-in is-work" x="116" y="109">read</text>
+            <rect class="dg-b" x="222" y="74" width="140" height="58" rx="8"/><text class="dg-in is-work" x="292" y="109">reproduce</text>
+            <rect class="dg-b" x="398" y="74" width="140" height="58" rx="8"/><text class="dg-in is-work" x="468" y="109">edit</text>
+            <rect class="dg-b" x="574" y="74" width="140" height="58" rx="8"/><text class="dg-in is-work" x="644" y="109">run</text>
+          </g>
+          <g class="dg-arrows">
+            <path d="M186 103 H216"/><path d="M362 103 H392"/><path d="M538 103 H568"/>
+          </g>
+        </svg>
+        <figcaption>The vocabulary is the <em>boundary</em>. Everything inside it is ordinary &mdash; my files, my commands, my language, untouched.</figcaption>
+      </figure>
+
+      <p class="lead-para narrow">
+        I never type Latin at the agent. I say <em>&ldquo;the login endpoint 500s on an
+        empty body.&rdquo;</em> The vocabulary lives inside the skill file, where only the
+        agent reads it. What I get back is a transcript with visible seams.
+      </p>
+
+      <h3 class="h3">Why the seams matter</h3>
+
+      <figure class="dg">
+        <svg viewBox="0 0 760 176" role="img" aria-labelledby="fig3t">
+          <title id="fig3t">The same stream of session content shown twice. In the first bar it runs continuously with no divisions. In the second, identical content is separated into five segments by tick marks.</title>
+
+          <text class="dg-cap" x="0" y="12">Ordinary words</text>
+          <rect class="dg-bar" x="0" y="24" width="760" height="36" rx="8"/>
+          <g class="dg-chip"><rect x="16" y="37" width="42" height="10" rx="3"/><rect x="70" y="37" width="26" height="10" rx="3"/><rect x="106" y="37" width="40" height="10" rx="3"/><rect x="176" y="37" width="34" height="10" rx="3"/><rect x="222" y="37" width="48" height="10" rx="3"/><rect x="282" y="37" width="22" height="10" rx="3"/><rect x="316" y="37" width="52" height="10" rx="3"/><rect x="380" y="37" width="30" height="10" rx="3"/><rect x="422" y="37" width="28" height="10" rx="3"/><rect x="478" y="37" width="26" height="10" rx="3"/><rect x="516" y="37" width="50" height="10" rx="3"/><rect x="578" y="37" width="26" height="10" rx="3"/><rect x="622" y="37" width="46" height="10" rx="3"/><rect x="680" y="37" width="24" height="10" rx="3"/><rect x="716" y="37" width="30" height="10" rx="3"/></g>
+          <text class="dg-note" x="380" y="82">one continuous stream &#8212; the agent re-reads it to work out where it is</text>
+
+          <text class="dg-cap" x="0" y="124">Disjoint words</text>
+          <rect class="dg-bar is-seg" x="0" y="136" width="760" height="36" rx="8"/>
+          <g class="dg-chip"><rect x="16" y="149" width="42" height="10" rx="3"/><rect x="70" y="149" width="26" height="10" rx="3"/><rect x="106" y="149" width="40" height="10" rx="3"/><rect x="176" y="149" width="34" height="10" rx="3"/><rect x="222" y="149" width="48" height="10" rx="3"/><rect x="282" y="149" width="22" height="10" rx="3"/><rect x="316" y="149" width="52" height="10" rx="3"/><rect x="380" y="149" width="30" height="10" rx="3"/><rect x="422" y="149" width="28" height="10" rx="3"/><rect x="478" y="149" width="26" height="10" rx="3"/><rect x="516" y="149" width="50" height="10" rx="3"/><rect x="578" y="149" width="26" height="10" rx="3"/><rect x="622" y="149" width="46" height="10" rx="3"/><rect x="680" y="149" width="24" height="10" rx="3"/><rect x="716" y="149" width="30" height="10" rx="3"/></g>
+          <g class="dg-tick">
+            <path d="M152 132 V176"/><path d="M304 132 V176"/><path d="M456 132 V176"/><path d="M608 132 V176"/>
+          </g>
+        </svg>
+        <figcaption>Same content, same length. The difference is that the agent can <em>find the edges</em>. Scanning back over its own context, it lands on a marker instead of re-reading prose to work out which phase it is in &mdash; and a skipped phase shows up as a missing segment rather than an absence you have to notice.</figcaption>
+      </figure>
+
+    </div>
+  </section>
+
+  <!-- ================= CHOOSING ================= -->
+  <section class="band alt" id="choosing">
+    <div class="wrap">
+      <p class="kicker"><span class="num">04</span> Picking the words</p>
+      <h2 class="h2">It doesn&rsquo;t have to be Latin. It does have to be disjoint.</h2>
+
+      <p class="lead-para">
+        The requirement is only that the name not collide with the material it governs. But
+        you can miss in two directions, and the shapes make it obvious which is which.
+      </p>
+
+      <figure class="dg">
+        <svg viewBox="0 0 760 232" role="img" aria-labelledby="fig4t">
+          <title id="fig4t">Three panels, each an identical field of twelve triangles. In the first, the highlighted shape is another triangle and is hard to pick out. In the second it is a square: distinct, but still a regular shape. In the third it is an irregular blob: distinct, but not a shape anyone can name.</title>
+
+          <rect class="dg-panel" x="0" y="24" width="228" height="150" rx="12"/>
+          <rect class="dg-panel is-pick" x="266" y="24" width="228" height="150" rx="12"/>
+          <rect class="dg-panel" x="532" y="24" width="228" height="150" rx="12"/>
+
+          <text class="dg-cap" x="0" y="14">Too close</text>
+          <text class="dg-cap is-pick" x="266" y="14">Disjoint</text>
+          <text class="dg-cap" x="532" y="14">Too far</text>
+
+          <g class="sh"><path class="sh-tri" d="M44 49 L52 63 L36 63 Z"/>
+            <path class="sh-tri" d="M92 48 L99 62 L84 62 Z"/>
+            <path class="sh-tri" d="M137 49 L145 63 L129 63 Z"/>
+            <path class="sh-tri" d="M181 50 L189 64 L173 64 Z"/>
+            <path class="sh-tri" d="M43 90 L51 104 L35 104 Z"/>
+            <path class="sh-tri is-hit" d="M89 88 L97 102 L81 102 Z"/>
+            <path class="sh-tri" d="M137 91 L145 105 L129 105 Z"/>
+            <path class="sh-tri" d="M181 89 L189 103 L174 103 Z"/>
+            <path class="sh-tri" d="M46 132 L53 146 L38 146 Z"/>
+            <path class="sh-tri" d="M91 130 L99 144 L83 144 Z"/>
+            <path class="sh-tri" d="M139 128 L147 142 L131 142 Z"/>
+            <path class="sh-tri" d="M184 129 L192 143 L177 143 Z"/></g>
+          <g class="sh"><path class="sh-tri" d="M310 49 L318 63 L302 63 Z"/>
+            <path class="sh-tri" d="M358 48 L365 62 L350 62 Z"/>
+            <path class="sh-tri" d="M403 49 L411 63 L395 63 Z"/>
+            <path class="sh-tri" d="M447 50 L455 64 L439 64 Z"/>
+            <path class="sh-tri" d="M309 90 L317 104 L301 104 Z"/>
+            <rect class="sh-sq" x="347" y="89" width="16" height="16" rx="2"/>
+            <path class="sh-tri" d="M403 91 L411 105 L395 105 Z"/>
+            <path class="sh-tri" d="M447 89 L455 103 L440 103 Z"/>
+            <path class="sh-tri" d="M312 132 L319 146 L304 146 Z"/>
+            <path class="sh-tri" d="M357 130 L365 144 L349 144 Z"/>
+            <path class="sh-tri" d="M405 128 L413 142 L397 142 Z"/>
+            <path class="sh-tri" d="M450 129 L458 143 L443 143 Z"/></g>
+          <g class="sh"><path class="sh-tri" d="M576 49 L584 63 L568 63 Z"/>
+            <path class="sh-tri" d="M624 48 L631 62 L616 62 Z"/>
+            <path class="sh-tri" d="M669 49 L677 63 L661 63 Z"/>
+            <path class="sh-tri" d="M713 50 L721 64 L705 64 Z"/>
+            <path class="sh-tri" d="M575 90 L583 104 L567 104 Z"/>
+            <polygon class="sh-blob" points="632,98 630,106 623,111 614,110 609,102 608,93 618,94 622,89 632,89"/>
+            <path class="sh-tri" d="M669 91 L677 105 L661 105 Z"/>
+            <path class="sh-tri" d="M713 89 L721 103 L706 103 Z"/>
+            <path class="sh-tri" d="M578 132 L585 146 L570 146 Z"/>
+            <path class="sh-tri" d="M623 130 L631 144 L615 144 Z"/>
+            <path class="sh-tri" d="M671 128 L679 142 L663 142 Z"/>
+            <path class="sh-tri" d="M716 129 L724 143 L709 143 Z"/></g>
+
+          <text class="dg-in is-mono" x="114" y="198">fix</text>
+          <text class="dg-in is-one"  x="380" y="198">Emendatio</text>
+          <text class="dg-in is-mono" x="646" y="198">Z7</text>
+
+          <text class="dg-note" x="114" y="220">another triangle</text>
+          <text class="dg-note is-pick" x="380" y="220">a square</text>
+          <text class="dg-note" x="646" y="220">a shape with no name</text>
+        </svg>
+        <figcaption>Both failures are real. A triangle disappears into the work; a nameless blob stands out but carries nothing, so you end up writing the whole instruction anyway. The square is the only one that is both findable and legible.</figcaption>
+      </figure>
+
+      <div class="callout">
+        <p>
+          Why Latin lands in the middle band is a guess, not a finding: rare in source code,
+          abundant in training data, still transparent &mdash; <em>emendatio</em> already
+          means correction, so the name carries weight before I define anything. But that is
+          me explaining my own result after the fact. Old Norse, liturgical terms, climbing
+          vocabulary, chess notation &mdash; anything with real meaning your repository has
+          never had reason to write down should do the same job. If you try one, tell me
+          what happened.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= DISCUSS ================= -->
+  <section class="band" id="discuss">
+    <div class="wrap">
+      <p class="kicker"><span class="num">05</span> Over coffee</p>
+      <h2 class="h2">Let&rsquo;s discuss.</h2>
+      <p class="lead-para">
+        I am not trying to sell you a method. This is one person&rsquo;s experience with no
+        control group &mdash; I switched to it and never switched back, so I am comparing
+        against memory. I would rather be argued with than agreed with.
+      </p>
+
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-foot">
+  <div class="wrap foot-inner">
+    <p><span class="foot-mark" aria-hidden="true">&#945;</span> Alphabet<sup>++</sup></p>
+    <p class="foot-mid">An open experiment. Findings welcome &mdash; including negative ones.</p>
+    <p><a href="https://github.com/Abarbesgaard/alphabet-plus-plus" rel="noopener">Abarbesgaard/alphabet-plus-plus</a></p>
+  </div>
+</footer>
+
+<script src="main.js"></script>
+</body>
+</html>
