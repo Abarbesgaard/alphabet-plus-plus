@@ -17,7 +17,7 @@ re-supplying the same method by hand — investigate first, reproduce before you
 prove the fix, show the output, keep going. Alphabet++ asks whether that control
 structure can live in the meaning of the words themselves: define a concept precisely
 once, and every later invocation of its name re-imports applicability, an ordered
-protocol, exclusions, evidence gates and a definition of done.
+framework, exclusions, evidence gates and a definition of done.
 
 ```
 Name → Define → Relate → Invoke
@@ -90,7 +90,7 @@ decoration and I'll say so.
 ## Status
 
 Unproven, and deliberately cheap to falsify. The load-bearing claim is that a *lexically
-disjoint* name outperforms an identical protocol using colliding names — same bytes, nouns
+disjoint* name outperforms an identical framework using colliding names — same bytes, nouns
 swapped. If it doesn't, the vocabulary is decoration and the idea reduces to "structured
 instructions and external checks work" — true, but not new.
 
