@@ -580,6 +580,20 @@ code {
 }
 .deco-l { left: 0; }
 .deco-r { right: 0; transform: scaleX(-1); }
+/* the field settles as you scroll: loud and tilted at the top, a plain
+   grid by the time the squares are explained */
+.hero.has-deco { overflow: hidden; }
+.hero.has-deco > .hero-inner { position: relative; z-index: 1; }
+.band-deco.is-chaos { opacity: .34; }
+.band-deco.is-order { opacity: .32; }
+.is-order .deco-col { overflow: hidden; transform: none; }
+.deco-s {
+  position: absolute;
+  width: 21px;
+  height: auto;
+  overflow: visible;
+  translate: -50% -50%;
+}
 .sh-sq.is-ghost { stroke: var(--shape); }
 @media (max-width: 1250px) { .band-deco { display: none; } }
 
