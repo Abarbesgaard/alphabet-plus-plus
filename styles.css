@@ -589,3 +589,51 @@ code {
 .deco-r { right: 0; transform: scaleX(-1); }
 .sh-sq.is-ghost { stroke: var(--shape); }
 @media (max-width: 1250px) { .band-deco { display: none; } }
+
+/* marginalia: a verbatim file with notes in the margin ------------------- */
+.marg-fig { margin: 2.5rem 0 0; }
+.marg-path {
+  font-family: var(--font-mono);
+  font-size: .78rem;
+  letter-spacing: .02em;
+  color: var(--ink-mute);
+  margin: 0 0 .9rem;
+  padding-bottom: .6rem;
+  border-bottom: 1px solid var(--line);
+}
+.marg-path strong { color: var(--ink); font-weight: 600; }
+.marg {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 15.5rem;
+  column-gap: 2.75rem;
+  align-items: start;
+}
+.marg-t {
+  font-family: var(--font-mono);
+  font-size: .74rem;
+  line-height: 1.85;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  color: var(--ink-soft);
+  margin: 0;
+  padding: .85rem 0;
+  border-top: 1px solid var(--line-soft);
+}
+.marg-t .mk { color: var(--accent); font-weight: 600; }
+.marg-n {
+  font-family: var(--font-display);
+  font-size: .82rem;
+  line-height: 1.6;
+  color: var(--ink-mute);
+  margin: 0;
+  padding: 1rem 0 .85rem 1rem;
+  border-top: 1px solid var(--line-soft);
+  border-left: 1px solid var(--line);
+}
+.marg-n code { font-family: var(--font-mono); font-size: .92em; }
+.marg-n em { color: var(--ink-soft); }
+.marg-fig figcaption { margin-top: 1rem; }
+@media (max-width: 860px) {
+  .marg { grid-template-columns: 1fr; column-gap: 0; }
+  .marg-n { border-left: 0; padding-left: 0; border-top: 0; margin-bottom: .5rem; }
+}
