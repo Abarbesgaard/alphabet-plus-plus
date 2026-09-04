@@ -577,11 +577,18 @@ code {
   top: 0;
   height: 100%;
   width: max(0px, calc((100% - var(--wrap)) / 2));
+  overflow: hidden;
 }
 .deco-l { left: 0; }
-.deco-r { right: 0; transform: scaleX(-1); }
+.deco-r { right: 0; }
+.deco-s {
+  position: absolute;
+  height: auto;
+  overflow: visible;
+  translate: -50% -50%;
+}
 .sh-sq.is-ghost { stroke: var(--shape); }
-@media (max-width: 1250px) { .band-deco { display: none; } }
+@media (max-width: 1400px) { .band-deco { display: none; } }
 
 /* marginalia: a verbatim file with notes in the margin ------------------- */
 .marg-fig { margin: 2.5rem 0 0; }
