@@ -254,14 +254,16 @@
       <h2 class="h2">&ldquo;Fix&rdquo; is the most crowded word in your repository.</h2>
 
       <p class="lead-para">
-        Here is how I think about it. Everything an agent touches while it works on your
-        code is a <strong>triangle</strong> &mdash; <em>fix</em>, <em>check</em>,
-        <em>test</em>, <em>build</em>, <em>commit</em>, <em>refactor</em>, <em>done</em>.
-        Thousands of them, in the diff, the log, the stack trace, the branch name and my own
-        request. My request stays a triangle, and should: it is a programming task, and
-        programming tasks are written in programming words &mdash; <em>fix the null deref in
-        the session handler, the migration test is failing</em>. What must not be a triangle
-        is the <strong>framework</strong> that governs that work &mdash; the names of its
+        Here is how I think about it. An agent works entirely in text, and nearly all of
+        that text is programming vocabulary &mdash; the files it reads, the stack trace,
+        the diff and the commit messages it writes, the test output it reads back, and
+        the request I typed. Every one of those words is a <strong>triangle</strong>:
+        <em>fix</em>, <em>check</em>, <em>test</em>, <em>build</em>, <em>commit</em>,
+        <em>refactor</em>, <em>done</em>. It reads and writes thousands of them in a
+        session. My request is one more triangle, and should be: it is a programming
+        task, and programming tasks are written in programming words &mdash; <em>fix the
+        null deref in the session handler</em>. What must not be a triangle is the
+        <strong>framework</strong> that governs that work &mdash; the names of its
         blocks and its boundaries. Name those in programming words too and they dissolve
         into the pile.
       </p>
@@ -332,9 +334,9 @@
       </figure>
 
       <p class="lead-para">
-        So make the framework names <strong>squares</strong>. The work stays triangles, my
-        request stays triangles, and only the layer that governs them changes shape. That is
-        the entire trick, and it costs nothing.
+        So make the framework names <strong>squares</strong>. The words of the work stay
+        triangles, my request stays a triangle, and only the layer that governs them
+        changes shape. That is the entire trick, and it costs nothing.
       </p>
 
       <p class="lead-para narrow">

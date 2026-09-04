@@ -25,10 +25,12 @@ Name → Define → Relate → Invoke
 
 ## The part that surprised me
 
-Think of it in terms of shapes. When an agent works on your code it is handling
-**triangles** — `fix`, `check`, `test`, `build`, `done` — thousands of them, in the diff,
-the log, the tests and your own request. Your request can stay a triangle; it is a
-programming task written in programming words. What must not be a triangle is the
+Think of it in terms of shapes. An agent works entirely in text, and nearly all of that
+text is programming vocabulary — the files it reads, the stack trace, the diff and commit
+messages it writes, the test output, and your request. Every one of those words is a
+**triangle** — `fix`, `check`, `test`, `build`, `done` — thousands of them per session.
+Your request is one more triangle, and should be; it is a programming task written in
+programming words. What must not be a triangle is the
 *framework* that governs the work — the names of its blocks and its boundaries. Name
 those in the same words and they dissolve into the pile.
 
