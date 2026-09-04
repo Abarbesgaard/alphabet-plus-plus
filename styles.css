@@ -592,48 +592,70 @@ code {
 
 /* marginalia: a verbatim file with notes in the margin ------------------- */
 .marg-fig { margin: 2.5rem 0 0; }
+.marg-doc {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  overflow: hidden;
+}
 .marg-path {
   font-family: var(--font-mono);
-  font-size: .78rem;
+  font-size: .74rem;
   letter-spacing: .02em;
   color: var(--ink-mute);
-  margin: 0 0 .9rem;
-  padding-bottom: .6rem;
+  margin: 0;
+  padding: .8rem 1.4rem;
+  background: var(--bg-alt);
   border-bottom: 1px solid var(--line);
 }
 .marg-path strong { color: var(--ink); font-weight: 600; }
 .marg {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 15.5rem;
-  column-gap: 2.75rem;
-  align-items: start;
+  grid-template-columns: minmax(0, 1fr) 14rem;
 }
 .marg-t {
   font-family: var(--font-mono);
-  font-size: .74rem;
-  line-height: 1.85;
+  font-size: .72rem;
+  line-height: 1.9;
   white-space: pre-wrap;
   overflow-wrap: anywhere;
   color: var(--ink-soft);
   margin: 0;
-  padding: .85rem 0;
+  padding: 1.15rem 1.4rem;
   border-top: 1px solid var(--line-soft);
 }
+.marg-t:first-of-type { border-top: 0; }
 .marg-t .mk { color: var(--accent); font-weight: 600; }
 .marg-n {
   font-family: var(--font-display);
-  font-size: .82rem;
-  line-height: 1.6;
+  font-size: .84rem;
+  line-height: 1.55;
   color: var(--ink-mute);
   margin: 0;
-  padding: 1rem 0 .85rem 1rem;
+  padding: 1.15rem 1.4rem;
   border-top: 1px solid var(--line-soft);
   border-left: 1px solid var(--line);
+  background: var(--bg-alt);
 }
-.marg-n code { font-family: var(--font-mono); font-size: .92em; }
-.marg-n em { color: var(--ink-soft); }
+.marg-n:nth-of-type(1) { border-top: 0; }
+.marg-n::before {
+  content: "";
+  display: block;
+  width: 18px;
+  height: 2px;
+  background: var(--accent);
+  margin-bottom: .6rem;
+  opacity: .85;
+}
+.marg-n code {
+  font-family: var(--font-mono);
+  font-size: .88em;
+  color: var(--ink-soft);
+}
+.marg-n em { color: var(--ink-soft); font-style: italic; }
 .marg-fig figcaption { margin-top: 1rem; }
 @media (max-width: 860px) {
-  .marg { grid-template-columns: 1fr; column-gap: 0; }
-  .marg-n { border-left: 0; padding-left: 0; border-top: 0; margin-bottom: .5rem; }
+  .marg { grid-template-columns: 1fr; }
+  .marg-n { border-left: 0; background: none; padding-top: .4rem; }
+  .marg-t { border-top: 1px solid var(--line-soft); }
 }
