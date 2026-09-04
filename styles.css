@@ -560,13 +560,6 @@ code {
 .dg-panel.is-pick { stroke: var(--accent); }
 .dg-cap.is-pick { fill: var(--accent); }
 .dg-note.is-pick { fill: var(--accent); }
-
-/* diagram annotations: ring a boundary word, lead a line out to a note */
-.dg-ring { fill: none; stroke: var(--accent); stroke-width: 1.2; stroke-dasharray: 4 3; opacity: .8; }
-.dg-lead { fill: none; stroke: var(--ink-mute); stroke-width: 1; opacity: .75; }
-.dg-ann { font-size: 12px; fill: var(--ink-mute); font-style: italic; }
-.dg-ann.is-end { text-anchor: end; }
-.dg-ann em, .dg-ann .is-key { font-style: normal; fill: var(--accent); }
 .dg-in.is-mono { font-family: var(--font-mono); font-size: 13px; fill: var(--ink-mute); }
 
 /* decorative shape field ------------------------------------------------ */
