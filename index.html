@@ -249,35 +249,37 @@
       </p>
 
       <p class="lead-para narrow">
-        Concretely, this is how crowded a triangle gets. Six places the agent meets the same
-        word before the framework has said anything at all:
+        Concretely, this is how crowded a triangle gets. I ask for that null deref. Before
+        my framework says a word, the agent has already met <em>fix</em> five times &mdash;
+        the branch it checked out, eleven commits, a stale <em>FIXME</em>, two test names,
+        and my own sentence. Then my framework arrives and says it a sixth time:
       </p>
 
       <figure class="dg">
         <svg viewBox="0 0 760 236" role="img" aria-labelledby="fig1t">
-          <title id="fig1t">Two rows of six boxes labelled request, branch, commits, comments, tests and framework. In the first row every box contains the word "fix", so the framework's is indistinguishable. In the second row only the framework box contains the word "Emendatio".</title>
+          <title id="fig1t">Two rows of six boxes labelled my request, branch name, 11 commits, FIXME comment, test names and framework. In the first row every box contains the word "fix", so the framework's is indistinguishable. In the second row only the framework box contains a word at all, "Emendatio".</title>
 
           <text class="dg-cap" x="0" y="12">A word the project already uses</text>
           <g class="dg-row">
-            <g><rect class="dg-b is-hot" x="0"   y="26" width="112" height="46" rx="8"/><text class="dg-in" x="56"  y="54">fix</text><text class="dg-lb" x="56"  y="88">request</text></g>
-            <g><rect class="dg-b is-hot" x="130" y="26" width="112" height="46" rx="8"/><text class="dg-in" x="186" y="54">fix</text><text class="dg-lb" x="186" y="88">branch</text></g>
-            <g><rect class="dg-b is-hot" x="260" y="26" width="112" height="46" rx="8"/><text class="dg-in" x="316" y="54">fix</text><text class="dg-lb" x="316" y="88">commits</text></g>
-            <g><rect class="dg-b is-hot" x="390" y="26" width="112" height="46" rx="8"/><text class="dg-in" x="446" y="54">fix</text><text class="dg-lb" x="446" y="88">comments</text></g>
-            <g><rect class="dg-b is-hot" x="520" y="26" width="112" height="46" rx="8"/><text class="dg-in" x="576" y="54">fix</text><text class="dg-lb" x="576" y="88">tests</text></g>
+            <g><rect class="dg-b is-hot" x="0"   y="26" width="112" height="46" rx="8"/><text class="dg-in" x="56"  y="54">fix</text><text class="dg-lb" x="56"  y="88">my request</text></g>
+            <g><rect class="dg-b is-hot" x="130" y="26" width="112" height="46" rx="8"/><text class="dg-in" x="186" y="54">fix</text><text class="dg-lb" x="186" y="88">branch name</text></g>
+            <g><rect class="dg-b is-hot" x="260" y="26" width="112" height="46" rx="8"/><text class="dg-in" x="316" y="54">fix</text><text class="dg-lb" x="316" y="88">11 commits</text></g>
+            <g><rect class="dg-b is-hot" x="390" y="26" width="112" height="46" rx="8"/><text class="dg-in" x="446" y="54">fix</text><text class="dg-lb" x="446" y="88">// FIXME</text></g>
+            <g><rect class="dg-b is-hot" x="520" y="26" width="112" height="46" rx="8"/><text class="dg-in" x="576" y="54">fix</text><text class="dg-lb" x="576" y="88">test names</text></g>
             <g><rect class="dg-b is-hot" x="650" y="26" width="110" height="46" rx="8"/><text class="dg-in" x="705" y="54">fix</text><text class="dg-lb is-mark" x="705" y="88">framework</text></g>
           </g>
 
           <text class="dg-cap" x="0" y="152">A word only the framework uses</text>
           <g class="dg-row">
-            <rect class="dg-b" x="0"   y="166" width="112" height="46" rx="8"/><text class="dg-lb" x="56"  y="228">request</text>
-            <rect class="dg-b" x="130" y="166" width="112" height="46" rx="8"/><text class="dg-lb" x="186" y="228">branch</text>
-            <rect class="dg-b" x="260" y="166" width="112" height="46" rx="8"/><text class="dg-lb" x="316" y="228">commits</text>
-            <rect class="dg-b" x="390" y="166" width="112" height="46" rx="8"/><text class="dg-lb" x="446" y="228">comments</text>
-            <rect class="dg-b" x="520" y="166" width="112" height="46" rx="8"/><text class="dg-lb" x="576" y="228">tests</text>
+            <rect class="dg-b" x="0"   y="166" width="112" height="46" rx="8"/><text class="dg-lb" x="56"  y="228">my request</text>
+            <rect class="dg-b" x="130" y="166" width="112" height="46" rx="8"/><text class="dg-lb" x="186" y="228">branch name</text>
+            <rect class="dg-b" x="260" y="166" width="112" height="46" rx="8"/><text class="dg-lb" x="316" y="228">11 commits</text>
+            <rect class="dg-b" x="390" y="166" width="112" height="46" rx="8"/><text class="dg-lb" x="446" y="228">// FIXME</text>
+            <rect class="dg-b" x="520" y="166" width="112" height="46" rx="8"/><text class="dg-lb" x="576" y="228">test names</text>
             <g><rect class="dg-b is-one" x="650" y="166" width="110" height="46" rx="8"/><text class="dg-in is-one" x="705" y="194">Emendatio</text><text class="dg-lb is-mark" x="705" y="228">framework</text></g>
           </g>
         </svg>
-        <figcaption>Six places the agent meets the word. Above, the framework&rsquo;s name is one of six identical signals. Below, it is the only one.</figcaption>
+        <figcaption>Above, the framework&rsquo;s name is the sixth <em>fix</em> in a row &mdash; one signal among six identical ones. Below, the other five boxes are empty, because nothing else in the repository says <em>Emendatio</em>.</figcaption>
       </figure>
 
       <p class="lead-para narrow">
