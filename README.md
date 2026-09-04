@@ -2,9 +2,9 @@
 
 **Structured language for structuring agent behaviour.**
 
-A method for designing natural-language concepts so that their *semantics* become
-reusable control abstractions for an LLM — carrying precedence, state transitions and
-proof obligations, not just meaning.
+One programmer's experience: name the framework that governs an agent's work in words
+your repository never uses, so each name has exactly one referent and the boundaries of a
+block stay findable. Unproven, and deliberately cheap to falsify.
 
 **Live site → https://abarbesgaard.github.io/alphabet-plus-plus/**
 
@@ -16,8 +16,8 @@ Coding agents can solve problems; their *process* is the unreliable part. We kee
 re-supplying the same method by hand — investigate first, reproduce before you change,
 prove the fix, show the output, keep going. Alphabet++ asks whether that control
 structure can live in the meaning of the words themselves: define a concept precisely
-once, and every later invocation of its name re-imports applicability, an ordered
-framework, exclusions, evidence gates and a definition of done.
+once, and every later invocation of its name re-imports applicability, ordered phases,
+exclusions, evidence gates and a definition of done.
 
 ```
 Name → Define → Relate → Invoke
@@ -27,11 +27,13 @@ Name → Define → Relate → Invoke
 
 Think of it in terms of shapes. When an agent works on your code it is handling
 **triangles** — `fix`, `check`, `test`, `build`, `done` — thousands of them, in the diff,
-the log, the tests and your own request. Write your instruction in those same words and
-your instruction is just another triangle.
+the log, the tests and your own request. Your request can stay a triangle; it is a
+programming task written in programming words. What must not be a triangle is the
+*framework* that governs the work — the names of its blocks and its boundaries. Name
+those in the same words and they dissolve into the pile.
 
-So make it a **square**. Still a shape, still ordinary language the model reads exactly the
-same way — just not one of the triangles. `Emendatio` appears in exactly one place, so it
+So make the framework names **squares**. Still shapes, still ordinary language the model
+reads exactly the same way — just not one of the triangles. `Emendatio` appears in exactly one place, so it
 has one referent, and I defined it. The same property makes the *boundaries* legible:
 "starting the fix" is a sentence you have to interpret, `Emendatio · Probatio` is a marker
 you can see.
@@ -125,8 +127,9 @@ node scripts/check.mjs
 
 Checks that the required files exist, that the referenced assets resolve, that the
 wordmark renders the Greek alpha while remaining accessible as "Alphabet++", that every
-nav link has a matching section, and that motion is gated behind
-`prefers-reduced-motion`.
+nav link has a matching section, that motion is gated behind `prefers-reduced-motion`,
+that the page stays readable with JavaScript disabled, and that every class used in the
+markup has a rule behind it.
 
 ### Deploy
 
