@@ -60,6 +60,7 @@
     <a href="#wrap">Shape</a>
     <a href="#choosing">Words</a>
     <a href="#example">Example</a>
+    <a href="#evidence">Evidence</a>
     <a href="#discuss">Discuss</a>
   </nav>
 
@@ -632,10 +633,91 @@ mend and re-walk — do not abandon or ask anew.</pre>
       </p>
     </div>
   </section>
-  <!-- ================= DISCUSS ================= -->
-  <section class="band alt" id="discuss">
+  <!-- ================= EVIDENCE ================= -->
+  <section class="band alt" id="evidence">
     <div class="wrap">
-      <p class="kicker"><span class="num">06</span> Over coffee</p>
+      <p class="kicker"><span class="num">06</span> Evidence</p>
+      <h2 class="h2">What is evidence, and what is still my hunch.</h2>
+      <p class="lead-para">
+        Two different claims live on this page, and they are not equally supported.
+        One has published work behind it. The other is mine, and untested. Mixing them
+        would be the fastest way to lose an argument I think is worth having, so here
+        they are, separated.
+      </p>
+
+      <h3 class="h3">Supported: a gate the model cannot talk its way through</h3>
+      <p class="lead-para narrow">
+        The strongest part of the framework is not a word. It is the rule that a repair
+        needs a test you watched <em>fail</em> before it may be called mended &mdash;
+        and that <span class="mk">Testes</span> means the suite&rsquo;s output, not the
+        model&rsquo;s opinion of the suite.
+      </p>
+      <p class="lead-para narrow">
+        That rule is doing real work, and the reason is documented. Asked to check its own
+        reasoning without an external signal, a model does not get better &mdash; it gets
+        worse, and keeps getting worse. GPT&#8209;4 on GSM8K fell from 95.5% to 91.5% after
+        one round of self&#8209;correction, and to 89.0% after two. Earlier results
+        suggesting otherwise had quietly used the right answer to decide when to stop
+        correcting.<a class="fn-ref" href="#cite-1" aria-describedby="cite-1">1</a>
+      </p>
+      <p class="lead-para narrow">
+        So &ldquo;verify your work&rdquo; asks for the one thing the literature says is
+        unreliable. <code>sara verify</code> asks for an exit code. That distinction is
+        defensible today, in any vocabulary, in any language.
+      </p>
+
+      <h3 class="h3">Adjacent, but weaker than it looks</h3>
+      <p class="lead-para narrow">
+        Models genuinely are trained to rank instructions by privilege &mdash; system above
+        developer, developer above user, user above tool output.<a class="fn-ref" href="#cite-2" aria-describedby="cite-2">2</a>
+        It is tempting to reach for that as proof of a vocabulary of authority. It is not.
+        That hierarchy keys on <em>where a message came from</em>, never on which words it
+        used. It shows layered authority is real. It says nothing about whether rare words
+        create one.
+      </p>
+
+      <h3 class="h3">Evidence pointing the other way</h3>
+      <p class="lead-para narrow">
+        Rarity has a cost. Tokens a model saw too little of during training carry
+        poorly&#8209;formed representations and behave erratically.<a class="fn-ref" href="#cite-3" aria-describedby="cite-3">3</a>
+        If isolation were free, the ideal label would be a random string &mdash; and it
+        clearly is not. That bounds my own claim: a word must be rare in your repository
+        while remaining common in the training data. Latin sits there because of law,
+        medicine and science, not because it is old.
+      </p>
+
+      <div class="callout">
+        <p>
+          The honest summary cuts against this page&rsquo;s emphasis. The published work
+          supports the <em>structure</em> &mdash; external gates, proof over assertion,
+          state kept outside the model. On <em>vocabulary</em> it is silent at best and
+          cautionary at worst. My hunch is that lexical isolation adds something on top of
+          the structure. That part is a hypothesis wearing a website.
+        </p>
+      </div>
+
+      <h3 class="h3">What would change my mind</h3>
+      <p class="lead-para narrow">
+        Strip the Latin, keep every gate, and run the same work. If the results hold, the
+        structure was the whole finding and the vocabulary was decoration &mdash; and I
+        would rather publish that than defend the nicer story. I have not run it yet, so
+        nothing on this page should be read as though I had.
+      </p>
+
+      <p class="footnote">
+        <span class="fn-star">1</span> <span id="cite-1">Huang et al., <em>Large Language Models Cannot Self-Correct Reasoning Yet</em>, ICLR 2024 &mdash;
+        <a href="https://arxiv.org/abs/2310.01798" rel="noopener">arXiv:2310.01798</a></span><br>
+        <span class="fn-star">2</span> <span id="cite-2">Wallace et al., <em>The Instruction Hierarchy: Training LLMs to Prioritize Privileged Instructions</em>, OpenAI 2024 &mdash;
+        <a href="https://arxiv.org/abs/2404.13208" rel="noopener">arXiv:2404.13208</a></span><br>
+        <span class="fn-star">3</span> <span id="cite-3">Land &amp; Bartolo, <em>Fishing for Magikarp: Automatically Detecting Under-trained Tokens in Large Language Models</em>, EMNLP 2024 &mdash;
+        <a href="https://arxiv.org/abs/2405.05417" rel="noopener">arXiv:2405.05417</a></span>
+      </p>
+    </div>
+  </section>
+  <!-- ================= DISCUSS ================= -->
+  <section class="band" id="discuss">
+    <div class="wrap">
+      <p class="kicker"><span class="num">07</span> Over coffee</p>
       <h2 class="h2">Let&rsquo;s discuss.</h2>
       <p class="lead-para">
         I am not trying to sell you a method. This is one person&rsquo;s experience with no
