@@ -331,7 +331,7 @@
           </g>
           <text class="dg-note is-pick" x="380" y="276">found before you finished reading this line</text>
         </svg>
-        <figcaption>Triangles are the words the work is already made of &mdash; <em>fix</em>, <em>check</em>, <em>test</em>, <em>done</em>. Squares are the Latin: <em>Emendatio</em>, <em>Restitutio</em>, <em>Purgatio</em>. Still shapes &mdash; still ordinary language, read the same way &mdash; simply not one of the triangles.</figcaption>
+        <figcaption>Triangles are the words the work is already made of &mdash; <em>fix</em>, <em>check</em>, <em>test</em>, <em>done</em>. Squares are the boundary words: <em>Emendatio</em>, <em>Restitutio</em>, <em>Purgatio</em>. Still shapes &mdash; still ordinary language, read the same way &mdash; simply not one of the triangles.</figcaption>
       </figure>
 
       <p class="lead-para">
@@ -381,12 +381,14 @@
       </p>
 
       <p class="lead-para narrow">
-        My squares happen to be <strong>Latin</strong>. <em>Emendatio</em> for a repair,
-        <em>Restitutio</em> for a broken build, <em>Purgatio</em> for an analyser alert.
-        Half a joke that stuck &mdash; those words appear in no repository I have touched,
-        and the model still knows what they mean. Three is a sample: my own set runs to
-        eight kinds of work, each with its own words for the phases, the proofs and the
-        ending.
+        These are <strong>boundary words</strong> &mdash; words whose only job is to mark
+        where the framework ends and the work begins. Mine happen to be Latin.
+        <em>Emendatio</em> for a repair, <em>Restitutio</em> for a broken build,
+        <em>Purgatio</em> for an analyser alert. Half a joke that stuck &mdash; those words
+        appear in no repository I have touched, and the model still knows what they mean.
+        The Latin is incidental. The boundary is the point. Three is a sample: my own set
+        runs to eight kinds of work, each with its own words for the phases, the proofs and
+        the ending.
       </p>
     </div>
   </section>
@@ -428,9 +430,9 @@
       </figure>
 
       <p class="lead-para narrow">
-        I never type Latin at the agent. I say <em>&ldquo;the login endpoint 500s on an
-        empty body.&rdquo;</em> The vocabulary lives inside the skill file, where only the
-        agent reads it. What I get back is a transcript with visible seams.
+        I never type a boundary word at the agent. I say <em>&ldquo;the login endpoint 500s
+        on an empty body.&rdquo;</em> They live inside the skill file, where only the
+        agent reads them. What I get back is a transcript with visible seams.
       </p>
 
       <h3 class="h3">Why the seams matter</h3>
@@ -468,7 +470,7 @@
   <section class="band alt" id="choosing">
     <div class="wrap">
       <p class="kicker"><span class="num">04</span> Picking the words</p>
-      <h2 class="h2">It doesn&rsquo;t have to be Latin. It does have to be disjoint.</h2>
+      <h2 class="h2">A boundary word doesn&rsquo;t have to be Latin. It does have to be disjoint.</h2>
 
       <p class="lead-para">
         The requirement is only that the name not collide with the material it governs. But
@@ -603,7 +605,7 @@ and the Lex that binds it, before you walk it.</pre>
 3. **Build the smallest whole.** Implement the least that satisfies one criterion end-to-end before broadening. Drive with `sara next`; `sara step_done` each phase with a `result`.
 4. **Witness (<span class="mk">Testes</span>).** Every criterion demonstrably met; the build compiles and runs; a test covers the new behaviour. `sara verify &lt;id&gt;`; tick acceptance with evidence.
 5. **Record.** `sara learn --auto-files --tag &lt;topic&gt; &quot;&lt;what was built and why so&gt;&quot;`.</pre>
-        <aside class="marg-n">Ordinary work inside a Latin edge &mdash; every command in here is plain <code>sara</code><a class="fn-ref" href="#fn-sara" aria-describedby="fn-sara">*</a>.</aside>
+        <aside class="marg-n">Ordinary work inside a boundary &mdash; every command in here is plain <code>sara</code><a class="fn-ref" href="#fn-sara" aria-describedby="fn-sara">*</a>.</aside>
         <pre class="marg-t">## <span class="mk">Testes</span> — no completion without these
 
 - **Every acceptance criterion** demonstrably met.
@@ -624,7 +626,8 @@ mend and re-walk — do not abandon or ask anew.</pre>
       </figure>
 
       <p class="footnote" id="fn-sara">
-        <span class="fn-star">*</span> <code>sara</code> is a task manager for agents.
+        <span class="fn-star">*</span> <code>sara</code> is a task manager for agents &mdash;
+        <a href="https://abarbesgaard.github.io/Sara/" rel="noopener">abarbesgaard.github.io/Sara</a>.
       </p>
 
       <p class="lead-para narrow">
@@ -680,28 +683,31 @@ mend and re-walk — do not abandon or ask anew.</pre>
       <p class="lead-para narrow">
         Rarity has a cost. Tokens a model saw too little of during training carry
         poorly&#8209;formed representations and behave erratically.<a class="fn-ref" href="#cite-3" aria-describedby="cite-3">3</a>
-        If isolation were free, the ideal label would be a random string &mdash; and it
-        clearly is not. That bounds my own claim: a word must be rare in your repository
-        while remaining common in the training data. Latin sits there because of law,
-        medicine and science, not because it is old.
+        If isolation were free, the ideal boundary word would be a random string &mdash; and
+        it clearly is not. That bounds the claim: a boundary word must be rare in your
+        repository while remaining common in the training data. Latin qualifies because of
+        law, medicine and science, not because it is old &mdash; and plenty of non&#8209;Latin
+        words qualify too.
       </p>
 
       <div class="callout">
         <p>
           The honest summary cuts against this page&rsquo;s emphasis. The published work
           supports the <em>structure</em> &mdash; external gates, proof over assertion,
-          state kept outside the model. On <em>vocabulary</em> it is silent at best and
-          cautionary at worst. My hunch is that lexical isolation adds something on top of
-          the structure. That part is a hypothesis wearing a website.
+          state kept outside the model. On <em>boundary words</em> it is silent at best and
+          cautionary at worst. My hunch is that they add something on top of the structure.
+          That part is a hypothesis wearing a website.
         </p>
       </div>
 
       <h3 class="h3">What would change my mind</h3>
       <p class="lead-para narrow">
-        Strip the Latin, keep every gate, and run the same work. If the results hold, the
-        structure was the whole finding and the vocabulary was decoration &mdash; and I
-        would rather publish that than defend the nicer story. I have not run it yet, so
-        nothing on this page should be read as though I had.
+        Replace every boundary word with an ordinary one &mdash; <em>Repair</em> for
+        <em>Emendatio</em>, <em>Verify</em> for <em>Testes</em> &mdash; keep every gate
+        exactly as it is, and run the same work. If the results hold, the structure was the
+        whole finding and the boundary was decoration &mdash; and I would rather publish
+        that than defend the nicer story. I have not run it yet, so nothing on this page
+        should be read as though I had.
       </p>
 
       <p class="footnote">
