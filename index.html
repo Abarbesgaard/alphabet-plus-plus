@@ -641,86 +641,78 @@ mend and re-walk — do not abandon or ask anew.</pre>
   <section class="band alt" id="layers">
     <div class="wrap">
       <p class="kicker"><span class="num">06</span> Two layers</p>
-      <h2 class="h2">The strange words only go on the rules.</h2>
+      <h2 class="h2">I only did it to half the framework.</h2>
       <p class="lead-para">
-        <em>Lex Termini</em> is the rule that decides when a block of work is allowed to
-        end. <em>Mend</em> is what you do to the bug. One of those is Latin. The other is
-        the most ordinary word I could have picked.
+        <em>Lex Termini</em> is the rule that says when work is allowed to stop.
+        <em>Mend</em> is what you do to the bug. One of those I invented. The other is the
+        plainest word I could find.
       </p>
       <p class="lead-para">
-        That holds all the way through. Every rule in my framework has a strange name.
-        Almost every action has a plain English one. I wrote eight of these files and never
-        once noticed I was doing it.
+        That split runs through all eight files &mdash; every rule named in a boundary word,
+        nearly every action in ordinary English. I never decided to do it that way. I had
+        written the whole thing without noticing.
       </p>
 
       <figure class="dg">
-        <pre class="marg-t">RULES — what must be true before work may go on
-all 17 are boundary words
+        <pre class="marg-t">RULES — 17 of 17 are boundary words
   <span class="mk">Lex Recordi</span>   <span class="mk">Lex Termini</span>   <span class="mk">Lex Loci</span>   <span class="mk">Lex Cursus</span>
   <span class="mk">Lex Probationis</span>   <span class="mk">Lex Munditiae</span>   <span class="mk">Ordo Itineris</span>
 
-ACTIONS — what to actually go and do
-45 of 51 are plain English
+ACTIONS — 45 of 51 are ordinary English
   Recall   Reproduce   Locate   Prove   Mend
   Observe   Pin   Change   Cleanse   Record</pre>
         <figcaption>Counted across the eight rite files. Seventeen out of seventeen is not
-        chance &mdash; I had been following a rule I never wrote down, and could not have
-        told you about until I counted.</figcaption>
+        an accident &mdash; so I had been following a rule I could not have told you about.</figcaption>
       </figure>
 
+      <h3 class="h3">Why it splits</h3>
       <p class="lead-para narrow">
-        Once I saw it, the reason was obvious: the two names are for opposite things.
+        Call a rule <em>Memory Rule</em> and the agent arrives with its own idea of what
+        that means. Call it <em>Lex Recordi</em> and it has to go and read mine. That is the
+        whole trick, and it only works on a word it holds no opinion about.
       </p>
       <p class="lead-para narrow">
-        <strong>A rule name gets looked up.</strong> <em>Lex Recordi</em> appears fifteen
-        times, and every one of them has to point at the same rule. A word the model
-        already holds opinions about will drift toward them. So I want one it holds no
-        opinions about at all.
-      </p>
-      <p class="lead-para narrow">
-        <strong>An action name gets carried out.</strong> <em>Reproduce</em>. <em>Pin</em>.
-        <em>Cleanse</em>. Here I want every opinion the model has &mdash; those opinions are
-        what tell it what to do. A strange word would only get in the way.
+        <em>Mend</em> is the opposite case. I don&rsquo;t want it reading my definition of
+        mending &mdash; I want the one it already has. A boundary word there would cost me
+        comprehension and buy nothing back.
       </p>
 
       <div class="callout">
         <p>
           Systems people have a name for this shape: the <strong>control plane</strong> and
-          the <strong>data plane</strong>. You keep the channel that carries instructions
-          separate from the channel that carries payload, so payload can never be read as
-          instruction. Prompt injection is precisely that separation failing. I am borrowing
-          the picture, not claiming the research &mdash; but it describes the file better
-          than &ldquo;Latin is better&rdquo; ever did.
+          the <strong>data plane</strong> &mdash; keep the wire carrying instructions apart
+          from the wire carrying payload, so payload can never be read as instruction.
+          Prompt injection is exactly that separation failing. I am borrowing the picture,
+          not the research. But it describes my files better than &ldquo;Latin is
+          better&rdquo; ever did.
         </p>
       </div>
 
+      <h3 class="h3">A prediction I would rather not make</h3>
       <p class="lead-para narrow">
-        Which gives me a prediction I did not want: <strong>more boundary words would make
-        this worse, not better.</strong> Put them on the actions and I am teaching the model
-        a private dialect for nothing. They pay their way on the names that get looked up,
-        and nowhere else.
+        If this is right, <strong>more boundary words would make the framework worse.</strong>
+        Put them on the actions and I am teaching the agent a private dialect for nothing.
+        They pay their way on names that get looked up, and nowhere else. Any theory that
+        only ever recommends more of what its author likes should be distrusted, so I am
+        glad this one tells me where to stop.
       </p>
 
-      <h3 class="h3">Where it doesn&rsquo;t hold</h3>
+      <h3 class="h3">Where it breaks</h3>
       <p class="lead-para narrow">
-        <em>Praeco</em> breaks it outright &mdash; a boundary word sitting on an action
-        (announce the step before you take it), twenty times over.
-        <em>Witness</em>&#8202;/&#8202;<em>Testes</em> gives a single step both an English
-        name for the doing and a strange one for the standard it must meet; I think that is
-        the pattern at its sharpest rather than a hole in it, but that is me arguing my own
-        case. And the rite names &mdash; <em>Emendatio</em> is simply Latin for repair
-        &mdash; sit squarely on the line.
+        <em>Praeco</em> is a boundary word sitting on an action &mdash; announce the step
+        before you take it &mdash; and it appears twenty times. That one simply breaks the
+        pattern. <em>Witness</em>&#8202;/&#8202;<em>Testes</em> names a single step twice,
+        once in each vocabulary; I read that as the split at its sharpest, but I would.
       </p>
       <p class="lead-para narrow">
-        There is a duller explanation I cannot rule out, either. <em>Names you look up
-        should be unambiguous</em> is just good naming, and it is as true of variables as of
-        this. Perhaps I have rediscovered that and put a toga on it.
+        There is a duller reading I cannot dismiss either. <em>Names you look up should be
+        unambiguous</em> is ordinary good naming, as true of variables as of this. I may
+        have rediscovered it and put a toga on it.
       </p>
       <p class="lead-para narrow">
-        But the test is cheap, and far narrower than anything else on this page: rename the
-        seventeen rules into English &mdash; <em>Lex Recordi</em> becomes <em>Memory
-        Rule</em> &mdash; and change nothing else at all. One thing varies. If the gates
-        hold anyway, this section is wrong.
+        Which is worth settling, and cheap to settle. Rename the seventeen rules into
+        English &mdash; <em>Lex Recordi</em> becomes <em>Memory Rule</em> &mdash; and change
+        nothing else at all. If the gates hold anyway, this section is wrong.
       </p>
     </div>
   </section>
