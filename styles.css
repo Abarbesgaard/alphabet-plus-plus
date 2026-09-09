@@ -689,135 +689,317 @@ code {
 .footnote code { font-family: var(--font-mono); font-size: .9em; color: var(--ink-soft); }
 .footnote .fn-star { color: var(--accent); }
 
-/* ===================== TIMELINE (§08 In practice) ===================== */
-.tl {
-  list-style: none;
-  margin: 2.8rem 0 0.5rem;
-  padding: 0;
+
+/* ============================================================
+   THE RUN — timeline page (hero stats, phases, timeline, silence)
+   ============================================================ */
+
+/* boundary word, globally (looked-up name → accent italic) */
+.mk { color: var(--accent); font-style: italic; font-weight: 600; }
+
+/* ---------- hero stats ---------- */
+.stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(1.4rem, 5vw, 3.2rem);
+  margin: 2rem 0 2.4rem;
 }
-.tl > li {
-  position: relative;
-  padding: 0 0 2.3rem 8.5rem;
+.stat { display: flex; flex-direction: column; gap: 0.25rem; }
+.stat-n {
+  font-family: var(--font-mono);
+  font-size: clamp(1.6rem, 1.2rem + 1.8vw, 2.5rem);
+  font-weight: 500;
+  line-height: 1;
+  color: var(--ink);
+  letter-spacing: -0.01em;
 }
+.stat-u { font-size: 0.5em; color: var(--ink-mute); margin: 0 0.05em; }
+.stat-l {
+  font-family: var(--font-sans);
+  font-size: var(--step--1);
+  color: var(--ink-mute);
+  letter-spacing: 0.01em;
+}
+.stat.is-hot .stat-n { color: var(--accent); }
+
+/* ---------- phase sections ---------- */
+.phase-head {
+  display: flex;
+  align-items: baseline;
+  gap: 0.9rem;
+  flex-wrap: wrap;
+  margin: 0 0 1.6rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--line);
+}
+.phase-rom {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 1.3rem + 2vw, 2.7rem);
+  font-style: italic;
+  line-height: 0.9;
+  color: var(--accent);
+  min-width: 1.4ch;
+}
+.phase-name {
+  font-family: var(--font-display);
+  font-size: var(--step-2);
+  color: var(--ink);
+}
+.phase-word {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--ink-mute);
+  align-self: center;
+}
+.phase-when {
+  margin-left: auto;
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  color: var(--ink-mute);
+  align-self: center;
+}
+.phase-head.is-silence .phase-name { color: var(--accent); font-style: italic; }
+
+/* ---------- the timeline ---------- */
+.tl { list-style: none; margin: 2rem 0 0.5rem; padding: 0; }
+.tl > li { position: relative; padding: 0 0 1.9rem 8.5rem; }
 .tl > li:last-child { padding-bottom: 0; }
 
-/* mono timestamp, right-aligned into its own column */
 .tl-time {
   position: absolute;
-  left: 0;
-  top: 0.1rem;
+  left: 0; top: 0.15rem;
   width: 5.75rem;
   text-align: right;
   font-family: var(--font-mono);
   font-size: 0.72rem;
-  letter-spacing: 0.01em;
   color: var(--ink-mute);
   white-space: nowrap;
 }
-
-/* node on the rail */
 .tl > li::before {
   content: "";
   position: absolute;
-  left: 6.75rem;
-  top: 0.32rem;
-  width: 9px;
-  height: 9px;
-  margin-left: -5px;
+  left: 6.75rem; top: 0.34rem;
+  width: 9px; height: 9px; margin-left: -5px;
   border-radius: 50%;
   background: var(--band-bg, var(--bg));
   border: 1.6px solid var(--accent);
   z-index: 1;
 }
-/* rail segment down to the next node */
 .tl > li::after {
   content: "";
   position: absolute;
-  left: 6.75rem;
-  top: 1.05rem;
-  bottom: -0.15rem;
+  left: 6.75rem; top: 1.05rem; bottom: -0.15rem;
   margin-left: -0.5px;
   border-left: 1px solid var(--line);
 }
 .tl > li:last-child::after { display: none; }
 
-.tl-phase {
-  margin: 0;
-  font-family: var(--font-display);
-  font-size: var(--step-0);
-  color: var(--ink);
-}
-.tl-phase .mk { color: var(--accent); font-style: italic; font-weight: 600; }
-
-.tl-cmds {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.4rem;
-  margin: 0.6rem 0 0.2rem;
-}
-.tl-cmds code {
+.tl-head { margin: 0; display: flex; align-items: baseline; flex-wrap: wrap; gap: 0.5rem; }
+.tl-cmd {
   font-family: var(--font-mono);
-  font-size: 0.7rem;
-  padding: 0.18rem 0.5rem;
+  font-size: 0.86rem;
+  font-weight: 500;
+  color: var(--ink);
   background: var(--surface);
   border: 1px solid var(--line);
   border-radius: var(--r-sm);
-  color: var(--ink-soft);
+  padding: 0.14rem 0.5rem;
 }
-.tl-note {
-  margin: 0.45rem 0 0;
-  font-size: var(--step--1);
-  line-height: 1.55;
+.tl-x { font-family: var(--font-mono); font-size: 0.72rem; color: var(--ink-mute); }
+.tl-flags { display: inline-flex; flex-wrap: wrap; gap: 0.3rem; }
+.flag {
+  font-family: var(--font-mono);
+  font-size: 0.64rem;
   color: var(--ink-mute);
-  max-width: 52ch;
+  background: var(--bg-alt);
+  border: 1px solid var(--line-soft);
+  border-radius: var(--r-sm);
+  padding: 0.08rem 0.36rem;
 }
-
-/* the silence — the focal point */
-.tl-gap > .tl-time { color: var(--accent); }
-.tl-gap::before {
-  border-style: dashed;
-  border-color: var(--accent-dim);
-  width: 11px;
-  height: 11px;
-  top: 0.28rem;
-  margin-left: -6px;
+.flag.is-hot { color: var(--accent); border-color: var(--accent-dim); background: transparent; font-style: italic; }
+.tl-meta { margin: 0.5rem 0 0; display: flex; gap: 0.5rem; align-items: center; }
+.tl-dur {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--ink-soft);
+  background: var(--surface-2, var(--bg-alt));
+  border: 1px solid var(--line-soft);
+  border-radius: 999px;
+  padding: 0.08rem 0.5rem;
 }
-.tl-gap::after { border-left: 1px dashed var(--accent-dim); }
-.tl-gap .tl-body {
-  padding: 1.05rem 1.3rem;
-  background: color-mix(in srgb, var(--accent) 4%, var(--surface));
-  border: 1px dashed var(--accent-dim);
+.tl-dur.is-hot { color: var(--accent-ink); background: var(--accent); border-color: var(--accent); font-weight: 600; }
+.tl-ok {
+  font-family: var(--font-mono);
+  font-size: 0.64rem;
+  letter-spacing: 0.04em;
+  color: var(--ink-mute);
+}
+.tl-ok::before { content: "✓ "; color: var(--accent); }
+.tl-note {
+  margin: 0.5rem 0 0;
+  font-size: var(--step--1);
+  line-height: 1.6;
+  color: var(--ink-soft);
+  max-width: 60ch;
+}
+/* the one call that proves */
+.tl-node.is-proof .tl-body {
+  padding: 0.9rem 1.1rem;
+  margin-left: -1.1rem;
+  background: color-mix(in srgb, var(--accent) 5%, var(--surface));
+  border: 1px solid var(--accent-dim);
   border-radius: var(--r-md);
 }
-.tl-gap-dur {
-  margin: 0 0 0.35rem;
+.tl-node.is-proof::before { width: 12px; height: 12px; margin-left: -6px; box-shadow: 0 0 0 4px var(--glow); }
+
+/* ---------- one continuous timeline ---------- */
+.tl-full { margin-top: 1.25rem; }
+
+/* phase markers sit on the same rail as the commands (node kept at the
+   default position so the connecting line is never broken) */
+.tl-mark { padding-top: 0.5rem; }
+.tl-mark:first-child { padding-top: 0; }
+.tl-mark::before {
+  width: 13px; height: 13px; margin-left: -7px;
+  top: 0.62rem;
+  background: var(--accent);
+  border-color: var(--accent);
+}
+.tl-mark:first-child::before { top: 0.34rem; }
+.tl-mark::after { top: 1.4rem; }
+.tl-mark:first-child::after { top: 1.05rem; }
+.tl-mark .tl-time { top: 0.5rem; color: var(--ink-soft); }
+.tl-mark:first-child .tl-time { top: 0.15rem; }
+.tl-phase-name {
+  margin: 0;
+  display: flex; align-items: baseline; gap: 0.6rem;
+  font-family: var(--font-display);
+  font-size: var(--step-1);
+  line-height: 1.15;
+  color: var(--ink);
+}
+.tl-rom { font-style: italic; color: var(--accent); font-size: 1.05em; }
+.tl-phase-sub {
+  margin: 0.4rem 0 0;
+  font-size: var(--step--1);
+  line-height: 1.6;
+  color: var(--ink-mute);
+  max-width: 62ch;
+}
+
+/* the gap marker + its reconstructed steps are drawn as a dashed segment */
+.tl-gaphead { padding-top: 0.6rem; }
+.tl-gaphead::before {
+  width: 12px; height: 12px; margin-left: -6px;
+  top: 0.55rem;
+  border-style: dashed;
+  border-color: var(--accent-dim);
+  background: var(--band-bg, var(--bg));
+}
+.tl-gaphead::after,
+.tl-node.is-ghost::before,
+.tl-node.is-ghost::after {
+  border-color: var(--accent-dim);
+}
+.tl-gaphead::after,
+.tl-node.is-ghost::after { border-left-style: dashed; }
+.tl-node.is-ghost::before {
+  border-style: dashed;
+  background: var(--band-bg, var(--bg));
+}
+.tl-node.is-ghost .tl-head { color: var(--ink); }
+.tl-node.is-ghost .tl-note { color: var(--ink-mute); }
+.tl-kind {
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--accent);
+  border: 1px dashed var(--accent-dim);
+  border-radius: var(--r-sm);
+  padding: 0.1rem 0.42rem;
+}
+
+/* ---------- the silence ---------- */
+.gap-dur {
+  margin: 0.5rem 0 0.6rem;
   font-family: var(--font-display);
   font-style: italic;
-  font-size: var(--step-1);
+  font-size: clamp(1.6rem, 1.2rem + 1.6vw, 2.4rem);
   color: var(--accent);
 }
-.tl-gap-what {
-  margin: 0 0 0.5rem;
-  font-family: var(--font-mono);
-  font-size: 0.76rem;
-  line-height: 1.7;
+.gap-lead {
+  margin: 0 0 2rem;
+  font-family: var(--font-display);
+  font-size: var(--step-0);
+  line-height: 1.6;
   color: var(--ink-soft);
+  max-width: 60ch;
 }
-.tl-gap-what code {
-  background: transparent;
-  border: 0;
-  padding: 0;
-  color: var(--accent);
+.inv {
+  list-style: none; margin: 0 0 0.5rem; padding: 0;
+  display: grid; gap: 0.7rem;
 }
-.tl-gap .tl-note { margin: 0; }
+.inv-step {
+  display: grid;
+  grid-template-columns: 6.5rem 1fr;
+  gap: 0.4rem 1.2rem;
+  align-items: baseline;
+  padding: 0.95rem 1.2rem;
+  background: var(--surface);
+  border: 1px dashed var(--line);
+  border-left: 2px dashed var(--accent-dim);
+  border-radius: 0 var(--r-md) var(--r-md) 0;
+}
+.inv-step.is-key {
+  border-style: solid;
+  border-left: 2px solid var(--accent);
+  background: color-mix(in srgb, var(--accent) 4%, var(--surface));
+}
+.inv-tag {
+  grid-row: span 2;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--ink-mute);
+  padding-top: 0.1rem;
+}
+.inv-step.is-key .inv-tag { color: var(--accent); }
+.inv-do { margin: 0; font-family: var(--font-display); font-size: var(--step-0); color: var(--ink); }
+.inv-out { margin: 0; grid-column: 2; font-size: var(--step--1); line-height: 1.6; color: var(--ink-soft); }
 
-/* dash the rail segment feeding INTO the gap (owned by the node above it) */
-.tl-node:has(+ .tl-gap)::after { border-left: 1px dashed var(--accent-dim); }
+/* ---------- the point: two-up cards ---------- */
+.two-up {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  gap: 1.2rem;
+  margin: 2rem 0 0.5rem;
+}
+.up-card {
+  padding: 1.5rem 1.6rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r-md);
+}
+.up-n {
+  margin: 0 0 0.6rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--accent);
+  letter-spacing: 0.1em;
+}
+.up-t { margin: 0 0 0.5rem; font-family: var(--font-display); font-size: var(--step-1); color: var(--ink); }
+.up-b { margin: 0; font-size: var(--step--1); line-height: 1.65; color: var(--ink-soft); }
 
 @media (max-width: 34rem) {
-  .tl > li { padding-left: 6.75rem; }
-  .tl-time { width: 4.4rem; font-size: 0.64rem; }
-  .tl > li::before { left: 5.25rem; }
-  .tl > li::after { left: 5.25rem; }
-  .tl-gap .tl-body { padding: 0.9rem 1rem; }
+  .tl > li { padding-left: 6.9rem; }
+  .tl-time { width: 4.5rem; font-size: 0.64rem; }
+  .tl > li::before, .tl > li::after { left: 5.4rem; }
+  .inv-step { grid-template-columns: 1fr; gap: 0.3rem; padding: 0.9rem 1rem; }
+  .inv-tag { grid-row: auto; }
+  .inv-out { grid-column: 1; }
+  .phase-when { margin-left: 0; width: 100%; }
 }
