@@ -206,44 +206,68 @@
           <span class="tl-time">08:57:45</span>
           <div class="tl-body">
             <p class="gap-dur">4&#8202;min 13&#8202;s &mdash; no sara command</p>
-            <p class="gap-lead">This is where the bug was found and fixed. No command ran, so none of it is in the log. Reconstructed here from the shell history:</p>
+            <p class="gap-lead">This is where the bug was actually found and fixed. No sara command ran in these four minutes, so none of it appears in the log. The steps below are pieced together afterwards from the record of shell commands the agent typed &mdash; the real work, that the log never saw.</p>
           </div>
         </li>
 
         <li class="tl-node is-ghost reveal">
           <div class="tl-body">
             <p class="tl-head"><span class="tl-kind">read</span> Read the failing pipeline.</p>
-            <p class="tl-note">Two jobs failing: the formatting check, and the test job on Windows. 446 tests passed, 3 failed.</p>
+            <p class="tl-note">Two jobs were red: a formatting check, and the test run on Windows. The same tests were green on the other operating systems. Of the Windows tests, 446 passed and only 3 failed &mdash; so almost everything worked, and the problem was narrow.</p>
           </div>
         </li>
         <li class="tl-node is-ghost reveal">
           <div class="tl-body">
-            <p class="tl-head"><span class="tl-kind">read</span> Read the three failing tests.</p>
-            <p class="tl-note">Each test writes to a temporary file by running a shell command.</p>
+            <p class="tl-head"><span class="tl-kind">read</span> See what the three tests check.</p>
+            <p class="tl-note">All three do the same thing: they ask the program to create a small marker file, then check that the file really appeared. On Windows, the file was never being created &mdash; so the check failed.</p>
           </div>
         </li>
         <li class="tl-node is-ghost reveal">
           <div class="tl-body">
-            <p class="tl-head"><span class="tl-kind">test</span> Run the failing command by hand.</p>
-            <p class="tl-note"><code>echo x &gt;&gt; C:\Users\&hellip;\marker</code> run through <code>sh</code>: the backslashes are read as escape characters, so the file is never created. That is the real cause &mdash; not line endings.</p>
+            <p class="tl-head"><span class="tl-kind">guess</span> Make a first guess.</p>
+            <p class="tl-note">An old saved note said Windows-only failures usually come from differences in how lines end in a file. That was the obvious suspect, so it was worth checking before anything else.</p>
+          </div>
+        </li>
+        <li class="tl-node is-ghost reveal">
+          <div class="tl-body">
+            <p class="tl-head"><span class="tl-kind">rule out</span> Rule the guess out.</p>
+            <p class="tl-note">These three tests had nothing to do with how lines end. The old note was a dead end here &mdash; but ruling it out took only seconds, and it stopped a wrong path early.</p>
+          </div>
+        </li>
+        <li class="tl-node is-ghost reveal">
+          <div class="tl-body">
+            <p class="tl-head"><span class="tl-kind">reproduce</span> Reproduce it by hand.</p>
+            <p class="tl-note">The exact instruction the tests use to create the file was run directly, on its own. It quietly did nothing &mdash; the file never appeared. Now the failure could be seen on its own, not just as a red test.</p>
+          </div>
+        </li>
+        <li class="tl-node is-ghost reveal">
+          <div class="tl-body">
+            <p class="tl-head"><span class="tl-kind">cause</span> Find why.</p>
+            <p class="tl-note">On Windows the file path is written with back-slashes. The way the instruction was being run treated those back-slashes as special symbols instead of part of the path, so the path came out garbled and no file was ever created. That &mdash; not line endings &mdash; was the real cause.</p>
           </div>
         </li>
         <li class="tl-node is-ghost reveal">
           <div class="tl-body">
             <p class="tl-head"><span class="tl-kind">find</span> Find every place it happens.</p>
-            <p class="tl-note">Three tests build the same kind of command, at lines 1518, 1554 and 1599.</p>
+            <p class="tl-note">The same pattern was used in three spots in the test code &mdash; exactly the three failing tests, and nowhere else. So fixing those three would fix the whole failure.</p>
           </div>
         </li>
         <li class="tl-node is-ghost reveal">
           <div class="tl-body">
-            <p class="tl-head"><span class="tl-kind">fix</span> Write the fix.</p>
-            <p class="tl-note">Add a small helper that swaps backslashes for forward slashes before the path goes into the command.</p>
+            <p class="tl-head"><span class="tl-kind">decide</span> Decide how to fix it.</p>
+            <p class="tl-note">Rather than patch each test separately, add one small shared helper that tidies up the path first, so all three are fixed the same way and any future test gets it for free.</p>
+          </div>
+        </li>
+        <li class="tl-node is-ghost reveal">
+          <div class="tl-body">
+            <p class="tl-head"><span class="tl-kind">fix</span> Make the change.</p>
+            <p class="tl-note">Point the three tests at the new helper, so the path is cleaned up before it is used.</p>
           </div>
         </li>
         <li class="tl-node is-ghost reveal">
           <div class="tl-body">
             <p class="tl-head"><span class="tl-kind">check</span> Run the checks locally.</p>
-            <p class="tl-note"><code>cargo fmt</code>, then <code>cargo test</code> (455 passed, 0 failed), then <code>cargo clippy</code> (no warnings).</p>
+            <p class="tl-note">First the formatting check, then the full test run &mdash; now 455 passed and none failed &mdash; then the code-quality check, which had no complaints. Only after all three were green did the work move on.</p>
           </div>
         </li>
 
@@ -382,9 +406,9 @@
 
       <p class="footnote">
         <span class="fn-star">*</span> Every time, duration and exit code here comes from
-        sara&rsquo;s usage log for one real run on 2026&#8209;09&#8209;09. Only the six shaded
-        steps in the gap are reconstructed from shell history, because those are the steps the
-        log could not see.
+        sara&rsquo;s usage log for one real run on 2026&#8209;09&#8209;09. Only the dashed
+        steps in the gap are reconstructed from the record of shell commands, because
+        those are the steps the log could not see.
       </p>
     </div>
   </section>
