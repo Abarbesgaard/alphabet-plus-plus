@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Alphabet++ — one charge, minute by minute</title>
+<title>Alphabet++ — a bug fix, step by step</title>
 <meta name="description" content="A real agent repair, reconstructed from the tool's own telemetry to the millisecond — and the four silent minutes in the middle where the work actually happened.">
 <meta name="color-scheme" content="light dark">
 
@@ -55,12 +55,12 @@
   </a>
 
   <nav class="site-nav" aria-label="Phases of the run">
-    <a href="#context">Charge</a>
+    <a href="#context">Task</a>
     <a href="#recall">Recall</a>
-    <a href="#silence">Silence</a>
-    <a href="#declare">Declare</a>
-    <a href="#witness">Witness</a>
-    <a href="#record">Record</a>
+    <a href="#silence">Gap</a>
+    <a href="#declare">Create</a>
+    <a href="#witness">Check</a>
+    <a href="#record">Save</a>
   </nav>
 
   <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Switch to light theme" title="Switch theme">
@@ -122,19 +122,19 @@
       </h1>
 
       <p class="lede reveal" data-delay="1">
-        One charge, minute by minute &mdash; a real repair under the framework,
-        reconstructed from the tool&rsquo;s own telemetry.
+        One bug fix, step by step &mdash; every command the agent ran, with the real
+        time and duration of each, read from the task manager&rsquo;s own log.
       </p>
 
       <div class="stats reveal" data-delay="2">
         <div class="stat"><span class="stat-n">5<span class="stat-u">m</span>17<span class="stat-u">s</span></span><span class="stat-l">start to close</span></div>
-        <div class="stat"><span class="stat-n">14</span><span class="stat-l">sara calls</span></div>
-        <div class="stat is-hot"><span class="stat-n">4<span class="stat-u">m</span>13<span class="stat-u">s</span></span><span class="stat-l">no sara call</span></div>
-        <div class="stat"><span class="stat-n">1</span><span class="stat-l">call did the proving</span></div>
+        <div class="stat"><span class="stat-n">14</span><span class="stat-l">sara commands</span></div>
+        <div class="stat is-hot"><span class="stat-n">4<span class="stat-u">m</span>13<span class="stat-u">s</span></span><span class="stat-l">no command</span></div>
+        <div class="stat"><span class="stat-n">1</span><span class="stat-l">command ran the checks</span></div>
       </div>
 
       <div class="cta-row reveal" data-delay="3">
-        <a class="btn btn-primary" href="#recall">Walk the run</a>
+        <a class="btn btn-primary" href="#recall">See the steps</a>
         <a class="btn btn-ghost" href="https://github.com/Abarbesgaard/alphabet-plus-plus" rel="noopener">
           GitHub
           <svg viewBox="0 0 24 24" aria-hidden="true" class="btn-arrow"><path d="M7 17 17 7M9 7h8v8"/></svg>
@@ -148,50 +148,49 @@
   <!-- ================= CONTEXT ================= -->
   <section class="band" id="context">
     <div class="wrap">
-      <p class="kicker"><span class="num">00</span> The charge</p>
-      <h2 class="h2">Fix a red pipeline &mdash; the right way to fix it was already a <em>rule</em>.</h2>
+      <p class="kicker"><span class="num">00</span> The task</p>
+      <h2 class="h2">A failing test pipeline, fixed step by step.</h2>
       <p class="lead-para">
-        The nightly CI on <span class="mk">sara</span> &mdash; the task manager itself &mdash;
-        went red: two jobs, a formatting slip and three tests that failed only on Windows.
-        Under the framework that is a single, named kind of work: <em>Emendatio</em>, the
-        repair of a defect a test can catch. What follows is <strong>every step the agent
-        actually took</strong>, in order, to the millisecond &mdash; read straight from
-        <span class="mk">sara</span>&rsquo;s own telemetry, not retold from memory.
+        The nightly test pipeline for sara &mdash; the task manager itself &mdash; was red:
+        one formatting error, and three tests that failed only on Windows. Below is every
+        step the agent took to fix it, in order, with the real time and duration of each
+        sara command, read from sara&rsquo;s own usage log.
       </p>
       <p class="lead-para narrow">
-        Watch where the calls fall. The method is loud at the two ends of the work and
-        silent through the middle &mdash; and the middle is where the bug was actually
-        found and fixed.
+        The commands come in two bursts &mdash; at the start and at the end &mdash; with a
+        four-minute gap in the middle where the actual fixing happened and nothing was
+        recorded.
       </p>
     </div>
   </section>
 
-  <!-- ================= I · RECALL ================= -->
-  <section class="band alt phase" id="recall">
+  <!-- ================= THE RUN — one continuous timeline ================= -->
+  <section class="band alt" id="run">
     <div class="wrap">
-      <header class="phase-head">
-        <span class="phase-rom">I</span>
-        <span class="phase-name">Recall</span>
-        <span class="phase-word">Lex Recordi</span>
-        <span class="phase-when">08:57:45</span>
-      </header>
-      <p class="lead-para narrow">Before touching anything, bind what is already known. Three sweeps, all in one second.</p>
+      <ol class="tl tl-full" role="list">
 
-      <ol class="tl" role="list">
+        <li class="tl-mark reveal" id="recall">
+          <span class="tl-time">08:57:45</span>
+          <div class="tl-body">
+            <p class="tl-phase-name"><span class="tl-rom">I</span> Look up past notes</p>
+            <p class="tl-phase-sub">Three quick searches for anything already known about this problem, before reading any code.</p>
+          </div>
+        </li>
+
         <li class="tl-node reveal">
           <span class="tl-time">08:57:45</span>
           <div class="tl-body">
             <p class="tl-head"><code class="tl-cmd">sara recall</code><span class="tl-flags"><span class="flag">--tag</span></span></p>
             <p class="tl-meta"><span class="tl-dur">17 ms</span><span class="tl-ok">exit 0</span></p>
-            <p class="tl-note">Pull the <code>windows</code>&#8202;/&#8202;<code>ci</code> memory bank by tag &mdash; the exact, reliable lookup.</p>
+            <p class="tl-note">Search saved notes tagged <code>windows</code> and <code>ci</code>.</p>
           </div>
         </li>
         <li class="tl-node reveal">
           <span class="tl-time">08:57:45</span>
           <div class="tl-body">
-            <p class="tl-head"><code class="tl-cmd">sara recall</code><span class="tl-flags"><span class="flag">&ldquo;&hellip;&rdquo;</span></span></p>
+            <p class="tl-head"><code class="tl-cmd">sara recall</code><span class="tl-flags"><span class="flag">&ldquo;text&rdquo;</span></span></p>
             <p class="tl-meta"><span class="tl-dur">68 ms</span><span class="tl-ok">exit 0</span></p>
-            <p class="tl-note">A free-text keyword sweep across every past repair, in case the tag was wrong.</p>
+            <p class="tl-note">Search all notes by keyword, in case the tags were wrong.</p>
           </div>
         </li>
         <li class="tl-node reveal">
@@ -199,102 +198,69 @@
           <div class="tl-body">
             <p class="tl-head"><code class="tl-cmd">sara recall</code><span class="tl-flags"><span class="flag">--file</span></span></p>
             <p class="tl-meta"><span class="tl-dur">42 ms</span><span class="tl-ok">exit 0</span></p>
-            <p class="tl-note">Anything ever learned about the files this repair is about to touch.</p>
+            <p class="tl-note">Search for notes attached to the files that are about to change. This turned up an old note (m405) saying Windows-only failures usually come from line endings &mdash; wrong for this bug, but ruled out in seconds.</p>
           </div>
         </li>
-      </ol>
 
-      <div class="callout">
-        <p>
-          One of these returned <strong>m405</strong> &mdash; a past finding that Windows-only
-          test failures are usually line-ending traps. It was <em>wrong</em> for this bug,
-          but it was checked and ruled out in seconds. That is recall doing its job: not
-          always right, always cheap. It steered the agent <em>off</em> a dead end, which is
-          the opposite of dampening it.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ================= THE SILENCE ================= -->
-  <section class="band phase is-silence" id="silence">
-    <div class="wrap">
-      <header class="phase-head is-silence">
-        <span class="phase-rom">&mdash;</span>
-        <span class="phase-name">The Silence</span>
-        <span class="phase-word">no charge yet</span>
-        <span class="phase-when">08:57:45 &rarr; 09:01:59</span>
-      </header>
-
-      <p class="gap-dur">4&#8202;min 13&#8202;s &middot; no <span class="mk">sara</span> call</p>
-      <p class="gap-lead">
-        Everything that actually repaired the bug happened in here &mdash; and none of it
-        appears in the timeline above or below. This is the reconstruction, from the shell
-        history the method never saw.
-      </p>
-
-      <ol class="inv" role="list">
-        <li class="inv-step reveal">
-          <span class="inv-tag">read</span>
-          <p class="inv-do">Read the red run.</p>
-          <p class="inv-out">Two jobs failing &mdash; <em>Formatting</em>, and <em>Test&nbsp;(windows-latest)</em>. 446&nbsp;passed, 3&nbsp;failed.</p>
+        <li class="tl-gaphead reveal" id="silence">
+          <span class="tl-time">08:57:45</span>
+          <div class="tl-body">
+            <p class="gap-dur">4&#8202;min 13&#8202;s &mdash; no sara command</p>
+            <p class="gap-lead">This is where the bug was found and fixed. No command ran, so none of it is in the log. Reconstructed here from the shell history:</p>
+          </div>
         </li>
-        <li class="inv-step reveal">
-          <span class="inv-tag">read</span>
-          <p class="inv-do">Read the gate and its three failing tests.</p>
-          <p class="inv-out"><code>run_acceptance_gate</code> in <code>guide/mod.rs</code>; each test writes a marker file through a shell command.</p>
-        </li>
-        <li class="inv-step reveal is-key">
-          <span class="inv-tag">reproduce</span>
-          <p class="inv-do">Reproduce the mechanism by hand.</p>
-          <p class="inv-out"><code>sh -c "echo x &gt;&gt; C:\Users\&hellip;\marker"</code> &mdash; <code>sh</code> reads the backslashes as escapes, so the file is never written. <strong>Not a line-ending bug at all.</strong></p>
-        </li>
-        <li class="inv-step reveal">
-          <span class="inv-tag">locate</span>
-          <p class="inv-do">Locate every instance.</p>
-          <p class="inv-out">Three test command builders &mdash; lines 1518, 1554, 1599 &mdash; each interpolating a native OS path into <code>sh</code>.</p>
-        </li>
-        <li class="inv-step reveal is-key">
-          <span class="inv-tag">mend</span>
-          <p class="inv-do">Write the fix.</p>
-          <p class="inv-out">A test-local <code>sh_path()</code> that forward-slashes the path before it reaches the shell; replace <code>marker.display()</code> in all three.</p>
-        </li>
-        <li class="inv-step reveal">
-          <span class="inv-tag">prove</span>
-          <p class="inv-do">Prove it locally.</p>
-          <p class="inv-out"><code>cargo fmt</code> &middot; <code>cargo test</code> &rarr; 455&nbsp;passed, 0&nbsp;failed &middot; <code>cargo clippy</code> &rarr; clean.</p>
-        </li>
-      </ol>
 
-      <div class="callout is-silence">
-        <p>
-          Four minutes of reading, reproducing, deciding and mending &mdash; the creative
-          core of the whole job &mdash; with nothing to answer to, because the charge that
-          should have framed it did not exist yet. The method was not <em>followed</em> here.
-          It was simply absent.
-        </p>
-      </div>
-    </div>
-  </section>
+        <li class="tl-node is-ghost reveal">
+          <div class="tl-body">
+            <p class="tl-head"><span class="tl-kind">read</span> Read the failing pipeline.</p>
+            <p class="tl-note">Two jobs failing: the formatting check, and the test job on Windows. 446 tests passed, 3 failed.</p>
+          </div>
+        </li>
+        <li class="tl-node is-ghost reveal">
+          <div class="tl-body">
+            <p class="tl-head"><span class="tl-kind">read</span> Read the three failing tests.</p>
+            <p class="tl-note">Each test writes to a temporary file by running a shell command.</p>
+          </div>
+        </li>
+        <li class="tl-node is-ghost reveal">
+          <div class="tl-body">
+            <p class="tl-head"><span class="tl-kind">test</span> Run the failing command by hand.</p>
+            <p class="tl-note"><code>echo x &gt;&gt; C:\Users\&hellip;\marker</code> run through <code>sh</code>: the backslashes are read as escape characters, so the file is never created. That is the real cause &mdash; not line endings.</p>
+          </div>
+        </li>
+        <li class="tl-node is-ghost reveal">
+          <div class="tl-body">
+            <p class="tl-head"><span class="tl-kind">find</span> Find every place it happens.</p>
+            <p class="tl-note">Three tests build the same kind of command, at lines 1518, 1554 and 1599.</p>
+          </div>
+        </li>
+        <li class="tl-node is-ghost reveal">
+          <div class="tl-body">
+            <p class="tl-head"><span class="tl-kind">fix</span> Write the fix.</p>
+            <p class="tl-note">Add a small helper that swaps backslashes for forward slashes before the path goes into the command.</p>
+          </div>
+        </li>
+        <li class="tl-node is-ghost reveal">
+          <div class="tl-body">
+            <p class="tl-head"><span class="tl-kind">check</span> Run the checks locally.</p>
+            <p class="tl-note"><code>cargo fmt</code>, then <code>cargo test</code> (455 passed, 0 failed), then <code>cargo clippy</code> (no warnings).</p>
+          </div>
+        </li>
 
-  <!-- ================= II · DECLARE ================= -->
-  <section class="band alt phase" id="declare">
-    <div class="wrap">
-      <header class="phase-head">
-        <span class="phase-rom">II</span>
-        <span class="phase-name">Declare</span>
-        <span class="phase-word">the charge</span>
-        <span class="phase-when">09:01:59</span>
-      </header>
-      <p class="lead-para narrow">The charge is created &mdash; and only now is &ldquo;done&rdquo; written down. Twelve seconds, five calls.</p>
+        <li class="tl-mark reveal" id="declare">
+          <span class="tl-time">09:01:59</span>
+          <div class="tl-body">
+            <p class="tl-phase-name"><span class="tl-rom">II</span> Create the task</p>
+            <p class="tl-phase-sub">The task is written down now, after the fix already exists &mdash; and it defines what &ldquo;done&rdquo; means. Five commands in twelve seconds.</p>
+          </div>
+        </li>
 
-      <ol class="tl" role="list">
         <li class="tl-node reveal">
           <span class="tl-time">09:01:59</span>
           <div class="tl-body">
             <p class="tl-head"><code class="tl-cmd">sara add</code><span class="tl-flags"><span class="flag">--priority</span><span class="flag">-t</span><span class="flag">--annotation</span><span class="flag">--check</span><span class="flag">--yes</span></span></p>
             <p class="tl-meta"><span class="tl-dur">53 ms</span><span class="tl-ok">exit 0</span></p>
-            <p class="tl-note">Create the task, tag it, and record the root cause as an annotation &mdash; <em>after</em> the fix already exists on disk.</p>
+            <p class="tl-note">Create the task, tag it, and write down the cause.</p>
           </div>
         </li>
         <li class="tl-node reveal">
@@ -302,7 +268,7 @@
           <div class="tl-body">
             <p class="tl-head"><code class="tl-cmd">sara assignment</code></p>
             <p class="tl-meta"><span class="tl-dur">1 ms</span><span class="tl-ok">exit 0</span></p>
-            <p class="tl-note">The request, verbatim: &ldquo;the latest pipeline run is failing &mdash; fix it.&rdquo;</p>
+            <p class="tl-note">Save the original request, word for word.</p>
           </div>
         </li>
         <li class="tl-node reveal">
@@ -310,7 +276,7 @@
           <div class="tl-body">
             <p class="tl-head"><code class="tl-cmd">sara rationale</code></p>
             <p class="tl-meta"><span class="tl-dur">1 ms</span><span class="tl-ok">exit 0</span></p>
-            <p class="tl-note">Why it exists: nightly is red and it blocks the pipeline.</p>
+            <p class="tl-note">Save why it matters: the pipeline is red and blocks other work.</p>
           </div>
         </li>
         <li class="tl-node reveal">
@@ -318,40 +284,24 @@
           <div class="tl-body">
             <p class="tl-head"><code class="tl-cmd">sara check</code> <span class="tl-x">&times;2</span><span class="tl-flags"><span class="flag">--kind acceptance</span><span class="flag">--verify</span></span></p>
             <p class="tl-meta"><span class="tl-dur">0 ms</span><span class="tl-ok">exit 0</span></p>
-            <p class="tl-note">Two acceptance criteria, each a runnable command: <code>cargo fmt -- --check</code>, and the three gate tests. No criteria, no definition of done.</p>
+            <p class="tl-note">Add two pass/fail checks, each a command: <code>cargo fmt -- --check</code>, and the three tests. Without these there is no definition of done.</p>
           </div>
         </li>
-      </ol>
 
-      <div class="callout">
-        <p>
-          The definition of done, arriving <em>fifth</em>. In the order the framework
-          intends, <span class="mk">Declare</span> is the <em>first</em> move &mdash; the
-          criteria written before the work, so every minute after has something to steer
-          toward. Here they describe a fix that is already finished.
-        </p>
-      </div>
-    </div>
-  </section>
+        <li class="tl-mark reveal" id="witness">
+          <span class="tl-time">09:02:15</span>
+          <div class="tl-body">
+            <p class="tl-phase-name"><span class="tl-rom">III</span> Run the checks</p>
+            <p class="tl-phase-sub">Both checks are run for real, and the task can only be marked done if both pass.</p>
+          </div>
+        </li>
 
-  <!-- ================= III · WITNESS ================= -->
-  <section class="band phase" id="witness">
-    <div class="wrap">
-      <header class="phase-head">
-        <span class="phase-rom">III</span>
-        <span class="phase-name">Witness</span>
-        <span class="phase-word">Testes</span>
-        <span class="phase-when">09:02:15</span>
-      </header>
-      <p class="lead-para narrow">Prove it &mdash; with an exit code, not an opinion.</p>
-
-      <ol class="tl" role="list">
         <li class="tl-node reveal is-proof">
           <span class="tl-time">09:02:15</span>
           <div class="tl-body">
-            <p class="tl-head"><code class="tl-cmd">sara validate</code><span class="tl-flags"><span class="flag is-hot">the one that proves</span></span></p>
+            <p class="tl-head"><code class="tl-cmd">sara validate</code><span class="tl-flags"><span class="flag is-hot">runs the checks</span></span></p>
             <p class="tl-meta"><span class="tl-dur is-hot">4,619 ms</span><span class="tl-ok">exit 0</span></p>
-            <p class="tl-note">The single heavyweight call. It ran both acceptance commands for real and <strong>refused to stamp</strong> until each exited 0. &ldquo;Green&rdquo; here is a fact the shell returned, not the model&rsquo;s read of its own work.</p>
+            <p class="tl-note">Runs both checks &mdash; <code>cargo fmt -- --check</code> and the three tests. This is the only slow command, because it is the only one that actually runs anything, and it will not mark the task done unless both return success.</p>
           </div>
         </li>
         <li class="tl-node reveal">
@@ -359,40 +309,24 @@
           <div class="tl-body">
             <p class="tl-head"><code class="tl-cmd">sara step</code> <span class="tl-x">&times;2</span><span class="tl-flags"><span class="flag">--result</span></span></p>
             <p class="tl-meta"><span class="tl-dur">23 ms &middot; 21 ms</span><span class="tl-ok">exit 0</span></p>
-            <p class="tl-note">Tick the plan, each step carrying evidence of what was actually done.</p>
+            <p class="tl-note">Mark the two steps done, each with a short note on what was done.</p>
           </div>
         </li>
-      </ol>
 
-      <div class="callout">
-        <p>
-          Fourteen calls, and this is the only one that took longer than a blink &mdash;
-          because it is the only one that <em>checked</em> anything. Proof costs; assertion
-          is free. A framework worth trusting spends its time on proof, and the millisecond
-          columns above show exactly where it did.
-        </p>
-      </div>
-    </div>
-  </section>
+        <li class="tl-mark reveal" id="record">
+          <span class="tl-time">09:02:54</span>
+          <div class="tl-body">
+            <p class="tl-phase-name"><span class="tl-rom">IV</span> Save the result</p>
+            <p class="tl-phase-sub">Record what was learned, and link the change, so the next person does not have to work it out again.</p>
+          </div>
+        </li>
 
-  <!-- ================= IV · RECORD ================= -->
-  <section class="band alt phase" id="record">
-    <div class="wrap">
-      <header class="phase-head">
-        <span class="phase-rom">IV</span>
-        <span class="phase-name">Record</span>
-        <span class="phase-word">Lex Recordi</span>
-        <span class="phase-when">09:02:54 &rarr; 09:03:02</span>
-      </header>
-      <p class="lead-para narrow">Close the loop where it opened &mdash; at memory.</p>
-
-      <ol class="tl" role="list">
         <li class="tl-node reveal">
           <span class="tl-time">09:02:54</span>
           <div class="tl-body">
             <p class="tl-head"><code class="tl-cmd">sara link</code><span class="tl-flags"><span class="flag">--label</span></span></p>
             <p class="tl-meta"><span class="tl-dur">0 ms</span><span class="tl-ok">exit 0</span></p>
-            <p class="tl-note">Attach the pull request to the charge, so the code and the task point at each other.</p>
+            <p class="tl-note">Attach the pull request to the task.</p>
           </div>
         </li>
         <li class="tl-node reveal">
@@ -400,7 +334,7 @@
           <div class="tl-body">
             <p class="tl-head"><code class="tl-cmd">sara learn</code><span class="tl-flags"><span class="flag">--auto-files</span><span class="flag">--supersedes</span><span class="flag">--tag</span></span></p>
             <p class="tl-meta"><span class="tl-dur">54 ms</span><span class="tl-ok">exit 0</span></p>
-            <p class="tl-note">Write the cause and the fix back as a memory (<strong>m516</strong>), automatically bound to the files touched.</p>
+            <p class="tl-note">Save a note about the cause and the fix (m516), linked to the files that changed.</p>
           </div>
         </li>
         <li class="tl-node reveal">
@@ -408,65 +342,53 @@
           <div class="tl-body">
             <p class="tl-head"><code class="tl-cmd">sara unlink-memory</code></p>
             <p class="tl-meta"><span class="tl-dur">0 ms</span><span class="tl-ok">exit 0</span></p>
-            <p class="tl-note">Undo a wrong link &mdash; the new memory does not <em>supersede</em> m405, it sits beside it. Even the memory graph gets mended.</p>
+            <p class="tl-note">Undo an incorrect link: the new note does not replace the old m405, it sits alongside it.</p>
           </div>
         </li>
-      </ol>
 
-      <div class="callout">
-        <p>
-          What was learned in the silence is finally written down, on the exact files it
-          concerns. The next run that touches this code starts one step ahead &mdash; it
-          recalls m516 instead of rediscovering the backslash from scratch. The loop only
-          pays off if the middle gets recorded.
-        </p>
-      </div>
+      </ol>
     </div>
   </section>
 
-  <!-- ================= THE POINT ================= -->
-  <section class="band phase" id="point">
+  <!-- ================= SUMMARY ================= -->
+  <section class="band" id="point">
     <div class="wrap">
-      <p class="kicker"><span class="num">&rarr;</span> The point</p>
-      <h2 class="h2">The gap is not a failure of the method. It is the method in the <em>wrong order</em>.</h2>
+      <p class="kicker"><span class="num">&rarr;</span> Summary</p>
+      <h2 class="h2">Most of the work happened while nothing was recorded.</h2>
       <p class="lead-para">
-        Thirteen of the fourteen calls fall in two clusters ninety seconds apart. The four
-        minutes between them were not un-methodical &mdash; they were <em>un-recorded</em>.
-        The fix is not &ldquo;call <span class="mk">sara</span> more.&rdquo; It is two changes
-        of order that cost nothing:
+        Thirteen of the fourteen commands are in two short bursts, ninety seconds apart. The
+        four minutes between them &mdash; the reading, testing and fixing &mdash; left no
+        record, because the task did not exist yet. Two small changes fix that, and neither
+        adds any work:
       </p>
 
       <div class="two-up">
         <div class="up-card">
           <p class="up-n">01</p>
-          <p class="up-t">Declare before you repair.</p>
-          <p class="up-b">Write the acceptance criteria first. Then the silent middle has something to steer toward instead of being reconstructed afterward.</p>
+          <p class="up-t">Create the task first.</p>
+          <p class="up-b">Write the pass/fail checks before the work, so the middle has something to aim at instead of being reconstructed afterward.</p>
         </div>
         <div class="up-card">
           <p class="up-n">02</p>
-          <p class="up-t">Route the checks through <span class="mk">sara verify</span>.</p>
-          <p class="up-b">You were going to run <code>fmt</code>, <code>test</code> and <code>clippy</code> anyway. Run them through the tool and the commands themselves become the record.</p>
+          <p class="up-t">Run the checks through sara.</p>
+          <p class="up-b">You already run <code>cargo fmt</code>, <code>cargo test</code> and <code>cargo clippy</code>. Run them through sara and those same commands become the record.</p>
         </div>
       </div>
 
-      <div class="callout">
-        <p>
-          Do both and the same four minutes fill themselves. Nothing slows down; the work
-          simply stops being invisible. That is the whole argument this page exists to make
-          &mdash; and it is built out of a single real run, so you can check it against the
-          timestamps rather than take my word for it.
-        </p>
-      </div>
+      <p class="lead-para narrow">
+        With both, the four-minute gap fills itself. Nothing takes longer &mdash; the work
+        just stops being invisible.
+      </p>
 
       <p class="footnote">
-        <span class="fn-star">*</span> Every timestamp, duration and flag on this page comes
-        from <span class="mk">sara</span>&rsquo;s own usage telemetry (VictoriaLogs), for one
-        real run on 2026&#8209;09&#8209;09. Nothing here is reconstructed except the six
-        shaded steps inside <em>The Silence</em> &mdash; which is the point: those are the
-        steps the telemetry could not see.
+        <span class="fn-star">*</span> Every time, duration and exit code here comes from
+        sara&rsquo;s usage log for one real run on 2026&#8209;09&#8209;09. Only the six shaded
+        steps in the gap are reconstructed from shell history, because those are the steps the
+        log could not see.
       </p>
     </div>
   </section>
+
 </main>
 
 <footer class="site-foot">

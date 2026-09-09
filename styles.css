@@ -854,6 +854,74 @@ code {
 }
 .tl-node.is-proof::before { width: 12px; height: 12px; margin-left: -6px; box-shadow: 0 0 0 4px var(--glow); }
 
+/* ---------- one continuous timeline ---------- */
+.tl-full { margin-top: 1.25rem; }
+
+/* phase markers sit on the same rail as the commands (node kept at the
+   default position so the connecting line is never broken) */
+.tl-mark { padding-top: 0.5rem; }
+.tl-mark:first-child { padding-top: 0; }
+.tl-mark::before {
+  width: 13px; height: 13px; margin-left: -7px;
+  top: 0.62rem;
+  background: var(--accent);
+  border-color: var(--accent);
+}
+.tl-mark:first-child::before { top: 0.34rem; }
+.tl-mark::after { top: 1.4rem; }
+.tl-mark:first-child::after { top: 1.05rem; }
+.tl-mark .tl-time { top: 0.5rem; color: var(--ink-soft); }
+.tl-mark:first-child .tl-time { top: 0.15rem; }
+.tl-phase-name {
+  margin: 0;
+  display: flex; align-items: baseline; gap: 0.6rem;
+  font-family: var(--font-display);
+  font-size: var(--step-1);
+  line-height: 1.15;
+  color: var(--ink);
+}
+.tl-rom { font-style: italic; color: var(--accent); font-size: 1.05em; }
+.tl-phase-sub {
+  margin: 0.4rem 0 0;
+  font-size: var(--step--1);
+  line-height: 1.6;
+  color: var(--ink-mute);
+  max-width: 62ch;
+}
+
+/* the gap marker + its reconstructed steps are drawn as a dashed segment */
+.tl-gaphead { padding-top: 0.6rem; }
+.tl-gaphead::before {
+  width: 12px; height: 12px; margin-left: -6px;
+  top: 0.55rem;
+  border-style: dashed;
+  border-color: var(--accent-dim);
+  background: var(--band-bg, var(--bg));
+}
+.tl-gaphead::after,
+.tl-node.is-ghost::before,
+.tl-node.is-ghost::after {
+  border-color: var(--accent-dim);
+}
+.tl-gaphead::after,
+.tl-node.is-ghost::after { border-left-style: dashed; }
+.tl-node.is-ghost::before {
+  border-style: dashed;
+  background: var(--band-bg, var(--bg));
+}
+.tl-node.is-ghost .tl-head { color: var(--ink); }
+.tl-node.is-ghost .tl-note { color: var(--ink-mute); }
+.tl-kind {
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--accent);
+  border: 1px dashed var(--accent-dim);
+  border-radius: var(--r-sm);
+  padding: 0.1rem 0.42rem;
+}
+
 /* ---------- the silence ---------- */
 .gap-dur {
   margin: 0.5rem 0 0.6rem;
