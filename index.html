@@ -4,12 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Alphabet++ — a failing build, restored step by step</title>
-<meta name="description" content="A real agent repair, reconstructed from the tool's own telemetry to the millisecond — and the four silent minutes in the middle where the work actually happened.">
+<meta name="description" content="One sara begin call created task #28, recalled the known fix, and set the check; a 43-second silent stretch applied the pins and proved 125 tests passed.">
 <meta name="color-scheme" content="light dark">
 
 <meta property="og:type" content="website">
 <meta property="og:title" content="Alphabet++ — one charge, minute by minute">
-<meta property="og:description" content="Fourteen sara calls in two clusters, and a four-minute silence between them where the bug was actually found and fixed. A timeline built from real telemetry.">
+<meta property="og:description" content="One sara begin call created task #28, recalled the known fix, and set the check; a 43-second silent stretch applied the pins and proved 125 tests passed.">
 <meta property="og:url" content="https://abarbesgaard.github.io/alphabet-plus-plus/">
 <meta name="twitter:card" content="summary_large_image">
 
@@ -127,10 +127,10 @@
       </p>
 
       <div class="stats reveal" data-delay="2">
-        <div class="stat"><span class="stat-n">~4<span class="stat-u">m</span></span><span class="stat-l">start to green</span></div>
-        <div class="stat"><span class="stat-n">8</span><span class="stat-l">sara commands</span></div>
-        <div class="stat is-hot"><span class="stat-n">2<span class="stat-u">m</span>13<span class="stat-u">s</span></span><span class="stat-l">no command, while fixing</span></div>
-        <div class="stat"><span class="stat-n">34<span class="stat-u">ms</span></span><span class="stat-l">the search that knew the fix</span></div>
+        <div class="stat"><span class="stat-n">1<span class="stat-u">m</span>33<span class="stat-u">s</span></span><span class="stat-l">start to green</span></div>
+        <div class="stat"><span class="stat-n">5</span><span class="stat-l">sara commands</span></div>
+        <div class="stat is-hot"><span class="stat-n">43<span class="stat-u">s</span></span><span class="stat-l">no command, while fixing</span></div>
+        <div class="stat"><span class="stat-n">63<span class="stat-u">ms</span></span><span class="stat-l">the begin that knew the fix</span></div>
       </div>
 
       <div class="cta-row reveal" data-delay="3">
@@ -159,7 +159,7 @@
       <p class="lead-para narrow">
         The interesting parts are the two stretches where no sara command runs at all
         &mdash; the reading at the start, and the actual fixing in the middle &mdash; and
-        the one early search that already knew the answer.
+        the one command at the outset that already knew the answer.
       </p>
     </div>
   </section>
@@ -170,7 +170,7 @@
       <ol class="tl tl-full" role="list">
 
         <li class="tl-mark reveal" id="before">
-          <span class="tl-time">12:33:40</span>
+          <span class="tl-time">15:15:01</span>
           <div class="tl-body">
             <p class="tl-phase-name"><span class="tl-rom">I</span> Before the first command</p>
             <p class="tl-phase-sub">The agent reads its way into the problem. No sara command runs yet &mdash; this stretch is reconstructed from the shell commands it typed.</p>
@@ -180,149 +180,116 @@
         <li class="tl-node is-ghost reveal">
           <div class="tl-body">
             <p class="tl-head"><span class="tl-kind">read</span> Read the pull request&rsquo;s checks.</p>
-            <p class="tl-note">One check was failing: &ldquo;Run tests&rdquo;. The change was an automated update bumping a group of developer dependencies.</p>
+            <p class="tl-note">Pull request&nbsp;#176 is red. Restore and build are failing before any file is changed.</p>
           </div>
         </li>
         <li class="tl-node is-ghost reveal">
           <div class="tl-body">
             <p class="tl-head"><span class="tl-kind">read</span> Read the failing job&rsquo;s log.</p>
-            <p class="tl-note">The end of the log was just database noise, so the log was searched for the real error instead.</p>
-          </div>
-        </li>
-        <li class="tl-node is-ghost reveal">
-          <div class="tl-body">
-            <p class="tl-head"><span class="tl-kind">cause</span> Find the conflict.</p>
-            <p class="tl-note">A testing library had been raised to a new major version, but another library it works with only accepts the older versions. The two can&rsquo;t be installed together, so the build refuses to restore.</p>
+            <p class="tl-note">The error is NU1608, treated as a failure. Six projects cannot restore because two dependency versions no longer fit together.</p>
           </div>
         </li>
         <li class="tl-node is-ghost reveal">
           <div class="tl-body">
             <p class="tl-head"><span class="tl-kind">read</span> Fetch the branch and read the change.</p>
-            <p class="tl-note">Check out the update&rsquo;s branch and look at exactly which package versions were changed.</p>
+            <p class="tl-note">Check out Dependabot&rsquo;s branch and compare the package versions. NSubstitute moved from 5.3.0 to 6.2.0, and NightOwl.TestHelper moved with it.</p>
           </div>
         </li>
 
         <li class="tl-mark reveal" id="recall">
-          <span class="tl-time">12:34:57</span>
+          <span class="tl-time">15:15:01</span>
           <div class="tl-body">
-            <p class="tl-phase-name"><span class="tl-rom">II</span> Look up past notes</p>
-            <p class="tl-phase-sub">One search of what sara already knows &mdash; and it already knew this exact problem.</p>
+            <p class="tl-phase-name"><span class="tl-rom">II</span> Found the task in one call</p>
+            <p class="tl-phase-sub">One command creates the task, recalls the prior fix, assigns the work, records the reason, and sets the check that will prove it done.</p>
           </div>
         </li>
 
-        <li class="tl-node reveal is-proof">
-          <span class="tl-time">12:34:57</span>
+        <li class="tl-node reveal is-proof" id="found">
+          <span class="tl-time">15:15:01</span>
           <div class="tl-body">
-            <p class="tl-head"><code class="tl-cmd">sara recall</code><span class="tl-flags"><span class="flag">query</span><span class="flag is-hot">found the fix</span></span></p>
-            <p class="tl-meta"><span class="tl-dur">34 ms</span><span class="tl-ok">exit 0</span></p>
-            <p class="tl-note">Search the saved notes. The search returned this exact recurring problem and its known fix: pin the testing library back to the last version that still works. The answer existed before any of the fixing did.</p>
-          </div>
-        </li>
-
-        <li class="tl-mark reveal" id="found">
-          <span class="tl-time">12:35:17</span>
-          <div class="tl-body">
-            <p class="tl-phase-name"><span class="tl-rom">III</span> Create the task</p>
-            <p class="tl-phase-sub">The task is created before any file is changed, and it says what &ldquo;done&rdquo; means. Five commands in fifteen seconds.</p>
-          </div>
-        </li>
-
-        <li class="tl-node reveal">
-          <span class="tl-time">12:35:17</span>
-          <div class="tl-body">
-            <p class="tl-head"><code class="tl-cmd">sara add</code><span class="tl-flags"><span class="flag">description</span><span class="flag">priority</span><span class="flag">tags</span></span></p>
-            <p class="tl-meta"><span class="tl-dur">35 ms</span><span class="tl-ok">exit 0</span></p>
-            <p class="tl-note">Create the task &mdash; task&nbsp;#22 &mdash; and tag it.</p>
+            <p class="tl-head"><code class="tl-cmd">sara begin</code><span class="tl-flags"><span class="flag">description</span><span class="flag">tags</span><span class="flag">assignment</span><span class="flag">rationale</span><span class="flag">check</span><span class="flag">verify</span></span></p>
+            <p class="tl-meta"><span class="tl-dur">63 ms</span><span class="tl-ok">exit 0</span></p>
+            <p class="tl-note">Create task&nbsp;#28 and attach the definition of done: restore and build must be clean. The same call also recalls the known fix from earlier runs, so the task starts with the answer already attached.</p>
           </div>
         </li>
         <li class="tl-node reveal">
-          <span class="tl-time">12:35:32</span>
+          <span class="tl-time">15:15:41</span>
           <div class="tl-body">
-            <p class="tl-head"><code class="tl-cmd">sara assignment</code></p>
-            <p class="tl-meta"><span class="tl-dur">0 ms</span><span class="tl-ok">exit 0</span></p>
-            <p class="tl-note">Save the original request, word for word.</p>
+            <p class="tl-head"><code class="tl-cmd">sara step_done</code><span class="tl-flags"><span class="flag">id</span><span class="flag">kind</span><span class="flag">n</span><span class="flag">result</span></span></p>
+            <p class="tl-meta"><span class="tl-dur">0 ms</span><span class="tl-ok">exit 1</span></p>
+            <p class="tl-note">The first tick is too early. The task has an acceptance check, but no numbered step&nbsp;#1, so sara refuses it and the log keeps the failed attempt.</p>
           </div>
         </li>
         <li class="tl-node reveal">
-          <span class="tl-time">12:35:32</span>
-          <div class="tl-body">
-            <p class="tl-head"><code class="tl-cmd">sara rationale</code></p>
-            <p class="tl-meta"><span class="tl-dur">1 ms</span><span class="tl-ok">exit 0</span></p>
-            <p class="tl-note">Save why it matters: it is a known, recurring failure that blocks the update from merging.</p>
-          </div>
-        </li>
-        <li class="tl-node reveal">
-          <span class="tl-time">12:35:32</span>
+          <span class="tl-time">15:15:51</span>
           <div class="tl-body">
             <p class="tl-head"><code class="tl-cmd">sara annotate</code><span class="tl-flags"><span class="flag">kind: finding</span></span></p>
-            <p class="tl-meta"><span class="tl-dur">2 ms</span><span class="tl-ok">exit 0</span></p>
-            <p class="tl-note">Write the cause onto the task, so the lookup from the search above is recorded against the work, not lost.</p>
-          </div>
-        </li>
-        <li class="tl-node reveal">
-          <span class="tl-time">12:35:32</span>
-          <div class="tl-body">
-            <p class="tl-head"><code class="tl-cmd">sara check</code><span class="tl-flags"><span class="flag">kind: acceptance</span><span class="flag">verify</span></span></p>
-            <p class="tl-meta"><span class="tl-dur">3 ms</span><span class="tl-ok">exit 0</span></p>
-            <p class="tl-note">Add one pass/fail check, and it is a command: the build must restore and compile cleanly. Without it there is no definition of done.</p>
+            <p class="tl-meta"><span class="tl-dur">0 ms</span><span class="tl-ok">exit 0</span></p>
+            <p class="tl-note">Write the reproduced cause onto the task. AutoFixture.AutoNSubstitute still requires NSubstitute below 6.0.0, while the update now asks for 6.2.0.</p>
           </div>
         </li>
 
         <li class="tl-gaphead reveal" id="gap">
-          <span class="tl-time">12:35:32</span>
+          <span class="tl-time">15:15:51</span>
           <div class="tl-body">
-            <p class="gap-dur">2&#8202;min 13&#8202;s &mdash; no sara command</p>
-            <p class="gap-lead">This is where the fix is actually made. No sara command runs, so none of it is in the log &mdash; but this time the task already exists, with a check waiting to be met. Reconstructed from the shell commands:</p>
+            <p class="gap-dur">43&#8202;s &mdash; no sara command</p>
+            <p class="gap-lead">This is where the fix is actually made. No sara command runs, so none of it has duration telemetry &mdash; but the task already exists, with a check waiting to be met. Reconstructed from the shell commands:</p>
           </div>
         </li>
 
         <li class="tl-node is-ghost reveal">
           <div class="tl-body">
             <p class="tl-head"><span class="tl-kind">reproduce</span> See the failure for real.</p>
-            <p class="tl-note">Run the restore locally and watch it fail with the same two version-conflict errors. Now the failure can be seen directly, not just as a red check.</p>
+            <p class="tl-note">Run <code>dotnet restore src/suspected-merchant.slnx</code> locally and get the same NU1608 failure. The red signal is now local, not just in CI.</p>
           </div>
         </li>
         <li class="tl-node is-ghost reveal">
           <div class="tl-body">
-            <p class="tl-head"><span class="tl-kind">fix</span> Apply the known fix.</p>
-            <p class="tl-note">Pin the testing library back to the last working version across all eight projects that use it, and undo a second, coupled bump that had pulled in the same conflict.</p>
+            <p class="tl-head"><span class="tl-kind">cause</span> Name the coupled bump.</p>
+            <p class="tl-note">NSubstitute 6.2.0 does not fit under AutoFixture.AutoNSubstitute 4.18.1&rsquo;s cap. NightOwl.TestHelper was also raised to a version that needs NSubstitute&nbsp;6 or newer, so the two bumps deepen the same conflict.</p>
+          </div>
+        </li>
+        <li class="tl-node is-ghost reveal">
+          <div class="tl-body">
+            <p class="tl-head"><span class="tl-kind">fix</span> Apply the pins.</p>
+            <p class="tl-note">Pin NSubstitute back to 5.3.0 in five project files, and NightOwl.TestHelper back to 11.2.1.21174 in two. The rest of the dependency-group update is left in place.</p>
           </div>
         </li>
         <li class="tl-node is-ghost reveal">
           <div class="tl-body">
             <p class="tl-head"><span class="tl-kind">witness</span> Rebuild.</p>
-            <p class="tl-note">The build now restores and compiles cleanly &mdash; no warnings, no errors. The once-red command is green.</p>
+            <p class="tl-note">Run the release build. It finishes with 0 warnings and 0 errors, so the NU1608 restore failure is gone.</p>
           </div>
         </li>
         <li class="tl-node is-ghost reveal">
           <div class="tl-body">
             <p class="tl-head"><span class="tl-kind">witness</span> Run the tests.</p>
-            <p class="tl-note">Run the unit tests to be sure nothing else broke: 1,874 passed, none failed.</p>
+            <p class="tl-note">Run the unit tests to make sure the pin did not break the repo: 125 passed, none failed.</p>
           </div>
         </li>
 
         <li class="tl-mark reveal" id="record">
-          <span class="tl-time">12:37:45</span>
+          <span class="tl-time">15:16:34</span>
           <div class="tl-body">
-            <p class="tl-phase-name"><span class="tl-rom">IV</span> Save the result</p>
-            <p class="tl-phase-sub">Tick the check now that it passes, and save the note so the next person does not have to work it out again.</p>
+            <p class="tl-phase-name"><span class="tl-rom">III</span> Save the result</p>
+            <p class="tl-phase-sub">Tick the acceptance check only after the build and tests are green, then save the cause so the next run can find it.</p>
           </div>
         </li>
 
         <li class="tl-node reveal">
-          <span class="tl-time">12:37:45</span>
+          <span class="tl-time">15:16:34</span>
           <div class="tl-body">
             <p class="tl-head"><code class="tl-cmd">sara step_done</code><span class="tl-flags"><span class="flag">kind: acceptance</span><span class="flag">result</span></span></p>
-            <p class="tl-meta"><span class="tl-dur">21 ms</span><span class="tl-ok">exit 0</span></p>
-            <p class="tl-note">Mark the check met, with the passing build and test counts as the evidence. The task can only close because the check actually passed.</p>
+            <p class="tl-meta"><span class="tl-dur">15 ms</span><span class="tl-ok">exit 0</span></p>
+            <p class="tl-note">Mark the check met, with the green release build and 125 passing tests as evidence. The fix is also committed and pushed to the existing Dependabot branch as 2151c93, so CI can run again.</p>
           </div>
         </li>
         <li class="tl-node reveal">
-          <span class="tl-time">12:37:50</span>
+          <span class="tl-time">15:16:35</span>
           <div class="tl-body">
             <p class="tl-head"><code class="tl-cmd">sara learn</code></p>
-            <p class="tl-meta"><span class="tl-dur">&mdash;</span><span class="tl-ok">exit 0</span></p>
-            <p class="tl-note">Save a note about the cause and the fix (m517), linked to task&nbsp;#22 &mdash; the same note the search at the start had found, now reinforced. The change is committed; pushing it is a separate, later step.</p>
+            <p class="tl-meta"><span class="tl-dur">~180 ms</span><span class="tl-ok">exit 0</span></p>
+            <p class="tl-note">Save memory m523: this conflict is resolved by keeping NSubstitute below 6.0.0 and pinning the coupled helper back too. The existing pull request stays open; release is a separate rite.</p>
           </div>
         </li>
 
@@ -334,32 +301,31 @@
   <section class="band" id="point">
     <div class="wrap">
       <p class="kicker"><span class="num">&rarr;</span> Summary</p>
-      <h2 class="h2">The task existed before the fix &mdash; so the middle had something to aim at.</h2>
+      <h2 class="h2">The first command held both the task and the known answer.</h2>
       <p class="lead-para">
-        Two things stand out in this run. The first is that the answer was already known:
-        one search, thirty-four milliseconds, returned the exact fix before any work began.
-        The second is that the task was created <em>before</em> the file changes, with a
-        pass/fail check attached &mdash; so the two silent minutes of fixing were aimed at a
-        clear target, and the task could only close once that check truly passed.
+        Two things stand out in this run. The first is that <code>sara begin</code> no
+        longer just creates the task: it also recalls the prior fix, saves the assignment,
+        records the reason, and adds the check. Task&nbsp;#28 starts with the known answer
+        already attached.
       </p>
 
       <div class="two-up">
         <div class="up-card">
           <p class="up-n">01</p>
-          <p class="up-t">Look it up first.</p>
-          <p class="up-b">The failure was a recurring one. A single search surfaced the cause and the fix immediately, and that note was written back onto the task so it stays tied to the work.</p>
+          <p class="up-t">Found the work and recalled the fix.</p>
+          <p class="up-b">One command replaced the old create-and-search sequence. It created the task, found matching notes from earlier dependency conflicts, and kept that context tied to the work.</p>
         </div>
         <div class="up-card">
           <p class="up-n">02</p>
           <p class="up-t">Define done before fixing.</p>
-          <p class="up-b">The check &mdash; &ldquo;the build restores and compiles&rdquo; &mdash; was written before the change. The fix then had a target, and closing the task required the check to pass for real.</p>
+          <p class="up-b">The check &mdash; restore and build cleanly &mdash; was written in the same first call. The silent fixing stretch had a target, and the task could only be ticked when the build and tests really passed.</p>
         </div>
       </div>
 
       <p class="lead-para narrow">
-        The one stretch still left in silence is the mechanical fix itself &mdash; changing
-        versions and rebuilding. That is fine: it is bracketed by a task that says what it
-        was for and a check that proves it worked.
+        The quiet middle is still mechanical work: reproduce the failure, pin the versions,
+        rebuild, and run the tests. What changes is that the work is bracketed by a task
+        that already knows what success means.
       </p>
 
       <p class="footnote">
