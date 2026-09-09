@@ -62,6 +62,7 @@
     <a href="#example">Example</a>
     <a href="#layers">Layers</a>
     <a href="#evidence">Evidence</a>
+    <a href="#timeline">Timeline</a>
     <a href="#discuss">Discuss</a>
   </nav>
 
@@ -800,10 +801,96 @@ ACTIONS — 45 of 51 are ordinary English
       </p>
     </div>
   </section>
-  <!-- ================= DISCUSS ================= -->
-  <section class="band alt" id="discuss">
+  <!-- ================= TIMELINE ================= -->
+  <section class="band alt" id="timeline">
     <div class="wrap">
-      <p class="kicker"><span class="num">08</span> Over coffee</p>
+      <p class="kicker"><span class="num">08</span> In practice</p>
+      <h2 class="h2">One charge, minute by minute &mdash; and the four minutes it <em>didn&rsquo;t</em> see.</h2>
+
+      <p class="lead-para">
+        A real run: a red CI pipeline, repaired under the framework. Every entry below is a
+        <span class="mk">sara</span> call, timestamped from its own telemetry &mdash; not a
+        reconstruction. Read top to bottom and the shape gives itself away. The method
+        clusters at the <em>edges</em> of the work and goes quiet through the middle, which
+        is exactly where the thinking happened.
+      </p>
+
+      <ol class="tl" role="list">
+        <li class="tl-node reveal">
+          <span class="tl-time">08:57:45</span>
+          <div class="tl-body">
+            <p class="tl-phase"><span class="mk">Recall</span> &mdash; bind what is already known</p>
+            <p class="tl-cmds"><code>sara recall</code><code>recall</code><code>recall</code></p>
+            <p class="tl-note">Surfaced a past memory that killed a wrong theory in seconds. The method earning its keep.</p>
+          </div>
+        </li>
+
+        <li class="tl-gap reveal" aria-label="Four minutes and thirteen seconds with no sara call">
+          <span class="tl-time">08:57 &rarr; 09:01</span>
+          <div class="tl-body">
+            <p class="tl-gap-dur">4&#8202;min 13&#8202;s &middot; no <span class="mk">sara</span> call</p>
+            <p class="tl-gap-what">Read the CI logs &middot; reproduced the bug &middot; wrote the fix &middot; ran <code>fmt</code> &middot; <code>test</code> &middot; <code>clippy</code></p>
+            <p class="tl-note">The entire repair happened here &mdash; invisible to the method, with no charge to answer to yet.</p>
+          </div>
+        </li>
+
+        <li class="tl-node reveal">
+          <span class="tl-time">09:01:59</span>
+          <div class="tl-body">
+            <p class="tl-phase"><span class="mk">Declare</span> &mdash; the charge, arriving late</p>
+            <p class="tl-cmds"><code>sara add</code></p>
+            <p class="tl-note">The definition of done, written <em>after</em> the work it was meant to bound.</p>
+          </div>
+        </li>
+
+        <li class="tl-node reveal">
+          <span class="tl-time">09:02:11</span>
+          <div class="tl-body">
+            <p class="tl-phase">Shape the charge</p>
+            <p class="tl-cmds"><code>check</code><code>assignment</code><code>rationale</code><code>check</code></p>
+          </div>
+        </li>
+
+        <li class="tl-node reveal">
+          <span class="tl-time">09:02:15</span>
+          <div class="tl-body">
+            <p class="tl-phase"><span class="mk">Witness</span> &mdash; proof, not opinion</p>
+            <p class="tl-cmds"><code>sara validate</code><code>step</code><code>step</code></p>
+            <p class="tl-note">Acceptance criteria run as commands. Green is an exit code, never a claim.</p>
+          </div>
+        </li>
+
+        <li class="tl-node reveal">
+          <span class="tl-time">09:02:54</span>
+          <div class="tl-body">
+            <p class="tl-phase"><span class="mk">Record</span> &mdash; close the loop</p>
+            <p class="tl-cmds"><code>link</code><code>learn</code><code>unlink&#8209;memory</code></p>
+            <p class="tl-note">The fix, the PR and the lesson &mdash; written back for the next run.</p>
+          </div>
+        </li>
+      </ol>
+
+      <p class="lead-para narrow">
+        Fourteen calls in two tight clusters &mdash; three at the start, eleven at the close
+        &mdash; ninety seconds apart, with a single four&#8209;minute silence between them.
+      </p>
+
+      <div class="callout">
+        <p>
+          The gap is not a failure of the method &mdash; it is the method arriving in the
+          wrong order. Declare the charge <em>before</em> the repair, and route
+          <code>fmt</code>, <code>test</code> and <code>clippy</code> through
+          <span class="mk">sara verify</span>, and the same four minutes fill themselves:
+          the commands you were already running become the record. Nothing slows down. The
+          work just stops being invisible.
+        </p>
+      </div>
+    </div>
+  </section>
+  <!-- ================= DISCUSS ================= -->
+  <section class="band" id="discuss">
+    <div class="wrap">
+      <p class="kicker"><span class="num">09</span> Over coffee</p>
       <h2 class="h2">Let&rsquo;s discuss.</h2>
       <p class="lead-para">
         I am not trying to sell you a method. This is one person&rsquo;s experience with no
