@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Alphabet++ — a bug fix, step by step</title>
+<title>Alphabet++ — a failing build, restored step by step</title>
 <meta name="description" content="A real agent repair, reconstructed from the tool's own telemetry to the millisecond — and the four silent minutes in the middle where the work actually happened.">
 <meta name="color-scheme" content="light dark">
 
@@ -56,10 +56,10 @@
 
   <nav class="site-nav" aria-label="Phases of the run">
     <a href="#context">Task</a>
+    <a href="#before">Read</a>
     <a href="#recall">Recall</a>
-    <a href="#silence">Gap</a>
-    <a href="#declare">Create</a>
-    <a href="#witness">Check</a>
+    <a href="#found">Create</a>
+    <a href="#gap">Fix</a>
     <a href="#record">Save</a>
   </nav>
 
@@ -122,19 +122,19 @@
       </h1>
 
       <p class="lede reveal" data-delay="1">
-        One bug fix, step by step &mdash; every command the agent ran, with the real
-        time and duration of each, read from the task manager&rsquo;s own log.
+        One failing build, restored step by step &mdash; every command the agent ran, with
+        the real time and duration of each, read from the task manager&rsquo;s own log.
       </p>
 
       <div class="stats reveal" data-delay="2">
-        <div class="stat"><span class="stat-n">5<span class="stat-u">m</span>17<span class="stat-u">s</span></span><span class="stat-l">start to close</span></div>
-        <div class="stat"><span class="stat-n">14</span><span class="stat-l">sara commands</span></div>
-        <div class="stat is-hot"><span class="stat-n">4<span class="stat-u">m</span>13<span class="stat-u">s</span></span><span class="stat-l">no command</span></div>
-        <div class="stat"><span class="stat-n">1</span><span class="stat-l">command ran the checks</span></div>
+        <div class="stat"><span class="stat-n">~4<span class="stat-u">m</span></span><span class="stat-l">start to green</span></div>
+        <div class="stat"><span class="stat-n">8</span><span class="stat-l">sara commands</span></div>
+        <div class="stat is-hot"><span class="stat-n">2<span class="stat-u">m</span>13<span class="stat-u">s</span></span><span class="stat-l">no command, while fixing</span></div>
+        <div class="stat"><span class="stat-n">34<span class="stat-u">ms</span></span><span class="stat-l">the search that knew the fix</span></div>
       </div>
 
       <div class="cta-row reveal" data-delay="3">
-        <a class="btn btn-primary" href="#recall">See the steps</a>
+        <a class="btn btn-primary" href="#before">See the steps</a>
         <a class="btn btn-ghost" href="https://github.com/Abarbesgaard/alphabet-plus-plus" rel="noopener">
           GitHub
           <svg viewBox="0 0 24 24" aria-hidden="true" class="btn-arrow"><path d="M7 17 17 7M9 7h8v8"/></svg>
@@ -149,17 +149,17 @@
   <section class="band" id="context">
     <div class="wrap">
       <p class="kicker"><span class="num">00</span> The task</p>
-      <h2 class="h2">A failing test pipeline, fixed step by step.</h2>
+      <h2 class="h2">A failing build, restored &mdash; step by step.</h2>
       <p class="lead-para">
-        The nightly test pipeline for sara &mdash; the task manager itself &mdash; was red:
-        one formatting error, and three tests that failed only on Windows. Below is every
-        step the agent took to fix it, in order, with the real time and duration of each
-        sara command, read from sara&rsquo;s own usage log.
+        An automated dependency update opened a pull request that broke the build: a
+        testing library had been bumped to a version another library refused to work
+        with. Below is every step the agent took to fix it, in order, with the real time
+        and duration of each sara command, read from sara&rsquo;s own usage log.
       </p>
       <p class="lead-para narrow">
-        The commands come in two bursts &mdash; at the start and at the end &mdash; with a
-        four-minute gap in the middle where the actual fixing happened and nothing was
-        recorded.
+        The interesting parts are the two stretches where no sara command runs at all
+        &mdash; the reading at the start, and the actual fixing in the middle &mdash; and
+        the one early search that already knew the answer.
       </p>
     </div>
   </section>
@@ -169,204 +169,160 @@
     <div class="wrap">
       <ol class="tl tl-full" role="list">
 
+        <li class="tl-mark reveal" id="before">
+          <span class="tl-time">12:33:40</span>
+          <div class="tl-body">
+            <p class="tl-phase-name"><span class="tl-rom">I</span> Before the first command</p>
+            <p class="tl-phase-sub">The agent reads its way into the problem. No sara command runs yet &mdash; this stretch is reconstructed from the shell commands it typed.</p>
+          </div>
+        </li>
+
+        <li class="tl-node is-ghost reveal">
+          <div class="tl-body">
+            <p class="tl-head"><span class="tl-kind">read</span> Read the pull request&rsquo;s checks.</p>
+            <p class="tl-note">One check was failing: &ldquo;Run tests&rdquo;. The change was an automated update bumping a group of developer dependencies.</p>
+          </div>
+        </li>
+        <li class="tl-node is-ghost reveal">
+          <div class="tl-body">
+            <p class="tl-head"><span class="tl-kind">read</span> Read the failing job&rsquo;s log.</p>
+            <p class="tl-note">The end of the log was just database noise, so the log was searched for the real error instead.</p>
+          </div>
+        </li>
+        <li class="tl-node is-ghost reveal">
+          <div class="tl-body">
+            <p class="tl-head"><span class="tl-kind">cause</span> Find the conflict.</p>
+            <p class="tl-note">A testing library had been raised to a new major version, but another library it works with only accepts the older versions. The two can&rsquo;t be installed together, so the build refuses to restore.</p>
+          </div>
+        </li>
+        <li class="tl-node is-ghost reveal">
+          <div class="tl-body">
+            <p class="tl-head"><span class="tl-kind">read</span> Fetch the branch and read the change.</p>
+            <p class="tl-note">Check out the update&rsquo;s branch and look at exactly which package versions were changed.</p>
+          </div>
+        </li>
+
         <li class="tl-mark reveal" id="recall">
-          <span class="tl-time">08:57:45</span>
+          <span class="tl-time">12:34:57</span>
           <div class="tl-body">
-            <p class="tl-phase-name"><span class="tl-rom">I</span> Look up past notes</p>
-            <p class="tl-phase-sub">Three quick searches for anything already known about this problem, before reading any code.</p>
-          </div>
-        </li>
-
-        <li class="tl-node reveal">
-          <span class="tl-time">08:57:45</span>
-          <div class="tl-body">
-            <p class="tl-head"><code class="tl-cmd">sara recall</code><span class="tl-flags"><span class="flag">--tag</span></span></p>
-            <p class="tl-meta"><span class="tl-dur">17 ms</span><span class="tl-ok">exit 0</span></p>
-            <p class="tl-note">Search saved notes tagged <code>windows</code> and <code>ci</code>.</p>
-          </div>
-        </li>
-        <li class="tl-node reveal">
-          <span class="tl-time">08:57:45</span>
-          <div class="tl-body">
-            <p class="tl-head"><code class="tl-cmd">sara recall</code><span class="tl-flags"><span class="flag">&ldquo;text&rdquo;</span></span></p>
-            <p class="tl-meta"><span class="tl-dur">68 ms</span><span class="tl-ok">exit 0</span></p>
-            <p class="tl-note">Search all notes by keyword, in case the tags were wrong.</p>
-          </div>
-        </li>
-        <li class="tl-node reveal">
-          <span class="tl-time">08:57:45</span>
-          <div class="tl-body">
-            <p class="tl-head"><code class="tl-cmd">sara recall</code><span class="tl-flags"><span class="flag">--file</span></span></p>
-            <p class="tl-meta"><span class="tl-dur">42 ms</span><span class="tl-ok">exit 0</span></p>
-            <p class="tl-note">Search for notes attached to the files that are about to change. This turned up an old note (m405) saying Windows-only failures usually come from line endings &mdash; wrong for this bug, but ruled out in seconds.</p>
-          </div>
-        </li>
-
-        <li class="tl-gaphead reveal" id="silence">
-          <span class="tl-time">08:57:45</span>
-          <div class="tl-body">
-            <p class="gap-dur">4&#8202;min 13&#8202;s &mdash; no sara command</p>
-            <p class="gap-lead">This is where the bug was actually found and fixed. No sara command ran in these four minutes, so none of it appears in the log. The steps below are pieced together afterwards from the record of shell commands the agent typed &mdash; the real work, that the log never saw.</p>
-          </div>
-        </li>
-
-        <li class="tl-node is-ghost reveal">
-          <div class="tl-body">
-            <p class="tl-head"><span class="tl-kind">read</span> Read the failing pipeline.</p>
-            <p class="tl-note">Two jobs were red: a formatting check, and the test run on Windows. The same tests were green on the other operating systems. Of the Windows tests, 446 passed and only 3 failed &mdash; so almost everything worked, and the problem was narrow.</p>
-          </div>
-        </li>
-        <li class="tl-node is-ghost reveal">
-          <div class="tl-body">
-            <p class="tl-head"><span class="tl-kind">read</span> See what the three tests check.</p>
-            <p class="tl-note">All three do the same thing: they ask the program to create a small marker file, then check that the file really appeared. On Windows, the file was never being created &mdash; so the check failed.</p>
-          </div>
-        </li>
-        <li class="tl-node is-ghost reveal">
-          <div class="tl-body">
-            <p class="tl-head"><span class="tl-kind">guess</span> Make a first guess.</p>
-            <p class="tl-note">An old saved note said Windows-only failures usually come from differences in how lines end in a file. That was the obvious suspect, so it was worth checking before anything else.</p>
-          </div>
-        </li>
-        <li class="tl-node is-ghost reveal">
-          <div class="tl-body">
-            <p class="tl-head"><span class="tl-kind">rule out</span> Rule the guess out.</p>
-            <p class="tl-note">These three tests had nothing to do with how lines end. The old note was a dead end here &mdash; but ruling it out took only seconds, and it stopped a wrong path early.</p>
-          </div>
-        </li>
-        <li class="tl-node is-ghost reveal">
-          <div class="tl-body">
-            <p class="tl-head"><span class="tl-kind">reproduce</span> Reproduce it by hand.</p>
-            <p class="tl-note">The exact instruction the tests use to create the file was run directly, on its own. It quietly did nothing &mdash; the file never appeared. Now the failure could be seen on its own, not just as a red test.</p>
-          </div>
-        </li>
-        <li class="tl-node is-ghost reveal">
-          <div class="tl-body">
-            <p class="tl-head"><span class="tl-kind">cause</span> Find why.</p>
-            <p class="tl-note">On Windows the file path is written with back-slashes. The way the instruction was being run treated those back-slashes as special symbols instead of part of the path, so the path came out garbled and no file was ever created. That &mdash; not line endings &mdash; was the real cause.</p>
-          </div>
-        </li>
-        <li class="tl-node is-ghost reveal">
-          <div class="tl-body">
-            <p class="tl-head"><span class="tl-kind">find</span> Find every place it happens.</p>
-            <p class="tl-note">The same pattern was used in three spots in the test code &mdash; exactly the three failing tests, and nowhere else. So fixing those three would fix the whole failure.</p>
-          </div>
-        </li>
-        <li class="tl-node is-ghost reveal">
-          <div class="tl-body">
-            <p class="tl-head"><span class="tl-kind">decide</span> Decide how to fix it.</p>
-            <p class="tl-note">Rather than patch each test separately, add one small shared helper that tidies up the path first, so all three are fixed the same way and any future test gets it for free.</p>
-          </div>
-        </li>
-        <li class="tl-node is-ghost reveal">
-          <div class="tl-body">
-            <p class="tl-head"><span class="tl-kind">fix</span> Make the change.</p>
-            <p class="tl-note">Point the three tests at the new helper, so the path is cleaned up before it is used.</p>
-          </div>
-        </li>
-        <li class="tl-node is-ghost reveal">
-          <div class="tl-body">
-            <p class="tl-head"><span class="tl-kind">check</span> Run the checks locally.</p>
-            <p class="tl-note">First the formatting check, then the full test run &mdash; now 455 passed and none failed &mdash; then the code-quality check, which had no complaints. Only after all three were green did the work move on.</p>
-          </div>
-        </li>
-
-        <li class="tl-mark reveal" id="declare">
-          <span class="tl-time">09:01:59</span>
-          <div class="tl-body">
-            <p class="tl-phase-name"><span class="tl-rom">II</span> Create the task</p>
-            <p class="tl-phase-sub">The task is written down now, after the fix already exists &mdash; and it defines what &ldquo;done&rdquo; means. Five commands in twelve seconds.</p>
-          </div>
-        </li>
-
-        <li class="tl-node reveal">
-          <span class="tl-time">09:01:59</span>
-          <div class="tl-body">
-            <p class="tl-head"><code class="tl-cmd">sara add</code><span class="tl-flags"><span class="flag">--priority</span><span class="flag">-t</span><span class="flag">--annotation</span><span class="flag">--check</span><span class="flag">--yes</span></span></p>
-            <p class="tl-meta"><span class="tl-dur">53 ms</span><span class="tl-ok">exit 0</span></p>
-            <p class="tl-note">Create the task, tag it, and write down the cause.</p>
-          </div>
-        </li>
-        <li class="tl-node reveal">
-          <span class="tl-time">09:02:11</span>
-          <div class="tl-body">
-            <p class="tl-head"><code class="tl-cmd">sara assignment</code></p>
-            <p class="tl-meta"><span class="tl-dur">1 ms</span><span class="tl-ok">exit 0</span></p>
-            <p class="tl-note">Save the original request, word for word.</p>
-          </div>
-        </li>
-        <li class="tl-node reveal">
-          <span class="tl-time">09:02:11</span>
-          <div class="tl-body">
-            <p class="tl-head"><code class="tl-cmd">sara rationale</code></p>
-            <p class="tl-meta"><span class="tl-dur">1 ms</span><span class="tl-ok">exit 0</span></p>
-            <p class="tl-note">Save why it matters: the pipeline is red and blocks other work.</p>
-          </div>
-        </li>
-        <li class="tl-node reveal">
-          <span class="tl-time">09:02:11</span>
-          <div class="tl-body">
-            <p class="tl-head"><code class="tl-cmd">sara check</code> <span class="tl-x">&times;2</span><span class="tl-flags"><span class="flag">--kind acceptance</span><span class="flag">--verify</span></span></p>
-            <p class="tl-meta"><span class="tl-dur">0 ms</span><span class="tl-ok">exit 0</span></p>
-            <p class="tl-note">Add two pass/fail checks, each a command: <code>cargo fmt -- --check</code>, and the three tests. Without these there is no definition of done.</p>
-          </div>
-        </li>
-
-        <li class="tl-mark reveal" id="witness">
-          <span class="tl-time">09:02:15</span>
-          <div class="tl-body">
-            <p class="tl-phase-name"><span class="tl-rom">III</span> Run the checks</p>
-            <p class="tl-phase-sub">Both checks are run for real, and the task can only be marked done if both pass.</p>
+            <p class="tl-phase-name"><span class="tl-rom">II</span> Look up past notes</p>
+            <p class="tl-phase-sub">One search of what sara already knows &mdash; and it already knew this exact problem.</p>
           </div>
         </li>
 
         <li class="tl-node reveal is-proof">
-          <span class="tl-time">09:02:15</span>
+          <span class="tl-time">12:34:57</span>
           <div class="tl-body">
-            <p class="tl-head"><code class="tl-cmd">sara validate</code><span class="tl-flags"><span class="flag is-hot">runs the checks</span></span></p>
-            <p class="tl-meta"><span class="tl-dur is-hot">4,619 ms</span><span class="tl-ok">exit 0</span></p>
-            <p class="tl-note">Runs both checks &mdash; <code>cargo fmt -- --check</code> and the three tests. This is the only slow command, because it is the only one that actually runs anything, and it will not mark the task done unless both return success.</p>
+            <p class="tl-head"><code class="tl-cmd">sara recall</code><span class="tl-flags"><span class="flag">query</span><span class="flag is-hot">found the fix</span></span></p>
+            <p class="tl-meta"><span class="tl-dur">34 ms</span><span class="tl-ok">exit 0</span></p>
+            <p class="tl-note">Search the saved notes. The search returned this exact recurring problem and its known fix: pin the testing library back to the last version that still works. The answer existed before any of the fixing did.</p>
+          </div>
+        </li>
+
+        <li class="tl-mark reveal" id="found">
+          <span class="tl-time">12:35:17</span>
+          <div class="tl-body">
+            <p class="tl-phase-name"><span class="tl-rom">III</span> Create the task</p>
+            <p class="tl-phase-sub">The task is created before any file is changed, and it says what &ldquo;done&rdquo; means. Five commands in fifteen seconds.</p>
+          </div>
+        </li>
+
+        <li class="tl-node reveal">
+          <span class="tl-time">12:35:17</span>
+          <div class="tl-body">
+            <p class="tl-head"><code class="tl-cmd">sara add</code><span class="tl-flags"><span class="flag">description</span><span class="flag">priority</span><span class="flag">tags</span></span></p>
+            <p class="tl-meta"><span class="tl-dur">35 ms</span><span class="tl-ok">exit 0</span></p>
+            <p class="tl-note">Create the task &mdash; task&nbsp;#22 &mdash; and tag it.</p>
           </div>
         </li>
         <li class="tl-node reveal">
-          <span class="tl-time">09:02:22</span>
+          <span class="tl-time">12:35:32</span>
           <div class="tl-body">
-            <p class="tl-head"><code class="tl-cmd">sara step</code> <span class="tl-x">&times;2</span><span class="tl-flags"><span class="flag">--result</span></span></p>
-            <p class="tl-meta"><span class="tl-dur">23 ms &middot; 21 ms</span><span class="tl-ok">exit 0</span></p>
-            <p class="tl-note">Mark the two steps done, each with a short note on what was done.</p>
+            <p class="tl-head"><code class="tl-cmd">sara assignment</code></p>
+            <p class="tl-meta"><span class="tl-dur">0 ms</span><span class="tl-ok">exit 0</span></p>
+            <p class="tl-note">Save the original request, word for word.</p>
+          </div>
+        </li>
+        <li class="tl-node reveal">
+          <span class="tl-time">12:35:32</span>
+          <div class="tl-body">
+            <p class="tl-head"><code class="tl-cmd">sara rationale</code></p>
+            <p class="tl-meta"><span class="tl-dur">1 ms</span><span class="tl-ok">exit 0</span></p>
+            <p class="tl-note">Save why it matters: it is a known, recurring failure that blocks the update from merging.</p>
+          </div>
+        </li>
+        <li class="tl-node reveal">
+          <span class="tl-time">12:35:32</span>
+          <div class="tl-body">
+            <p class="tl-head"><code class="tl-cmd">sara annotate</code><span class="tl-flags"><span class="flag">kind: finding</span></span></p>
+            <p class="tl-meta"><span class="tl-dur">2 ms</span><span class="tl-ok">exit 0</span></p>
+            <p class="tl-note">Write the cause onto the task, so the lookup from the search above is recorded against the work, not lost.</p>
+          </div>
+        </li>
+        <li class="tl-node reveal">
+          <span class="tl-time">12:35:32</span>
+          <div class="tl-body">
+            <p class="tl-head"><code class="tl-cmd">sara check</code><span class="tl-flags"><span class="flag">kind: acceptance</span><span class="flag">verify</span></span></p>
+            <p class="tl-meta"><span class="tl-dur">3 ms</span><span class="tl-ok">exit 0</span></p>
+            <p class="tl-note">Add one pass/fail check, and it is a command: the build must restore and compile cleanly. Without it there is no definition of done.</p>
+          </div>
+        </li>
+
+        <li class="tl-gaphead reveal" id="gap">
+          <span class="tl-time">12:35:32</span>
+          <div class="tl-body">
+            <p class="gap-dur">2&#8202;min 13&#8202;s &mdash; no sara command</p>
+            <p class="gap-lead">This is where the fix is actually made. No sara command runs, so none of it is in the log &mdash; but this time the task already exists, with a check waiting to be met. Reconstructed from the shell commands:</p>
+          </div>
+        </li>
+
+        <li class="tl-node is-ghost reveal">
+          <div class="tl-body">
+            <p class="tl-head"><span class="tl-kind">reproduce</span> See the failure for real.</p>
+            <p class="tl-note">Run the restore locally and watch it fail with the same two version-conflict errors. Now the failure can be seen directly, not just as a red check.</p>
+          </div>
+        </li>
+        <li class="tl-node is-ghost reveal">
+          <div class="tl-body">
+            <p class="tl-head"><span class="tl-kind">fix</span> Apply the known fix.</p>
+            <p class="tl-note">Pin the testing library back to the last working version across all eight projects that use it, and undo a second, coupled bump that had pulled in the same conflict.</p>
+          </div>
+        </li>
+        <li class="tl-node is-ghost reveal">
+          <div class="tl-body">
+            <p class="tl-head"><span class="tl-kind">witness</span> Rebuild.</p>
+            <p class="tl-note">The build now restores and compiles cleanly &mdash; no warnings, no errors. The once-red command is green.</p>
+          </div>
+        </li>
+        <li class="tl-node is-ghost reveal">
+          <div class="tl-body">
+            <p class="tl-head"><span class="tl-kind">witness</span> Run the tests.</p>
+            <p class="tl-note">Run the unit tests to be sure nothing else broke: 1,874 passed, none failed.</p>
           </div>
         </li>
 
         <li class="tl-mark reveal" id="record">
-          <span class="tl-time">09:02:54</span>
+          <span class="tl-time">12:37:45</span>
           <div class="tl-body">
             <p class="tl-phase-name"><span class="tl-rom">IV</span> Save the result</p>
-            <p class="tl-phase-sub">Record what was learned, and link the change, so the next person does not have to work it out again.</p>
+            <p class="tl-phase-sub">Tick the check now that it passes, and save the note so the next person does not have to work it out again.</p>
           </div>
         </li>
 
         <li class="tl-node reveal">
-          <span class="tl-time">09:02:54</span>
+          <span class="tl-time">12:37:45</span>
           <div class="tl-body">
-            <p class="tl-head"><code class="tl-cmd">sara link</code><span class="tl-flags"><span class="flag">--label</span></span></p>
-            <p class="tl-meta"><span class="tl-dur">0 ms</span><span class="tl-ok">exit 0</span></p>
-            <p class="tl-note">Attach the pull request to the task.</p>
+            <p class="tl-head"><code class="tl-cmd">sara step_done</code><span class="tl-flags"><span class="flag">kind: acceptance</span><span class="flag">result</span></span></p>
+            <p class="tl-meta"><span class="tl-dur">21 ms</span><span class="tl-ok">exit 0</span></p>
+            <p class="tl-note">Mark the check met, with the passing build and test counts as the evidence. The task can only close because the check actually passed.</p>
           </div>
         </li>
         <li class="tl-node reveal">
-          <span class="tl-time">09:02:54</span>
+          <span class="tl-time">12:37:50</span>
           <div class="tl-body">
-            <p class="tl-head"><code class="tl-cmd">sara learn</code><span class="tl-flags"><span class="flag">--auto-files</span><span class="flag">--supersedes</span><span class="flag">--tag</span></span></p>
-            <p class="tl-meta"><span class="tl-dur">54 ms</span><span class="tl-ok">exit 0</span></p>
-            <p class="tl-note">Save a note about the cause and the fix (m516), linked to the files that changed.</p>
-          </div>
-        </li>
-        <li class="tl-node reveal">
-          <span class="tl-time">09:03:02</span>
-          <div class="tl-body">
-            <p class="tl-head"><code class="tl-cmd">sara unlink-memory</code></p>
-            <p class="tl-meta"><span class="tl-dur">0 ms</span><span class="tl-ok">exit 0</span></p>
-            <p class="tl-note">Undo an incorrect link: the new note does not replace the old m405, it sits alongside it.</p>
+            <p class="tl-head"><code class="tl-cmd">sara learn</code></p>
+            <p class="tl-meta"><span class="tl-dur">&mdash;</span><span class="tl-ok">exit 0</span></p>
+            <p class="tl-note">Save a note about the cause and the fix (m517), linked to task&nbsp;#22 &mdash; the same note the search at the start had found, now reinforced. The change is committed; pushing it is a separate, later step.</p>
           </div>
         </li>
 
@@ -378,36 +334,38 @@
   <section class="band" id="point">
     <div class="wrap">
       <p class="kicker"><span class="num">&rarr;</span> Summary</p>
-      <h2 class="h2">Most of the work happened while nothing was recorded.</h2>
+      <h2 class="h2">The task existed before the fix &mdash; so the middle had something to aim at.</h2>
       <p class="lead-para">
-        Thirteen of the fourteen commands are in two short bursts, ninety seconds apart. The
-        four minutes between them &mdash; the reading, testing and fixing &mdash; left no
-        record, because the task did not exist yet. Two small changes fix that, and neither
-        adds any work:
+        Two things stand out in this run. The first is that the answer was already known:
+        one search, thirty-four milliseconds, returned the exact fix before any work began.
+        The second is that the task was created <em>before</em> the file changes, with a
+        pass/fail check attached &mdash; so the two silent minutes of fixing were aimed at a
+        clear target, and the task could only close once that check truly passed.
       </p>
 
       <div class="two-up">
         <div class="up-card">
           <p class="up-n">01</p>
-          <p class="up-t">Create the task first.</p>
-          <p class="up-b">Write the pass/fail checks before the work, so the middle has something to aim at instead of being reconstructed afterward.</p>
+          <p class="up-t">Look it up first.</p>
+          <p class="up-b">The failure was a recurring one. A single search surfaced the cause and the fix immediately, and that note was written back onto the task so it stays tied to the work.</p>
         </div>
         <div class="up-card">
           <p class="up-n">02</p>
-          <p class="up-t">Run the checks through sara.</p>
-          <p class="up-b">You already run <code>cargo fmt</code>, <code>cargo test</code> and <code>cargo clippy</code>. Run them through sara and those same commands become the record.</p>
+          <p class="up-t">Define done before fixing.</p>
+          <p class="up-b">The check &mdash; &ldquo;the build restores and compiles&rdquo; &mdash; was written before the change. The fix then had a target, and closing the task required the check to pass for real.</p>
         </div>
       </div>
 
       <p class="lead-para narrow">
-        With both, the four-minute gap fills itself. Nothing takes longer &mdash; the work
-        just stops being invisible.
+        The one stretch still left in silence is the mechanical fix itself &mdash; changing
+        versions and rebuilding. That is fine: it is bracketed by a task that says what it
+        was for and a check that proves it worked.
       </p>
 
       <p class="footnote">
         <span class="fn-star">*</span> Every time, duration and exit code here comes from
-        sara&rsquo;s usage log for one real run on 2026&#8209;09&#8209;09. Only the dashed
-        steps in the gap are reconstructed from the record of shell commands, because
+        sara&rsquo;s usage log for one real run on 2026&#8209;09&#8209;09. The dashed steps in
+        the two grey stretches are reconstructed from the record of shell commands, because
         those are the steps the log could not see.
       </p>
     </div>
