@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Alphabet++ — words your repository never says</title>
-<meta name="description" content="One programmer's experience: naming the framework that governs agent work in words the codebase never uses, so each name has one referent and the boundaries of a block stay findable.">
+<title>Alphabet++ — one charge, minute by minute</title>
+<meta name="description" content="A real agent repair, reconstructed from the tool's own telemetry to the millisecond — and the four silent minutes in the middle where the work actually happened.">
 <meta name="color-scheme" content="light dark">
 
 <meta property="og:type" content="website">
-<meta property="og:title" content="Alphabet++">
-<meta property="og:description" content="Structured language for structuring agent behaviour. Name the framework in words your repository never says, and its boundaries stop competing with the work.">
+<meta property="og:title" content="Alphabet++ — one charge, minute by minute">
+<meta property="og:description" content="Fourteen sara calls in two clusters, and a four-minute silence between them where the bug was actually found and fixed. A timeline built from real telemetry.">
 <meta property="og:url" content="https://abarbesgaard.github.io/alphabet-plus-plus/">
 <meta name="twitter:card" content="summary_large_image">
 
@@ -54,16 +54,13 @@
     <span class="brand-text">Alphabet<sup>++</sup></span>
   </a>
 
-  <nav class="site-nav" aria-label="Sections">
-    <a href="#problem">Origin</a>
-    <a href="#collision">Collision</a>
-    <a href="#wrap">Shape</a>
-    <a href="#choosing">Words</a>
-    <a href="#example">Example</a>
-    <a href="#layers">Layers</a>
-    <a href="#evidence">Evidence</a>
-    <a href="#timeline">Timeline</a>
-    <a href="#discuss">Discuss</a>
+  <nav class="site-nav" aria-label="Phases of the run">
+    <a href="#context">Charge</a>
+    <a href="#recall">Recall</a>
+    <a href="#silence">Silence</a>
+    <a href="#declare">Declare</a>
+    <a href="#witness">Witness</a>
+    <a href="#record">Record</a>
   </nav>
 
   <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Switch to light theme" title="Switch theme">
@@ -125,11 +122,19 @@
       </h1>
 
       <p class="lede reveal" data-delay="1">
-        Structured language for structuring agent behaviour.
+        One charge, minute by minute &mdash; a real repair under the framework,
+        reconstructed from the tool&rsquo;s own telemetry.
       </p>
 
-      <div class="cta-row reveal" data-delay="2">
-        <a class="btn btn-primary" href="#problem">Read on</a>
+      <div class="stats reveal" data-delay="2">
+        <div class="stat"><span class="stat-n">5<span class="stat-u">m</span>17<span class="stat-u">s</span></span><span class="stat-l">start to close</span></div>
+        <div class="stat"><span class="stat-n">14</span><span class="stat-l">sara calls</span></div>
+        <div class="stat is-hot"><span class="stat-n">4<span class="stat-u">m</span>13<span class="stat-u">s</span></span><span class="stat-l">no sara call</span></div>
+        <div class="stat"><span class="stat-n">1</span><span class="stat-l">call did the proving</span></div>
+      </div>
+
+      <div class="cta-row reveal" data-delay="3">
+        <a class="btn btn-primary" href="#recall">Walk the run</a>
         <a class="btn btn-ghost" href="https://github.com/Abarbesgaard/alphabet-plus-plus" rel="noopener">
           GitHub
           <svg viewBox="0 0 24 24" aria-hidden="true" class="btn-arrow"><path d="M7 17 17 7M9 7h8v8"/></svg>
@@ -140,767 +145,328 @@
     <div class="scroll-hint" aria-hidden="true"><span></span></div>
   </section>
 
-  <!-- ================= PROBLEM ================= -->
-  <section class="band has-deco" id="problem">
-      <div class="band-deco" aria-hidden="true">
-        <svg class="deco-col deco-l" aria-hidden="true" viewBox="0 0 190 680" preserveAspectRatio="xMidYMid slice" focusable="false">
-          <polygon class="sh-tri" points="35,265 48,289 23,289" transform="rotate(8 35 279)"/>
-          <polygon class="sh-tri" points="132,156 142,176 121,176" transform="rotate(-6 132 168)"/>
-          <polygon class="sh-tri" points="50,86 59,103 41,103" transform="rotate(12 50 96)"/>
-          <polygon class="sh-tri" points="140,517 152,539 128,539" transform="rotate(-9 140 530)"/>
-          <polygon class="sh-blob" points="84,419 74,423 71,431 62,430 58,423 62,416 63,409 70,412 81,409"/>
-          <rect class="sh-sq is-ghost" x="135" y="359" width="21" height="21" rx="3" transform="rotate(11 145 370)"/>
-          <rect class="sh-sq is-ghost" x="63" y="638" width="20" height="20" rx="3" transform="rotate(-2 73 648)"/>
-          <polygon class="sh-tri" points="58,492 69,513 46,513" transform="rotate(-7 58 504)"/>
-          <polygon class="sh-tri" points="158,31 168,49 149,49" transform="rotate(13 158 41)"/>
-        </svg>
-        <svg class="deco-col deco-r" aria-hidden="true" viewBox="0 0 190 680" preserveAspectRatio="xMidYMid slice" focusable="false">
-          <rect class="sh-sq is-ghost" x="138" y="68" width="24" height="24" rx="3" transform="rotate(3 150 80)"/>
-          <polygon class="sh-tri" points="32,252 43,274 20,274" transform="rotate(-1 32 265)"/>
-          <polygon class="sh-tri" points="59,87 69,107 48,107" transform="rotate(12 59 99)"/>
-          <polygon class="sh-tri" points="107,499 118,518 97,518" transform="rotate(7 107 510)"/>
-          <polygon class="sh-blob" points="64,580 62,587 55,586 48,589 38,585 47,577 47,568 55,572 63,571"/>
-          <polygon class="sh-tri" points="150,147 158,162 141,162" transform="rotate(-12 150 156)"/>
-          <polygon class="sh-tri" points="153,279 163,298 143,298" transform="rotate(4 153 290)"/>
-          <rect class="sh-sq is-ghost" x="29" y="380" width="20" height="20" rx="3" transform="rotate(3 39 389)"/>
-          <polygon class="sh-tri" points="163,639 172,656 154,656" transform="rotate(6 163 649)"/>
-        </svg>
-      </div>
+  <!-- ================= CONTEXT ================= -->
+  <section class="band" id="context">
     <div class="wrap">
-      <p class="kicker"><span class="num">01</span> Where this came from</p>
-      <h2 class="h2">I kept typing the same five things.</h2>
-
-      <div class="cols">
-        <div class="col">
-          <p>
-            Not domain knowledge &mdash; just method, re-supplied by hand every session:
-          </p>
-          <ul class="ticks">
-            <li>Investigate before you change anything.</li>
-            <li>Reproduce it first &mdash; don&rsquo;t guess at the cause.</li>
-            <li>Write the failing test <em>before</em> the fix.</li>
-            <li>You said it works. Show me the output.</li>
-            <li>That was one step, not the whole task. Keep going.</li>
-          </ul>
-        </div>
-
-        <div class="col">
-          <figure class="quote">
-            <blockquote>It wasn&rsquo;t missing capability. It was missing a <em>framework</em>.</blockquote>
-          </figure>
-          <p>
-            So I wrote it down: named blocks of work, each with its steps and a definition
-            of done. Then, for my own amusement, I named them in Latin.
-          </p>
-          <p class="note-line">
-            That turned out to be the part that mattered.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ================= COLLISION ================= -->
-  <section class="band alt has-deco" id="collision">
-      <div class="band-deco is-order" aria-hidden="true">
-        <div class="deco-col deco-l">
-          <svg class="deco-s" style="left:30%;top:6.0%" viewBox="0 0 22 20" aria-hidden="true" focusable="false"><polygon class="sh-tri" points="11,1 21,19 1,19"/></svg>
-          <svg class="deco-s" style="left:70%;top:6.0%" viewBox="0 0 22 20" aria-hidden="true" focusable="false"><polygon class="sh-tri" points="11,1 21,19 1,19"/></svg>
-          <svg class="deco-s" style="left:30%;top:15.4%" viewBox="0 0 22 20" aria-hidden="true" focusable="false"><polygon class="sh-tri" points="11,1 21,19 1,19"/></svg>
-          <svg class="deco-s" style="left:70%;top:15.4%" viewBox="0 0 22 20" aria-hidden="true" focusable="false"><polygon class="sh-tri" points="11,1 21,19 1,19"/></svg>
-          <svg class="deco-s" style="left:30%;top:24.8%" viewBox="0 0 22 20" aria-hidden="true" focusable="false"><polygon class="sh-tri" points="11,1 21,19 1,19"/></svg>
-          <svg class="deco-s" style="left:70%;top:24.8%" viewBox="0 0 22 20" aria-hidden="true" focusable="false"><polygon class="sh-tri" points="11,1 21,19 1,19"/></svg>
-          <svg class="deco-s" style="left:30%;top:34.2%" viewBox="0 0 22 20" aria-hidden="true" focusable="false"><polygon class="sh-tri" points="11,1 21,19 1,19"/></svg>
-          <svg class="deco-s" style="left:70%;top:34.2%" viewBox="0 0 22 20" aria-hidden="true" focusable="false"><polygon class="sh-tri" points="11,1 21,19 1,19"/></svg>
-          <svg class="deco-s" style="left:30%;top:43.6%" viewBox="0 0 22 20" aria-hidden="true" focusable="false"><polygon class="sh-tri" points="11,1 21,19 1,19"/></svg>
-          <svg class="deco-s" style="left:70%;top:43.6%" viewBox="0 0 22 20" aria-hidden="true" focusable="false"><polygon class="sh-tri" points="11,1 21,19 1,19"/></svg>
-          <svg class="deco-s" style="left:30%;top:53.0%" viewBox="0 0 22 20" aria-hidden="true" focusable="false"><polygon class="sh-tri" points="11,1 21,19 1,19"/></svg>
-          <svg class="deco-s" style="left:70%;top:53.0%" viewBox="0 0 22 20" aria-hidden="true" focusable="false"><polygon class="sh-tri" points="11,1 21,19 1,19"/></svg>
-          <svg class="deco-s" style="left:30%;top:62.4%" viewBox="0 0 22 20" aria-hidden="true" focusable="false"><polygon class="sh-tri" points="11,1 21,19 1,19"/></svg>
-          <svg class="deco-s" style="left:70%;top:62.4%" viewBox="0 0 22 20" aria-hidden="true" focusable="false"><polygon class="sh-tri" points="11,1 21,19 1,19"/></svg>
-          <svg class="deco-s" style="left:30%;top:71.8%" viewBox="0 0 22 20" aria-hidden="true" focusable="false"><polygon class="sh-tri" points="11,1 21,19 1,19"/></svg>
-          <svg class="deco-s" style="left:70%;top:71.8%" viewBox="0 0 22 20" aria-hidden="true" focusable="false"><polygon class="sh-tri" points="11,1 21,19 1,19"/></svg>
-          <svg class="deco-s" style="left:30%;top:81.2%" viewBox="0 0 22 20" aria-hidden="true" focusable="false"><polygon class="sh-tri" points="11,1 21,19 1,19"/></svg>
-          <svg class="deco-s" style="left:70%;top:81.2%" viewBox="0 0 22 20" aria-hidden="true" focusable="false"><polygon class="sh-tri" points="11,1 21,19 1,19"/></svg>
-          <svg class="deco-s" style="left:30%;top:90.6%" viewBox="0 0 22 20" aria-hidden="true" focusable="false"><polygon class="sh-tri" points="11,1 21,19 1,19"/></svg>
-          <svg class="deco-s" style="left:70%;top:90.6%" viewBox="0 0 22 20" aria-hidden="true" focusable="false"><polygon class="sh-tri" points="11,1 21,19 1,19"/></svg>
-          <svg class="deco-s" style="left:30%;top:100.0%" viewBox="0 0 22 20" aria-hidden="true" focusable="false"><polygon class="sh-tri" points="11,1 21,19 1,19"/></svg>
-          <svg class="deco-s" style="left:70%;top:100.0%" viewBox="0 0 22 20" aria-hidden="true" focusable="false"><polygon class="sh-tri" points="11,1 21,19 1,19"/></svg>
-        </div>
-        <div class="deco-col deco-r">
-          <svg class="deco-s" style="left:30%;top:6.0%" viewBox="0 0 22 20" aria-hidden="true" focusable="false"><polygon class="sh-tri" points="11,1 21,19 1,19"/></svg>
-          <svg class="deco-s" style="left:70%;top:6.0%" viewBox="0 0 22 20" aria-hidden="true" focusable="false"><polygon class="sh-tri" points="11,1 21,19 1,19"/></svg>
-          <svg class="deco-s" style="left:30%;top:15.4%" viewBox="0 0 22 20" aria-hidden="true" focusable="false"><polygon class="sh-tri" points="11,1 21,19 1,19"/></svg>
-          <svg class="deco-s" style="left:70%;top:15.4%" viewBox="0 0 22 20" aria-hidden="true" focusable="false"><polygon class="sh-tri" points="11,1 21,19 1,19"/></svg>
-          <svg class="deco-s" style="left:30%;top:24.8%" viewBox="0 0 22 20" aria-hidden="true" focusable="false"><polygon class="sh-tri" points="11,1 21,19 1,19"/></svg>
-          <svg class="deco-s" style="left:70%;top:24.8%" viewBox="0 0 22 20" aria-hidden="true" focusable="false"><polygon class="sh-tri" points="11,1 21,19 1,19"/></svg>
-          <svg class="deco-s" style="left:30%;top:34.2%" viewBox="0 0 22 20" aria-hidden="true" focusable="false"><polygon class="sh-tri" points="11,1 21,19 1,19"/></svg>
-          <svg class="deco-s" style="left:70%;top:34.2%" viewBox="0 0 22 20" aria-hidden="true" focusable="false"><polygon class="sh-tri" points="11,1 21,19 1,19"/></svg>
-          <svg class="deco-s" style="left:30%;top:43.6%" viewBox="0 0 22 20" aria-hidden="true" focusable="false"><polygon class="sh-tri" points="11,1 21,19 1,19"/></svg>
-          <svg class="deco-s" style="left:70%;top:43.6%" viewBox="0 0 22 20" aria-hidden="true" focusable="false"><polygon class="sh-tri" points="11,1 21,19 1,19"/></svg>
-          <svg class="deco-s" style="left:30%;top:53.0%" viewBox="0 0 22 20" aria-hidden="true" focusable="false"><polygon class="sh-tri" points="11,1 21,19 1,19"/></svg>
-          <svg class="deco-s" style="left:70%;top:53.0%" viewBox="0 0 22 20" aria-hidden="true" focusable="false"><polygon class="sh-tri" points="11,1 21,19 1,19"/></svg>
-          <svg class="deco-s" style="left:30%;top:62.4%" viewBox="0 0 22 20" aria-hidden="true" focusable="false"><polygon class="sh-tri" points="11,1 21,19 1,19"/></svg>
-          <svg class="deco-s" style="left:70%;top:62.4%" viewBox="0 0 22 20" aria-hidden="true" focusable="false"><polygon class="sh-tri" points="11,1 21,19 1,19"/></svg>
-          <svg class="deco-s" style="left:30%;top:71.8%" viewBox="0 0 22 20" aria-hidden="true" focusable="false"><polygon class="sh-tri" points="11,1 21,19 1,19"/></svg>
-          <svg class="deco-s" style="left:70%;top:71.8%" viewBox="0 0 22 20" aria-hidden="true" focusable="false"><polygon class="sh-tri" points="11,1 21,19 1,19"/></svg>
-          <svg class="deco-s" style="left:30%;top:81.2%" viewBox="0 0 22 20" aria-hidden="true" focusable="false"><polygon class="sh-tri" points="11,1 21,19 1,19"/></svg>
-          <svg class="deco-s" style="left:70%;top:81.2%" viewBox="0 0 22 20" aria-hidden="true" focusable="false"><polygon class="sh-tri" points="11,1 21,19 1,19"/></svg>
-          <svg class="deco-s" style="left:30%;top:90.6%" viewBox="0 0 22 20" aria-hidden="true" focusable="false"><polygon class="sh-tri" points="11,1 21,19 1,19"/></svg>
-          <svg class="deco-s" style="left:70%;top:90.6%" viewBox="0 0 22 20" aria-hidden="true" focusable="false"><polygon class="sh-tri" points="11,1 21,19 1,19"/></svg>
-          <svg class="deco-s" style="left:30%;top:100.0%" viewBox="0 0 22 20" aria-hidden="true" focusable="false"><polygon class="sh-tri" points="11,1 21,19 1,19"/></svg>
-          <svg class="deco-s" style="left:70%;top:100.0%" viewBox="0 0 22 20" aria-hidden="true" focusable="false"><polygon class="sh-tri" points="11,1 21,19 1,19"/></svg>
-        </div>
-      </div>
-        <div class="wrap">
-      <p class="kicker"><span class="num">02</span> The thing I didn&rsquo;t expect</p>
-      <h2 class="h2">&ldquo;Fix&rdquo; is the most crowded word in your repository.</h2>
-
+      <p class="kicker"><span class="num">00</span> The charge</p>
+      <h2 class="h2">Fix a red pipeline &mdash; the right way to fix it was already a <em>rule</em>.</h2>
       <p class="lead-para">
-        Here is how I think about it. An agent works entirely in text, and nearly all of
-        that text is programming vocabulary &mdash; the files it reads, the stack trace,
-        the diff and the commit messages it writes, the test output it reads back, and
-        the request I typed. Every one of those words is a <strong>triangle</strong>:
-        <em>fix</em>, <em>check</em>, <em>test</em>, <em>build</em>, <em>commit</em>,
-        <em>refactor</em>, <em>done</em>. It reads and writes thousands of them in a
-        session. My request is one more triangle, and should be: it is a programming
-        task, and programming tasks are written in programming words &mdash; <em>fix the
-        null deref in the session handler</em>. What must not be a triangle is the
-        <strong>framework</strong> that governs that work &mdash; the names of its
-        blocks and its boundaries. Name those in programming words too and they dissolve
-        into the pile.
+        The nightly CI on <span class="mk">sara</span> &mdash; the task manager itself &mdash;
+        went red: two jobs, a formatting slip and three tests that failed only on Windows.
+        Under the framework that is a single, named kind of work: <em>Emendatio</em>, the
+        repair of a defect a test can catch. What follows is <strong>every step the agent
+        actually took</strong>, in order, to the millisecond &mdash; read straight from
+        <span class="mk">sara</span>&rsquo;s own telemetry, not retold from memory.
       </p>
-
-      <figure class="dg">
-        <svg viewBox="0 0 760 292" role="img" aria-labelledby="figSt">
-          <title id="figSt">Two identical fields of small triangles. In the first, the framework names are themselves triangles and cannot be picked out. In the second, four of them are squares and are found instantly.</title>
-
-          <text class="dg-cap" x="0" y="14">Framework named in the words of the work</text>
-          <g class="sh">
-            <path class="sh-tri" d="M30 37 L38 51 L22 51 Z"/>
-            <path class="sh-tri" d="M95 37 L102 51 L87 51 Z"/>
-            <path class="sh-tri" d="M154 38 L162 51 L146 51 Z"/>
-            <path class="sh-tri" d="M214 37 L222 51 L206 51 Z"/>
-            <path class="sh-tri" d="M279 39 L287 53 L271 53 Z"/>
-            <path class="sh-tri" d="M338 36 L345 50 L330 50 Z"/>
-            <path class="sh-tri" d="M400 39 L407 53 L392 53 Z"/>
-            <path class="sh-tri" d="M465 34 L473 48 L457 48 Z"/>
-            <path class="sh-tri" d="M529 40 L537 54 L521 54 Z"/>
-            <path class="sh-tri" d="M589 38 L597 52 L581 52 Z"/>
-            <path class="sh-tri" d="M648 34 L656 48 L640 48 Z"/>
-            <path class="sh-tri" d="M712 34 L720 48 L704 48 Z"/>
-            <path class="sh-tri" d="M28 79 L36 93 L20 93 Z"/>
-            <path class="sh-tri" d="M89 81 L97 95 L81 95 Z"/>
-            <path class="sh-tri" d="M154 83 L161 97 L146 97 Z"/>
-            <path class="sh-tri" d="M216 82 L224 96 L208 96 Z"/>
-            <path class="sh-tri" d="M278 82 L286 96 L270 96 Z"/>
-            <path class="sh-tri" d="M340 80 L348 94 L332 94 Z"/>
-            <path class="sh-tri" d="M405 84 L413 98 L397 98 Z"/>
-            <path class="sh-tri" d="M466 82 L474 96 L458 96 Z"/>
-            <path class="sh-tri" d="M525 79 L533 93 L517 93 Z"/>
-            <path class="sh-tri" d="M587 78 L595 92 L579 92 Z"/>
-            <path class="sh-tri" d="M652 80 L659 94 L644 94 Z"/>
-            <path class="sh-tri" d="M714 80 L722 94 L706 94 Z"/>
-          </g>
-          <text class="dg-note" x="380" y="124">the framework names are in here somewhere</text>
-
-          <text class="dg-cap" x="0" y="166">Framework named in words the work never uses</text>
-          <g class="sh" transform="translate(0,152)">
-            <path class="sh-tri" d="M30 37 L38 51 L22 51 Z"/>
-            <path class="sh-tri" d="M95 37 L102 51 L87 51 Z"/>
-            <path class="sh-tri" d="M154 38 L162 51 L146 51 Z"/>
-            <path class="sh-tri" d="M214 37 L222 51 L206 51 Z"/>
-            <rect class="sh-sq" x="271" y="40" width="16" height="16" rx="2"/>
-            <path class="sh-tri" d="M338 36 L345 50 L330 50 Z"/>
-            <path class="sh-tri" d="M400 39 L407 53 L392 53 Z"/>
-            <path class="sh-tri" d="M465 34 L473 48 L457 48 Z"/>
-            <path class="sh-tri" d="M529 40 L537 54 L521 54 Z"/>
-            <path class="sh-tri" d="M589 38 L597 52 L581 52 Z"/>
-            <rect class="sh-sq" x="640" y="35" width="16" height="16" rx="2"/>
-            <path class="sh-tri" d="M712 34 L720 48 L704 48 Z"/>
-            <path class="sh-tri" d="M28 79 L36 93 L20 93 Z"/>
-            <path class="sh-tri" d="M89 81 L97 95 L81 95 Z"/>
-            <rect class="sh-sq" x="146" y="84" width="16" height="16" rx="2"/>
-            <path class="sh-tri" d="M216 82 L224 96 L208 96 Z"/>
-            <path class="sh-tri" d="M278 82 L286 96 L270 96 Z"/>
-            <path class="sh-tri" d="M340 80 L348 94 L332 94 Z"/>
-            <path class="sh-tri" d="M405 84 L413 98 L397 98 Z"/>
-            <path class="sh-tri" d="M466 82 L474 96 L458 96 Z"/>
-            <rect class="sh-sq" x="517" y="80" width="16" height="16" rx="2"/>
-            <path class="sh-tri" d="M587 78 L595 92 L579 92 Z"/>
-            <path class="sh-tri" d="M652 80 L659 94 L644 94 Z"/>
-            <path class="sh-tri" d="M714 80 L722 94 L706 94 Z"/>
-          </g>
-          <text class="dg-note is-pick" x="380" y="276">found before you finished reading this line</text>
-        </svg>
-        <figcaption>Triangles are the words the work is already made of &mdash; <em>fix</em>, <em>check</em>, <em>test</em>, <em>done</em>. Squares are the boundary words: <em>Emendatio</em>, <em>Restitutio</em>, <em>Purgatio</em>. Still shapes &mdash; still ordinary language, read the same way &mdash; simply not one of the triangles.</figcaption>
-      </figure>
-
-      <p class="lead-para">
-        So make the framework names <strong>squares</strong>. The words of the work stay
-        triangles, my request stays a triangle, and only the layer that governs them
-        changes shape. That is the entire trick, and it costs nothing.
-      </p>
-
       <p class="lead-para narrow">
-        Concretely, this is how crowded a triangle gets. Picture a routine session: I ask
-        for that null deref, and before my framework says a word the agent has already met
-        <em>fix</em> five times &mdash; the branch it checked out, a run of commits, a stale
-        <em>FIXME</em>, a couple of test names, and my own sentence. Then my framework
-        arrives and says it a sixth time:
-      </p>
-
-      <figure class="dg">
-        <svg viewBox="0 0 760 236" role="img" aria-labelledby="fig1t">
-          <title id="fig1t">Two rows of six boxes labelled my request, branch name, commit log, FIXME comment, test names and framework. In the first row every box contains the word "fix", so the framework's is indistinguishable. In the second row only the framework box contains a word at all, "Emendatio".</title>
-
-          <text class="dg-cap" x="0" y="12">A word the project already uses</text>
-          <g class="dg-row">
-            <g><rect class="dg-b is-hot" x="0"   y="26" width="112" height="46" rx="8"/><text class="dg-in" x="56"  y="54">fix</text><text class="dg-lb" x="56"  y="88">my request</text></g>
-            <g><rect class="dg-b is-hot" x="130" y="26" width="112" height="46" rx="8"/><text class="dg-in" x="186" y="54">fix</text><text class="dg-lb" x="186" y="88">branch name</text></g>
-            <g><rect class="dg-b is-hot" x="260" y="26" width="112" height="46" rx="8"/><text class="dg-in" x="316" y="54">fix</text><text class="dg-lb" x="316" y="88">commit log</text></g>
-            <g><rect class="dg-b is-hot" x="390" y="26" width="112" height="46" rx="8"/><text class="dg-in" x="446" y="54">fix</text><text class="dg-lb" x="446" y="88">// FIXME</text></g>
-            <g><rect class="dg-b is-hot" x="520" y="26" width="112" height="46" rx="8"/><text class="dg-in" x="576" y="54">fix</text><text class="dg-lb" x="576" y="88">test names</text></g>
-            <g><rect class="dg-b is-hot" x="650" y="26" width="110" height="46" rx="8"/><text class="dg-in" x="705" y="54">fix</text><text class="dg-lb is-mark" x="705" y="88">framework</text></g>
-          </g>
-
-          <text class="dg-cap" x="0" y="152">A word only the framework uses</text>
-          <g class="dg-row">
-            <rect class="dg-b" x="0"   y="166" width="112" height="46" rx="8"/><text class="dg-lb" x="56"  y="228">my request</text>
-            <rect class="dg-b" x="130" y="166" width="112" height="46" rx="8"/><text class="dg-lb" x="186" y="228">branch name</text>
-            <rect class="dg-b" x="260" y="166" width="112" height="46" rx="8"/><text class="dg-lb" x="316" y="228">commit log</text>
-            <rect class="dg-b" x="390" y="166" width="112" height="46" rx="8"/><text class="dg-lb" x="446" y="228">// FIXME</text>
-            <rect class="dg-b" x="520" y="166" width="112" height="46" rx="8"/><text class="dg-lb" x="576" y="228">test names</text>
-            <g><rect class="dg-b is-one" x="650" y="166" width="110" height="46" rx="8"/><text class="dg-in is-one" x="705" y="194">Emendatio</text><text class="dg-lb is-mark" x="705" y="228">framework</text></g>
-          </g>
-        </svg>
-        <figcaption>Above, the framework&rsquo;s name is the sixth <em>fix</em> in a row &mdash; one signal among six identical ones. Below, the other five boxes are empty, because nothing else in the repository says <em>Emendatio</em>.</figcaption>
-      </figure>
-
-      <p class="lead-para narrow">
-        That is the whole observation. Everything below is what follows from it &mdash; and,
-        at the end, the file where it lives.
-      </p>
-
-      <p class="lead-para narrow">
-        These are <strong>boundary words</strong> &mdash; words whose only job is to mark
-        where the framework ends and the work begins. Mine happen to be Latin.
-        <em>Emendatio</em> for a repair, <em>Restitutio</em> for a broken build,
-        <em>Purgatio</em> for an analyser alert. Half a joke that stuck &mdash; those words
-        appear in no repository I have touched, and the model still knows what they mean.
-        The Latin is incidental. The boundary is the point. Three is a sample: my own set
-        runs to eight kinds of work, each with its own words for the phases, the proofs and
-        the ending.
+        Watch where the calls fall. The method is loud at the two ends of the work and
+        silent through the middle &mdash; and the middle is where the bug was actually
+        found and fixed.
       </p>
     </div>
   </section>
 
-  <!-- ================= WRAP ================= -->
-  <section class="band" id="wrap">
+  <!-- ================= I · RECALL ================= -->
+  <section class="band alt phase" id="recall">
     <div class="wrap">
-      <p class="kicker"><span class="num">03</span> How it sits around the work</p>
-      <h2 class="h2">A layer of words your code never says.</h2>
-
-      <p class="lead-para">
-        The framework doesn&rsquo;t replace anything or sit inside your language. It wraps
-        it. Inside the blocks, everything is ordinary &mdash; your files, your commands, your
-        commit messages. The <em>edges</em> are made of vocabulary that can&rsquo;t be
-        confused with the contents.
-      </p>
-
-      <figure class="dg">
-        <svg viewBox="0 0 760 210" role="img" aria-labelledby="fig2t">
-          <title id="fig2t">An outer boundary labelled Emendatio, opening at "declared" and closing at "done", containing four plain inner boxes labelled read, reproduce, edit and run — the ordinary work, unchanged.</title>
-
-          <rect class="dg-shell" x="1" y="34" width="758" height="140" rx="16"/>
-          <rect class="dg-cut" x="18" y="24" width="104" height="20"/>
-          <text class="dg-edge" x="30" y="40">Emendatio</text>
-          <rect class="dg-cut" x="640" y="164" width="106" height="20"/>
-          <text class="dg-edge is-end" x="652" y="179">&#183; done</text>
-
-          <g>
-            <rect class="dg-b" x="46"  y="74" width="140" height="58" rx="8"/><text class="dg-in is-work" x="116" y="109">read</text>
-            <rect class="dg-b" x="222" y="74" width="140" height="58" rx="8"/><text class="dg-in is-work" x="292" y="109">reproduce</text>
-            <rect class="dg-b" x="398" y="74" width="140" height="58" rx="8"/><text class="dg-in is-work" x="468" y="109">edit</text>
-            <rect class="dg-b" x="574" y="74" width="140" height="58" rx="8"/><text class="dg-in is-work" x="644" y="109">run</text>
-          </g>
-          <g class="dg-arrows">
-            <path d="M186 103 H216"/><path d="M362 103 H392"/><path d="M538 103 H568"/>
-          </g>
-        </svg>
-        <figcaption>The vocabulary is the <em>boundary</em>. Everything inside it is ordinary &mdash; my files, my commands, my language, untouched.</figcaption>
-      </figure>
-
-      <p class="lead-para narrow">
-        I never type a boundary word at the agent. I say <em>&ldquo;the login endpoint 500s
-        on an empty body.&rdquo;</em> They live inside the skill file, where only the
-        agent reads them. What I get back is a transcript with visible seams.
-      </p>
-
-      <h3 class="h3">Why the seams matter</h3>
-
-      <figure class="dg">
-        <svg viewBox="0 0 760 176" role="img" aria-labelledby="fig3t">
-          <title id="fig3t">The same stream of session content shown twice. In the first bar it runs continuously with no divisions. In the second, identical content is separated into five segments by tick marks.</title>
-
-          <text class="dg-cap" x="0" y="12">Ordinary words</text>
-          <rect class="dg-bar" x="0" y="24" width="760" height="36" rx="8"/>
-          <g class="dg-chip"><rect x="16" y="37" width="42" height="10" rx="3"/><rect x="70" y="37" width="26" height="10" rx="3"/><rect x="106" y="37" width="40" height="10" rx="3"/><rect x="176" y="37" width="34" height="10" rx="3"/><rect x="222" y="37" width="48" height="10" rx="3"/><rect x="282" y="37" width="22" height="10" rx="3"/><rect x="316" y="37" width="52" height="10" rx="3"/><rect x="380" y="37" width="30" height="10" rx="3"/><rect x="422" y="37" width="28" height="10" rx="3"/><rect x="478" y="37" width="26" height="10" rx="3"/><rect x="516" y="37" width="50" height="10" rx="3"/><rect x="578" y="37" width="26" height="10" rx="3"/><rect x="622" y="37" width="46" height="10" rx="3"/><rect x="680" y="37" width="24" height="10" rx="3"/><rect x="716" y="37" width="30" height="10" rx="3"/></g>
-          <text class="dg-note" x="380" y="82">one continuous stream &#8212; the agent re-reads it to work out where it is</text>
-
-          <text class="dg-cap" x="0" y="124">Disjoint words</text>
-          <rect class="dg-bar is-seg" x="0" y="136" width="760" height="36" rx="8"/>
-          <g class="dg-chip"><rect x="16" y="149" width="42" height="10" rx="3"/><rect x="70" y="149" width="26" height="10" rx="3"/><rect x="106" y="149" width="40" height="10" rx="3"/><rect x="176" y="149" width="34" height="10" rx="3"/><rect x="222" y="149" width="48" height="10" rx="3"/><rect x="282" y="149" width="22" height="10" rx="3"/><rect x="316" y="149" width="52" height="10" rx="3"/><rect x="380" y="149" width="30" height="10" rx="3"/><rect x="422" y="149" width="28" height="10" rx="3"/><rect x="478" y="149" width="26" height="10" rx="3"/><rect x="516" y="149" width="50" height="10" rx="3"/><rect x="578" y="149" width="26" height="10" rx="3"/><rect x="622" y="149" width="46" height="10" rx="3"/><rect x="680" y="149" width="24" height="10" rx="3"/><rect x="716" y="149" width="30" height="10" rx="3"/></g>
-          <g class="dg-tick">
-            <path d="M152 132 V176"/><path d="M304 132 V176"/><path d="M456 132 V176"/><path d="M608 132 V176"/>
-          </g>
-        </svg>
-        <figcaption>Same content, same length. The difference is that the agent can <em>find the edges</em>. Scanning back over its own context, it lands on a marker instead of re-reading prose to work out which phase it is in &mdash; and a skipped phase shows up as a missing segment rather than an absence you have to notice.</figcaption>
-      </figure>
-
-      <p class="lead-para narrow">
-        One more thing I did not expect. I assumed the vocabulary would be a
-        <em>substitute</em> for writing the plan out. It behaved more like a stronger
-        version of it &mdash; and when I wrote the plan out <em>as well</em>, the two did not
-        cancel or repeat. They compounded. The names hold the shape; the plan fills it in.
-      </p>
-
-    </div>
-  </section>
-
-  <!-- ================= CHOOSING ================= -->
-  <section class="band alt" id="choosing">
-    <div class="wrap">
-      <p class="kicker"><span class="num">04</span> Picking the words</p>
-      <h2 class="h2">A boundary word doesn&rsquo;t have to be Latin. It does have to be disjoint.</h2>
-
-      <p class="lead-para">
-        The requirement is only that the name not collide with the material it governs. But
-        you can miss in two directions, and the shapes make it obvious which is which.
-      </p>
-
-      <figure class="dg">
-        <svg viewBox="0 0 760 232" role="img" aria-labelledby="fig4t">
-          <title id="fig4t">Three panels, each an identical field of twelve triangles. In the first, the highlighted shape is another triangle and is hard to pick out. In the second it is a square: distinct, but still a regular shape. In the third it is an irregular blob: distinct, but not a shape anyone can name.</title>
-
-          <rect class="dg-panel" x="0" y="24" width="228" height="150" rx="12"/>
-          <rect class="dg-panel is-pick" x="266" y="24" width="228" height="150" rx="12"/>
-          <rect class="dg-panel" x="532" y="24" width="228" height="150" rx="12"/>
-
-          <text class="dg-cap" x="0" y="14">Too close</text>
-          <text class="dg-cap is-pick" x="266" y="14">Disjoint</text>
-          <text class="dg-cap" x="532" y="14">Too far</text>
-
-          <g class="sh"><path class="sh-tri" d="M44 49 L52 63 L36 63 Z"/>
-            <path class="sh-tri" d="M92 48 L99 62 L84 62 Z"/>
-            <path class="sh-tri" d="M137 49 L145 63 L129 63 Z"/>
-            <path class="sh-tri" d="M181 50 L189 64 L173 64 Z"/>
-            <path class="sh-tri" d="M43 90 L51 104 L35 104 Z"/>
-            <path class="sh-tri is-hit" d="M89 88 L97 102 L81 102 Z"/>
-            <path class="sh-tri" d="M137 91 L145 105 L129 105 Z"/>
-            <path class="sh-tri" d="M181 89 L189 103 L174 103 Z"/>
-            <path class="sh-tri" d="M46 132 L53 146 L38 146 Z"/>
-            <path class="sh-tri" d="M91 130 L99 144 L83 144 Z"/>
-            <path class="sh-tri" d="M139 128 L147 142 L131 142 Z"/>
-            <path class="sh-tri" d="M184 129 L192 143 L177 143 Z"/></g>
-          <g class="sh"><path class="sh-tri" d="M310 49 L318 63 L302 63 Z"/>
-            <path class="sh-tri" d="M358 48 L365 62 L350 62 Z"/>
-            <path class="sh-tri" d="M403 49 L411 63 L395 63 Z"/>
-            <path class="sh-tri" d="M447 50 L455 64 L439 64 Z"/>
-            <path class="sh-tri" d="M309 90 L317 104 L301 104 Z"/>
-            <rect class="sh-sq" x="347" y="89" width="16" height="16" rx="2"/>
-            <path class="sh-tri" d="M403 91 L411 105 L395 105 Z"/>
-            <path class="sh-tri" d="M447 89 L455 103 L440 103 Z"/>
-            <path class="sh-tri" d="M312 132 L319 146 L304 146 Z"/>
-            <path class="sh-tri" d="M357 130 L365 144 L349 144 Z"/>
-            <path class="sh-tri" d="M405 128 L413 142 L397 142 Z"/>
-            <path class="sh-tri" d="M450 129 L458 143 L443 143 Z"/></g>
-          <g class="sh"><path class="sh-tri" d="M576 49 L584 63 L568 63 Z"/>
-            <path class="sh-tri" d="M624 48 L631 62 L616 62 Z"/>
-            <path class="sh-tri" d="M669 49 L677 63 L661 63 Z"/>
-            <path class="sh-tri" d="M713 50 L721 64 L705 64 Z"/>
-            <path class="sh-tri" d="M575 90 L583 104 L567 104 Z"/>
-            <polygon class="sh-blob" points="632,98 630,106 623,111 614,110 609,102 608,93 618,94 622,89 632,89"/>
-            <path class="sh-tri" d="M669 91 L677 105 L661 105 Z"/>
-            <path class="sh-tri" d="M713 89 L721 103 L706 103 Z"/>
-            <path class="sh-tri" d="M578 132 L585 146 L570 146 Z"/>
-            <path class="sh-tri" d="M623 130 L631 144 L615 144 Z"/>
-            <path class="sh-tri" d="M671 128 L679 142 L663 142 Z"/>
-            <path class="sh-tri" d="M716 129 L724 143 L709 143 Z"/></g>
-
-          <text class="dg-in is-mono" x="114" y="198">fix</text>
-          <text class="dg-in is-one"  x="380" y="198">Emendatio</text>
-          <text class="dg-in is-mono" x="646" y="198">Z7</text>
-
-          <text class="dg-note" x="114" y="220">another triangle</text>
-          <text class="dg-note is-pick" x="380" y="220">a square</text>
-          <text class="dg-note" x="646" y="220">a shape with no name</text>
-        </svg>
-        <figcaption>Both failures are real. A triangle disappears into the work; a nameless blob stands out but carries nothing, so you end up writing the whole instruction anyway. The square is the only one that is both findable and legible.</figcaption>
-      </figure>
-
-      <div class="callout">
-        <p>
-          Why Latin lands in the middle band is a guess, not a finding: rare in source code,
-          abundant in training data, still transparent &mdash; <em>emendatio</em> already
-          means correction, so the name carries weight before I define anything. But that is
-          me explaining my own result after the fact. Old Norse, liturgical terms, climbing
-          vocabulary, chess notation &mdash; anything with real meaning your repository has
-          never had reason to write down should do the same job. If you try one, tell me
-          what happened.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ================= EXAMPLE ================= -->
-  <section class="band" id="example">
-    <div class="wrap">
-      <p class="kicker"><span class="num">05</span> One square, in full</p>
-      <h2 class="h2">Genesis &mdash; for building something that wasn&rsquo;t there.</h2>
-
-      <p class="lead-para">
-        Here is a whole square, start to finish. <em>Genesis</em> is the one I reach for when
-        there is no existing behaviour to preserve. Nothing inside it is exotic: recall what
-        you already know, agree what &ldquo;working&rdquo; means, build the smallest thing
-        that meets one criterion, prove it, write down what you learned. The only unusual
-        part is the word on the outside.
-      </p>
-
-      <p class="lead-para narrow">
-        Below is that file as it actually exists on disk &mdash; verbatim, with notes in
-        the margin.
-      </p>
-
-      <figure class="marg-fig">
-        <div class="marg-doc">
-        <p class="marg-path">~/.agents/skills/<strong>via_genesis</strong>/SKILL.md</p>
-        <div class="marg">
-        <pre class="marg-t">---
-name: via_genesis
-description: &gt;-
-  Invoke when building a new capability where none stood — the <span class="mk">Adeptus</span> rite of
-  <span class="mk">Via Genesis</span>. Recall prior art → declare acceptance criteria → build the
-  smallest whole that meets one → witness → record. Completion requires every
-  acceptance criterion met, the build compiling and running, and a test covering
-  the new behaviour. Improving existing behaviour is via_renovatio; fixing a bug
-  is via_emendatio.
-argument-hint: &lt;what to build, or a sara task id&gt;
-allowed-tools: Bash(sara:*), Bash(herdr:*), Bash(git:status), Bash(git:log), Bash(git:diff), Bash(git:show), Bash(git:branch), Bash(git:fetch), Bash(git:ls-files), Bash(git:stash), Bash(gh:*), Read, Glob, Grep, Bash(python3:*)
----</pre>
-        <aside class="marg-n">The trigger. It also names the squares this one is <em>not</em>.</aside>
-        <pre class="marg-t"># <span class="mk">Via Genesis</span> — the rite of founding
-
-You are bound by the `adeptus` creed and, as a rite of the **<span class="mk">Legio</span>** faction, its execution leges. The charge is:
-
-$ARGUMENTS
-
-Declare the <span class="mk">Via</span> aloud (**&quot;I take <span class="mk">Via Genesis</span>&quot;**), then walk its <span class="mk">Ritus</span> in order.</pre>
-        <aside class="marg-n">Saying the name is what opens the block.</aside>
-        <pre class="marg-t">Open **each phase** with its <span class="mk">Praeco</span> line (creed § *The <span class="mk">Praeco</span>*), naming the phase
-and the Lex that binds it, before you walk it.</pre>
-        <aside class="marg-n">Every phase announces itself. That is where the seams come from.</aside>
-        <pre class="marg-t">## <span class="mk">Ritus</span> — walk in order, one phase at a time
-
-1. **Recall prior art** (<span class="mk">Lex Recordi</span>). Bind the province first (<span class="mk">Lex Loci</span>): if this project has no `sara init` profile yet, `sara init` before recalling. `sara recall --tag &lt;topic&gt;` and `sara recall &quot;&lt;keywords&gt;&quot;` — do not rebuild what exists. On `sara add`, read the `similar` hits; while executing, heed the **Relevant memory** block `sara next` prints each step. This recall is a hard gate, not an optional courtesy.
-2. **Declare the shape.** `sara add` the charge; set `sara assignment` (what was asked, verbatim) and `sara rationale` (why). Write the acceptance criteria that will end it: `sara check &lt;id&gt; &quot;&lt;criterion&gt;&quot; --kind acceptance --verify &quot;&lt;cmd&gt;&quot;`. No criteria = no definition of done.
-3. **Build the smallest whole.** Implement the least that satisfies one criterion end-to-end before broadening. Drive with `sara next`; `sara step_done` each phase with a `result`.
-4. **Witness (<span class="mk">Testes</span>).** Every criterion demonstrably met; the build compiles and runs; a test covers the new behaviour. `sara verify &lt;id&gt;`; tick acceptance with evidence.
-5. **Record.** `sara learn --auto-files --tag &lt;topic&gt; &quot;&lt;what was built and why so&gt;&quot;`.</pre>
-        <aside class="marg-n">Ordinary work inside a boundary &mdash; every command in here is plain <code>sara</code><a class="fn-ref" href="#fn-sara" aria-describedby="fn-sara">*</a>.</aside>
-        <pre class="marg-t">## <span class="mk">Testes</span> — no completion without these
-
-- **Every acceptance criterion** demonstrably met.
-- The build **compiles and runs**.
-- A **test covers** the new behaviour.
-- A **memory recorded** (recall→learn) on the files touched (<span class="mk">Lex Recordi</span>).</pre>
-        <aside class="marg-n">What must be true before it may stop. Checked, not claimed.</aside>
-        <pre class="marg-t">## Ending (<span class="mk">Lex Termini</span>)
-
-When the <span class="mk">Testes</span> are green the charge is built and proven — call `sara done`.
-Clean up scratch and throwaway probes first (<span class="mk">Lex Munditiae</span>). On a failed gate,
-mend and re-walk — do not abandon or ask anew.</pre>
-        <aside class="marg-n">A failed gate re-walks the block instead of ending it.</aside>
-        </div>
-        </div>
-        <figcaption>Highlighted words are the squares. Everything else &mdash; the commands,
-        the file paths, the flags &mdash; is the ordinary work they wrap.</figcaption>
-      </figure>
-
-      <p class="footnote" id="fn-sara">
-        <span class="fn-star">*</span> <code>sara</code> is a task manager for agents &mdash;
-        <a href="https://abarbesgaard.github.io/Sara/" rel="noopener">abarbesgaard.github.io/Sara</a>.
-      </p>
-
-      <p class="lead-para narrow">
-        This site was built under it. I named the criteria first, built the page until they
-        were met, and the closing step is the one you are reading.
-      </p>
-    </div>
-  </section>
-  <!-- ================= LAYERS ================= -->
-  <section class="band alt" id="layers">
-    <div class="wrap">
-      <p class="kicker"><span class="num">06</span> Two layers</p>
-      <h2 class="h2">I only did it to half the framework.</h2>
-      <p class="lead-para">
-        <em>Lex Termini</em> is the rule that says when work is allowed to stop.
-        <em>Mend</em> is what you do to the bug. One of those I invented. The other is the
-        plainest word I could find.
-      </p>
-      <p class="lead-para">
-        That split runs through all eight files &mdash; every rule named in a boundary word,
-        nearly every action in ordinary English. I never decided to do it that way. I had
-        written the whole thing without noticing.
-      </p>
-
-      <figure class="dg">
-        <pre class="marg-t">RULES — 17 of 17 are boundary words
-  <span class="mk">Lex Recordi</span>   <span class="mk">Lex Termini</span>   <span class="mk">Lex Loci</span>   <span class="mk">Lex Cursus</span>
-  <span class="mk">Lex Probationis</span>   <span class="mk">Lex Munditiae</span>   <span class="mk">Ordo Itineris</span>
-
-ACTIONS — 45 of 51 are ordinary English
-  Recall   Reproduce   Locate   Prove   Mend
-  Observe   Pin   Change   Cleanse   Record</pre>
-        <figcaption>Counted across the eight rite files. Seventeen out of seventeen is not
-        an accident &mdash; so I had been following a rule I could not have told you about.</figcaption>
-      </figure>
-
-      <h3 class="h3">Why it splits</h3>
-      <p class="lead-para narrow">
-        Call a rule <em>Memory Rule</em> and the agent arrives with its own idea of what
-        that means. Call it <em>Lex Recordi</em> and it has to go and read mine. That is the
-        whole trick, and it only works on a word it holds no opinion about.
-      </p>
-      <p class="lead-para narrow">
-        <em>Mend</em> is the opposite case. I don&rsquo;t want it reading my definition of
-        mending &mdash; I want the one it already has. A boundary word there would cost me
-        comprehension and buy nothing back.
-      </p>
-
-      <div class="callout">
-        <p>
-          Systems people have a name for this shape: the <strong>control plane</strong> and
-          the <strong>data plane</strong> &mdash; keep the wire carrying instructions apart
-          from the wire carrying payload, so payload can never be read as instruction.
-          Prompt injection is exactly that separation failing. I am borrowing the picture,
-          not the research. But it describes my files better than &ldquo;Latin is
-          better&rdquo; ever did.
-        </p>
-      </div>
-
-      <h3 class="h3">A prediction I would rather not make</h3>
-      <p class="lead-para narrow">
-        If this is right, <strong>more boundary words would make the framework worse.</strong>
-        Put them on the actions and I am teaching the agent a private dialect for nothing.
-        They pay their way on names that get looked up, and nowhere else. Any theory that
-        only ever recommends more of what its author likes should be distrusted, so I am
-        glad this one tells me where to stop.
-      </p>
-
-      <h3 class="h3">Where it breaks</h3>
-      <p class="lead-para narrow">
-        <em>Praeco</em> is a boundary word sitting on an action &mdash; announce the step
-        before you take it &mdash; and it appears twenty times. That one simply breaks the
-        pattern. <em>Witness</em>&#8202;/&#8202;<em>Testes</em> names a single step twice,
-        once in each vocabulary; I read that as the split at its sharpest, but I would.
-      </p>
-      <p class="lead-para narrow">
-        There is a duller reading I cannot dismiss either. <em>Names you look up should be
-        unambiguous</em> is ordinary good naming, as true of variables as of this. I may
-        have rediscovered it and put a toga on it.
-      </p>
-      <p class="lead-para narrow">
-        Which is worth settling, and cheap to settle. Rename the seventeen rules into
-        English &mdash; <em>Lex Recordi</em> becomes <em>Memory Rule</em> &mdash; and change
-        nothing else at all. If the gates hold anyway, this section is wrong.
-      </p>
-    </div>
-  </section>
-  <!-- ================= EVIDENCE ================= -->
-  <section class="band" id="evidence">
-    <div class="wrap">
-      <p class="kicker"><span class="num">07</span> Evidence</p>
-      <h2 class="h2">What is evidence, and what is still my hunch.</h2>
-      <p class="lead-para">
-        Two different claims live on this page, and they are not equally supported.
-        One has published work behind it. The other is mine, and untested. Mixing them
-        would be the fastest way to lose an argument I think is worth having, so here
-        they are, separated.
-      </p>
-
-      <h3 class="h3">Supported: a gate the model cannot talk its way through</h3>
-      <p class="lead-para narrow">
-        The strongest part of the framework is not a word. It is the rule that a repair
-        needs a test you watched <em>fail</em> before it may be called mended &mdash;
-        and that <span class="mk">Testes</span> means the suite&rsquo;s output, not the
-        model&rsquo;s opinion of the suite.
-      </p>
-      <p class="lead-para narrow">
-        That rule is doing real work, and the reason is documented. Asked to check its own
-        reasoning without an external signal, a model does not get better &mdash; it gets
-        worse, and keeps getting worse. GPT&#8209;4 on GSM8K fell from 95.5% to 91.5% after
-        one round of self&#8209;correction, and to 89.0% after two. Earlier results
-        suggesting otherwise had quietly used the right answer to decide when to stop
-        correcting.<a class="fn-ref" href="#cite-1" aria-describedby="cite-1">1</a>
-      </p>
-      <p class="lead-para narrow">
-        So &ldquo;verify your work&rdquo; asks for the one thing the literature says is
-        unreliable. <code>sara verify</code> asks for an exit code. That distinction is
-        defensible today, in any vocabulary, in any language.
-      </p>
-
-      <h3 class="h3">Adjacent, but weaker than it looks</h3>
-      <p class="lead-para narrow">
-        Models genuinely are trained to rank instructions by privilege &mdash; system above
-        developer, developer above user, user above tool output.<a class="fn-ref" href="#cite-2" aria-describedby="cite-2">2</a>
-        It is tempting to reach for that as proof of a vocabulary of authority. It is not.
-        That hierarchy keys on <em>where a message came from</em>, never on which words it
-        used. It shows layered authority is real. It says nothing about whether rare words
-        create one.
-      </p>
-
-      <h3 class="h3">Evidence pointing the other way</h3>
-      <p class="lead-para narrow">
-        Rarity has a cost. Tokens a model saw too little of during training carry
-        poorly&#8209;formed representations and behave erratically.<a class="fn-ref" href="#cite-3" aria-describedby="cite-3">3</a>
-        If isolation were free, the ideal boundary word would be a random string &mdash; and
-        it clearly is not. That bounds the claim: a boundary word must be rare in your
-        repository while remaining common in the training data. Latin qualifies because of
-        law, medicine and science, not because it is old &mdash; and plenty of non&#8209;Latin
-        words qualify too.
-      </p>
-
-      <div class="callout">
-        <p>
-          The honest summary cuts against this page&rsquo;s emphasis. The published work
-          supports the <em>structure</em> &mdash; external gates, proof over assertion,
-          state kept outside the model. On <em>boundary words</em> it is silent at best and
-          cautionary at worst. My hunch is that they add something on top of the structure.
-          That part is a hypothesis wearing a website.
-        </p>
-      </div>
-
-      <h3 class="h3">What would change my mind</h3>
-      <p class="lead-para narrow">
-        Replace every boundary word with an ordinary one &mdash; <em>Repair</em> for
-        <em>Emendatio</em>, <em>Verify</em> for <em>Testes</em> &mdash; keep every gate
-        exactly as it is, and run the same work. If the results hold, the structure was the
-        whole finding and the boundary was decoration &mdash; and I would rather publish
-        that than defend the nicer story. I have not run it yet, so nothing on this page
-        should be read as though I had.
-      </p>
-
-      <p class="footnote">
-        <span class="fn-star">1</span> <span id="cite-1">Huang et al., <em>Large Language Models Cannot Self-Correct Reasoning Yet</em>, ICLR 2024 &mdash;
-        <a href="https://arxiv.org/abs/2310.01798" rel="noopener">arXiv:2310.01798</a></span><br>
-        <span class="fn-star">2</span> <span id="cite-2">Wallace et al., <em>The Instruction Hierarchy: Training LLMs to Prioritize Privileged Instructions</em>, OpenAI 2024 &mdash;
-        <a href="https://arxiv.org/abs/2404.13208" rel="noopener">arXiv:2404.13208</a></span><br>
-        <span class="fn-star">3</span> <span id="cite-3">Land &amp; Bartolo, <em>Fishing for Magikarp: Automatically Detecting Under-trained Tokens in Large Language Models</em>, EMNLP 2024 &mdash;
-        <a href="https://arxiv.org/abs/2405.05417" rel="noopener">arXiv:2405.05417</a></span>
-      </p>
-    </div>
-  </section>
-  <!-- ================= TIMELINE ================= -->
-  <section class="band alt" id="timeline">
-    <div class="wrap">
-      <p class="kicker"><span class="num">08</span> In practice</p>
-      <h2 class="h2">One charge, minute by minute &mdash; and the four minutes it <em>didn&rsquo;t</em> see.</h2>
-
-      <p class="lead-para">
-        A real run: a red CI pipeline, repaired under the framework. Every entry below is a
-        <span class="mk">sara</span> call, timestamped from its own telemetry &mdash; not a
-        reconstruction. Read top to bottom and the shape gives itself away. The method
-        clusters at the <em>edges</em> of the work and goes quiet through the middle, which
-        is exactly where the thinking happened.
-      </p>
+      <header class="phase-head">
+        <span class="phase-rom">I</span>
+        <span class="phase-name">Recall</span>
+        <span class="phase-word">Lex Recordi</span>
+        <span class="phase-when">08:57:45</span>
+      </header>
+      <p class="lead-para narrow">Before touching anything, bind what is already known. Three sweeps, all in one second.</p>
 
       <ol class="tl" role="list">
         <li class="tl-node reveal">
           <span class="tl-time">08:57:45</span>
           <div class="tl-body">
-            <p class="tl-phase"><span class="mk">Recall</span> &mdash; bind what is already known</p>
-            <p class="tl-cmds"><code>sara recall</code><code>recall</code><code>recall</code></p>
-            <p class="tl-note">Surfaced a past memory that killed a wrong theory in seconds. The method earning its keep.</p>
+            <p class="tl-head"><code class="tl-cmd">sara recall</code><span class="tl-flags"><span class="flag">--tag</span></span></p>
+            <p class="tl-meta"><span class="tl-dur">17 ms</span><span class="tl-ok">exit 0</span></p>
+            <p class="tl-note">Pull the <code>windows</code>&#8202;/&#8202;<code>ci</code> memory bank by tag &mdash; the exact, reliable lookup.</p>
           </div>
         </li>
-
-        <li class="tl-gap reveal" aria-label="Four minutes and thirteen seconds with no sara call">
-          <span class="tl-time">08:57 &rarr; 09:01</span>
-          <div class="tl-body">
-            <p class="tl-gap-dur">4&#8202;min 13&#8202;s &middot; no <span class="mk">sara</span> call</p>
-            <p class="tl-gap-what">Read the CI logs &middot; reproduced the bug &middot; wrote the fix &middot; ran <code>fmt</code> &middot; <code>test</code> &middot; <code>clippy</code></p>
-            <p class="tl-note">The entire repair happened here &mdash; invisible to the method, with no charge to answer to yet.</p>
-          </div>
-        </li>
-
         <li class="tl-node reveal">
-          <span class="tl-time">09:01:59</span>
+          <span class="tl-time">08:57:45</span>
           <div class="tl-body">
-            <p class="tl-phase"><span class="mk">Declare</span> &mdash; the charge, arriving late</p>
-            <p class="tl-cmds"><code>sara add</code></p>
-            <p class="tl-note">The definition of done, written <em>after</em> the work it was meant to bound.</p>
+            <p class="tl-head"><code class="tl-cmd">sara recall</code><span class="tl-flags"><span class="flag">&ldquo;&hellip;&rdquo;</span></span></p>
+            <p class="tl-meta"><span class="tl-dur">68 ms</span><span class="tl-ok">exit 0</span></p>
+            <p class="tl-note">A free-text keyword sweep across every past repair, in case the tag was wrong.</p>
           </div>
         </li>
-
         <li class="tl-node reveal">
-          <span class="tl-time">09:02:11</span>
+          <span class="tl-time">08:57:45</span>
           <div class="tl-body">
-            <p class="tl-phase">Shape the charge</p>
-            <p class="tl-cmds"><code>check</code><code>assignment</code><code>rationale</code><code>check</code></p>
-          </div>
-        </li>
-
-        <li class="tl-node reveal">
-          <span class="tl-time">09:02:15</span>
-          <div class="tl-body">
-            <p class="tl-phase"><span class="mk">Witness</span> &mdash; proof, not opinion</p>
-            <p class="tl-cmds"><code>sara validate</code><code>step</code><code>step</code></p>
-            <p class="tl-note">Acceptance criteria run as commands. Green is an exit code, never a claim.</p>
-          </div>
-        </li>
-
-        <li class="tl-node reveal">
-          <span class="tl-time">09:02:54</span>
-          <div class="tl-body">
-            <p class="tl-phase"><span class="mk">Record</span> &mdash; close the loop</p>
-            <p class="tl-cmds"><code>link</code><code>learn</code><code>unlink&#8209;memory</code></p>
-            <p class="tl-note">The fix, the PR and the lesson &mdash; written back for the next run.</p>
+            <p class="tl-head"><code class="tl-cmd">sara recall</code><span class="tl-flags"><span class="flag">--file</span></span></p>
+            <p class="tl-meta"><span class="tl-dur">42 ms</span><span class="tl-ok">exit 0</span></p>
+            <p class="tl-note">Anything ever learned about the files this repair is about to touch.</p>
           </div>
         </li>
       </ol>
 
-      <p class="lead-para narrow">
-        Fourteen calls in two tight clusters &mdash; three at the start, eleven at the close
-        &mdash; ninety seconds apart, with a single four&#8209;minute silence between them.
-      </p>
-
       <div class="callout">
         <p>
-          The gap is not a failure of the method &mdash; it is the method arriving in the
-          wrong order. Declare the charge <em>before</em> the repair, and route
-          <code>fmt</code>, <code>test</code> and <code>clippy</code> through
-          <span class="mk">sara verify</span>, and the same four minutes fill themselves:
-          the commands you were already running become the record. Nothing slows down. The
-          work just stops being invisible.
+          One of these returned <strong>m405</strong> &mdash; a past finding that Windows-only
+          test failures are usually line-ending traps. It was <em>wrong</em> for this bug,
+          but it was checked and ruled out in seconds. That is recall doing its job: not
+          always right, always cheap. It steered the agent <em>off</em> a dead end, which is
+          the opposite of dampening it.
         </p>
       </div>
     </div>
   </section>
-  <!-- ================= DISCUSS ================= -->
-  <section class="band" id="discuss">
+
+  <!-- ================= THE SILENCE ================= -->
+  <section class="band phase is-silence" id="silence">
     <div class="wrap">
-      <p class="kicker"><span class="num">09</span> Over coffee</p>
-      <h2 class="h2">Let&rsquo;s discuss.</h2>
-      <p class="lead-para">
-        I am not trying to sell you a method. This is one person&rsquo;s experience with no
-        control group &mdash; I switched to it and never switched back, so I am comparing
-        against memory.
+      <header class="phase-head is-silence">
+        <span class="phase-rom">&mdash;</span>
+        <span class="phase-name">The Silence</span>
+        <span class="phase-word">no charge yet</span>
+        <span class="phase-when">08:57:45 &rarr; 09:01:59</span>
+      </header>
+
+      <p class="gap-dur">4&#8202;min 13&#8202;s &middot; no <span class="mk">sara</span> call</p>
+      <p class="gap-lead">
+        Everything that actually repaired the bug happened in here &mdash; and none of it
+        appears in the timeline above or below. This is the reconstruction, from the shell
+        history the method never saw.
       </p>
 
+      <ol class="inv" role="list">
+        <li class="inv-step reveal">
+          <span class="inv-tag">read</span>
+          <p class="inv-do">Read the red run.</p>
+          <p class="inv-out">Two jobs failing &mdash; <em>Formatting</em>, and <em>Test&nbsp;(windows-latest)</em>. 446&nbsp;passed, 3&nbsp;failed.</p>
+        </li>
+        <li class="inv-step reveal">
+          <span class="inv-tag">read</span>
+          <p class="inv-do">Read the gate and its three failing tests.</p>
+          <p class="inv-out"><code>run_acceptance_gate</code> in <code>guide/mod.rs</code>; each test writes a marker file through a shell command.</p>
+        </li>
+        <li class="inv-step reveal is-key">
+          <span class="inv-tag">reproduce</span>
+          <p class="inv-do">Reproduce the mechanism by hand.</p>
+          <p class="inv-out"><code>sh -c "echo x &gt;&gt; C:\Users\&hellip;\marker"</code> &mdash; <code>sh</code> reads the backslashes as escapes, so the file is never written. <strong>Not a line-ending bug at all.</strong></p>
+        </li>
+        <li class="inv-step reveal">
+          <span class="inv-tag">locate</span>
+          <p class="inv-do">Locate every instance.</p>
+          <p class="inv-out">Three test command builders &mdash; lines 1518, 1554, 1599 &mdash; each interpolating a native OS path into <code>sh</code>.</p>
+        </li>
+        <li class="inv-step reveal is-key">
+          <span class="inv-tag">mend</span>
+          <p class="inv-do">Write the fix.</p>
+          <p class="inv-out">A test-local <code>sh_path()</code> that forward-slashes the path before it reaches the shell; replace <code>marker.display()</code> in all three.</p>
+        </li>
+        <li class="inv-step reveal">
+          <span class="inv-tag">prove</span>
+          <p class="inv-do">Prove it locally.</p>
+          <p class="inv-out"><code>cargo fmt</code> &middot; <code>cargo test</code> &rarr; 455&nbsp;passed, 0&nbsp;failed &middot; <code>cargo clippy</code> &rarr; clean.</p>
+        </li>
+      </ol>
+
+      <div class="callout is-silence">
+        <p>
+          Four minutes of reading, reproducing, deciding and mending &mdash; the creative
+          core of the whole job &mdash; with nothing to answer to, because the charge that
+          should have framed it did not exist yet. The method was not <em>followed</em> here.
+          It was simply absent.
+        </p>
+      </div>
     </div>
   </section>
 
+  <!-- ================= II · DECLARE ================= -->
+  <section class="band alt phase" id="declare">
+    <div class="wrap">
+      <header class="phase-head">
+        <span class="phase-rom">II</span>
+        <span class="phase-name">Declare</span>
+        <span class="phase-word">the charge</span>
+        <span class="phase-when">09:01:59</span>
+      </header>
+      <p class="lead-para narrow">The charge is created &mdash; and only now is &ldquo;done&rdquo; written down. Twelve seconds, five calls.</p>
+
+      <ol class="tl" role="list">
+        <li class="tl-node reveal">
+          <span class="tl-time">09:01:59</span>
+          <div class="tl-body">
+            <p class="tl-head"><code class="tl-cmd">sara add</code><span class="tl-flags"><span class="flag">--priority</span><span class="flag">-t</span><span class="flag">--annotation</span><span class="flag">--check</span><span class="flag">--yes</span></span></p>
+            <p class="tl-meta"><span class="tl-dur">53 ms</span><span class="tl-ok">exit 0</span></p>
+            <p class="tl-note">Create the task, tag it, and record the root cause as an annotation &mdash; <em>after</em> the fix already exists on disk.</p>
+          </div>
+        </li>
+        <li class="tl-node reveal">
+          <span class="tl-time">09:02:11</span>
+          <div class="tl-body">
+            <p class="tl-head"><code class="tl-cmd">sara assignment</code></p>
+            <p class="tl-meta"><span class="tl-dur">1 ms</span><span class="tl-ok">exit 0</span></p>
+            <p class="tl-note">The request, verbatim: &ldquo;the latest pipeline run is failing &mdash; fix it.&rdquo;</p>
+          </div>
+        </li>
+        <li class="tl-node reveal">
+          <span class="tl-time">09:02:11</span>
+          <div class="tl-body">
+            <p class="tl-head"><code class="tl-cmd">sara rationale</code></p>
+            <p class="tl-meta"><span class="tl-dur">1 ms</span><span class="tl-ok">exit 0</span></p>
+            <p class="tl-note">Why it exists: nightly is red and it blocks the pipeline.</p>
+          </div>
+        </li>
+        <li class="tl-node reveal">
+          <span class="tl-time">09:02:11</span>
+          <div class="tl-body">
+            <p class="tl-head"><code class="tl-cmd">sara check</code> <span class="tl-x">&times;2</span><span class="tl-flags"><span class="flag">--kind acceptance</span><span class="flag">--verify</span></span></p>
+            <p class="tl-meta"><span class="tl-dur">0 ms</span><span class="tl-ok">exit 0</span></p>
+            <p class="tl-note">Two acceptance criteria, each a runnable command: <code>cargo fmt -- --check</code>, and the three gate tests. No criteria, no definition of done.</p>
+          </div>
+        </li>
+      </ol>
+
+      <div class="callout">
+        <p>
+          The definition of done, arriving <em>fifth</em>. In the order the framework
+          intends, <span class="mk">Declare</span> is the <em>first</em> move &mdash; the
+          criteria written before the work, so every minute after has something to steer
+          toward. Here they describe a fix that is already finished.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= III · WITNESS ================= -->
+  <section class="band phase" id="witness">
+    <div class="wrap">
+      <header class="phase-head">
+        <span class="phase-rom">III</span>
+        <span class="phase-name">Witness</span>
+        <span class="phase-word">Testes</span>
+        <span class="phase-when">09:02:15</span>
+      </header>
+      <p class="lead-para narrow">Prove it &mdash; with an exit code, not an opinion.</p>
+
+      <ol class="tl" role="list">
+        <li class="tl-node reveal is-proof">
+          <span class="tl-time">09:02:15</span>
+          <div class="tl-body">
+            <p class="tl-head"><code class="tl-cmd">sara validate</code><span class="tl-flags"><span class="flag is-hot">the one that proves</span></span></p>
+            <p class="tl-meta"><span class="tl-dur is-hot">4,619 ms</span><span class="tl-ok">exit 0</span></p>
+            <p class="tl-note">The single heavyweight call. It ran both acceptance commands for real and <strong>refused to stamp</strong> until each exited 0. &ldquo;Green&rdquo; here is a fact the shell returned, not the model&rsquo;s read of its own work.</p>
+          </div>
+        </li>
+        <li class="tl-node reveal">
+          <span class="tl-time">09:02:22</span>
+          <div class="tl-body">
+            <p class="tl-head"><code class="tl-cmd">sara step</code> <span class="tl-x">&times;2</span><span class="tl-flags"><span class="flag">--result</span></span></p>
+            <p class="tl-meta"><span class="tl-dur">23 ms &middot; 21 ms</span><span class="tl-ok">exit 0</span></p>
+            <p class="tl-note">Tick the plan, each step carrying evidence of what was actually done.</p>
+          </div>
+        </li>
+      </ol>
+
+      <div class="callout">
+        <p>
+          Fourteen calls, and this is the only one that took longer than a blink &mdash;
+          because it is the only one that <em>checked</em> anything. Proof costs; assertion
+          is free. A framework worth trusting spends its time on proof, and the millisecond
+          columns above show exactly where it did.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= IV · RECORD ================= -->
+  <section class="band alt phase" id="record">
+    <div class="wrap">
+      <header class="phase-head">
+        <span class="phase-rom">IV</span>
+        <span class="phase-name">Record</span>
+        <span class="phase-word">Lex Recordi</span>
+        <span class="phase-when">09:02:54 &rarr; 09:03:02</span>
+      </header>
+      <p class="lead-para narrow">Close the loop where it opened &mdash; at memory.</p>
+
+      <ol class="tl" role="list">
+        <li class="tl-node reveal">
+          <span class="tl-time">09:02:54</span>
+          <div class="tl-body">
+            <p class="tl-head"><code class="tl-cmd">sara link</code><span class="tl-flags"><span class="flag">--label</span></span></p>
+            <p class="tl-meta"><span class="tl-dur">0 ms</span><span class="tl-ok">exit 0</span></p>
+            <p class="tl-note">Attach the pull request to the charge, so the code and the task point at each other.</p>
+          </div>
+        </li>
+        <li class="tl-node reveal">
+          <span class="tl-time">09:02:54</span>
+          <div class="tl-body">
+            <p class="tl-head"><code class="tl-cmd">sara learn</code><span class="tl-flags"><span class="flag">--auto-files</span><span class="flag">--supersedes</span><span class="flag">--tag</span></span></p>
+            <p class="tl-meta"><span class="tl-dur">54 ms</span><span class="tl-ok">exit 0</span></p>
+            <p class="tl-note">Write the cause and the fix back as a memory (<strong>m516</strong>), automatically bound to the files touched.</p>
+          </div>
+        </li>
+        <li class="tl-node reveal">
+          <span class="tl-time">09:03:02</span>
+          <div class="tl-body">
+            <p class="tl-head"><code class="tl-cmd">sara unlink-memory</code></p>
+            <p class="tl-meta"><span class="tl-dur">0 ms</span><span class="tl-ok">exit 0</span></p>
+            <p class="tl-note">Undo a wrong link &mdash; the new memory does not <em>supersede</em> m405, it sits beside it. Even the memory graph gets mended.</p>
+          </div>
+        </li>
+      </ol>
+
+      <div class="callout">
+        <p>
+          What was learned in the silence is finally written down, on the exact files it
+          concerns. The next run that touches this code starts one step ahead &mdash; it
+          recalls m516 instead of rediscovering the backslash from scratch. The loop only
+          pays off if the middle gets recorded.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= THE POINT ================= -->
+  <section class="band phase" id="point">
+    <div class="wrap">
+      <p class="kicker"><span class="num">&rarr;</span> The point</p>
+      <h2 class="h2">The gap is not a failure of the method. It is the method in the <em>wrong order</em>.</h2>
+      <p class="lead-para">
+        Thirteen of the fourteen calls fall in two clusters ninety seconds apart. The four
+        minutes between them were not un-methodical &mdash; they were <em>un-recorded</em>.
+        The fix is not &ldquo;call <span class="mk">sara</span> more.&rdquo; It is two changes
+        of order that cost nothing:
+      </p>
+
+      <div class="two-up">
+        <div class="up-card">
+          <p class="up-n">01</p>
+          <p class="up-t">Declare before you repair.</p>
+          <p class="up-b">Write the acceptance criteria first. Then the silent middle has something to steer toward instead of being reconstructed afterward.</p>
+        </div>
+        <div class="up-card">
+          <p class="up-n">02</p>
+          <p class="up-t">Route the checks through <span class="mk">sara verify</span>.</p>
+          <p class="up-b">You were going to run <code>fmt</code>, <code>test</code> and <code>clippy</code> anyway. Run them through the tool and the commands themselves become the record.</p>
+        </div>
+      </div>
+
+      <div class="callout">
+        <p>
+          Do both and the same four minutes fill themselves. Nothing slows down; the work
+          simply stops being invisible. That is the whole argument this page exists to make
+          &mdash; and it is built out of a single real run, so you can check it against the
+          timestamps rather than take my word for it.
+        </p>
+      </div>
+
+      <p class="footnote">
+        <span class="fn-star">*</span> Every timestamp, duration and flag on this page comes
+        from <span class="mk">sara</span>&rsquo;s own usage telemetry (VictoriaLogs), for one
+        real run on 2026&#8209;09&#8209;09. Nothing here is reconstructed except the six
+        shaded steps inside <em>The Silence</em> &mdash; which is the point: those are the
+        steps the telemetry could not see.
+      </p>
+    </div>
+  </section>
 </main>
 
 <footer class="site-foot">
