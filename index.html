@@ -185,58 +185,38 @@
           <div class="tl-body">
             <p class="tl-head"><code class="tl-cmd">sara begin</code><span class="tl-flags"><span class="flag">opens the task</span><span class="flag is-hot">recalled the fix</span></span></p>
             <p class="tl-meta"><span class="tl-dur">80 ms</span><span class="tl-ok">exit 0</span></p>
-            <p class="tl-note">One command does the whole start. Folded inside it, a lookup of the saved notes returned this exact recurring problem and its known fix &mdash; pin the testing library back to the last version that still works. The answer existed before the agent had even looked at the build.</p>
-          </div>
-        </li>
-
-        <li class="tl-mark reveal" id="recall">
-          <span class="tl-time">09:45:16</span>
-          <div class="tl-body">
-            <p class="tl-phase-name"><span class="tl-rom">II</span> What the one command set down</p>
-            <p class="tl-phase-sub">Everything below was folded inside that single <code class="tl-cmd">sara begin</code>: the task exists, with its terms and its check, before any file is changed.</p>
-          </div>
-        </li>
-
-        <li class="tl-node reveal">
-          <div class="tl-body">
-            <p class="tl-head"><span class="tl-kind">task</span> Create the task &mdash; task&nbsp;#37 &mdash; and tag it.</p>
-            <p class="tl-note">ci, build, restitutio &mdash; the labels that tie this work to every other run like it.</p>
-          </div>
-        </li>
-        <li class="tl-node reveal">
-          <div class="tl-body">
-            <p class="tl-head"><span class="tl-kind">assignment</span> Save the original request, word for word.</p>
-            <p class="tl-note">The pull request is failing its build; restore it to a green, consistent state.</p>
-          </div>
-        </li>
-        <li class="tl-node reveal">
-          <div class="tl-body">
-            <p class="tl-head"><span class="tl-kind">rationale</span> Save why it matters.</p>
-            <p class="tl-note">The build is red on the pull request; it needs a working, consistent state again before it can merge.</p>
-          </div>
-        </li>
-        <li class="tl-node reveal is-proof">
-          <div class="tl-body">
-            <p class="tl-head"><span class="tl-kind">check</span> Add one pass/fail check.</p>
-            <p class="tl-note">The build must go green and the whole test suite must still pass. It is written before the change, so &ldquo;done&rdquo; has a precise meaning the fix can be measured against.</p>
-          </div>
-        </li>
-        <li class="tl-node reveal is-proof">
-          <div class="tl-body">
-            <p class="tl-head"><span class="tl-kind">recall</span> Look up the saved notes for prior art.</p>
-            <p class="tl-note">Search every past note by the task&rsquo;s own words and meaning, and return a ranked shortlist &mdash; the step that surfaced this recurring failure and its known fix. The next section walks through exactly what it returned.</p>
-          </div>
-        </li>
-        <li class="tl-node reveal">
-          <div class="tl-body">
-            <p class="tl-head"><span class="tl-kind">finding</span> Bind the recalled notes onto the task.</p>
-            <p class="tl-note">The shortlist is written back as a finding, so the prior art travels with the task instead of living only in the agent&rsquo;s head.</p>
-          </div>
-        </li>
-        <li class="tl-node reveal">
-          <div class="tl-body">
-            <p class="tl-head"><span class="tl-kind">next</span> Point at the first step to work.</p>
-            <p class="tl-note">Begin closes by handing back the next thing to do, so the agent moves from setup straight into the work with no guesswork.</p>
+            <p class="tl-note">One command does the whole start &mdash; and it is not one action but seven, folded into a single call. Here is everything that happened inside that one <code class="tl-cmd">sara begin</code>, in order, before the agent had read a single line of the build.</p>
+            <p class="fold-lead" id="recall">Inside the one call &mdash; seven operations, one after another</p>
+            <ol class="tl-fold" role="list">
+              <li class="fold-op reveal">
+                <p class="fold-head"><span class="fold-n">1</span><span class="tl-kind">task</span> Create the task &mdash; task&nbsp;#37 &mdash; and tag it.</p>
+                <p class="fold-note">ci, build, restitutio &mdash; the labels that tie this work to every other run like it.</p>
+              </li>
+              <li class="fold-op reveal">
+                <p class="fold-head"><span class="fold-n">2</span><span class="tl-kind">assignment</span> Save the original request, word for word.</p>
+                <p class="fold-note">The pull request is failing its build; restore it to a green, consistent state.</p>
+              </li>
+              <li class="fold-op reveal">
+                <p class="fold-head"><span class="fold-n">3</span><span class="tl-kind">rationale</span> Save why it matters.</p>
+                <p class="fold-note">The build is red on the pull request; it needs a working, consistent state again before it can merge.</p>
+              </li>
+              <li class="fold-op reveal">
+                <p class="fold-head"><span class="fold-n">4</span><span class="tl-kind">check</span> Add one pass/fail check.</p>
+                <p class="fold-note">The build must go green and the whole test suite must still pass. It is written before the change, so &ldquo;done&rdquo; has a precise meaning the fix can be measured against.</p>
+              </li>
+              <li class="fold-op is-hot reveal">
+                <p class="fold-head"><span class="fold-n">5</span><span class="tl-kind">recall</span> Look up the saved notes for prior art.<span class="tl-flags"><span class="flag is-hot">this is the one that knew the fix</span></span></p>
+                <p class="fold-note">The heart of <code class="tl-cmd">begin</code>: search every past note by the task&rsquo;s own words <em>and</em> meaning, and return a ranked shortlist &mdash; the step that surfaced this exact recurring failure and its known fix, in fifteen milliseconds. The section just below walks through the five notes it returned.</p>
+              </li>
+              <li class="fold-op reveal">
+                <p class="fold-head"><span class="fold-n">6</span><span class="tl-kind">finding</span> Bind the recalled notes onto the task.</p>
+                <p class="fold-note">The shortlist is written back as a finding, so the prior art travels with the task instead of living only in the agent&rsquo;s head.</p>
+              </li>
+              <li class="fold-op reveal">
+                <p class="fold-head"><span class="fold-n">7</span><span class="tl-kind">next</span> Point at the first step to work.</p>
+                <p class="fold-note">Begin closes by handing back the next thing to do, so the agent moves from setup straight into the work with no guesswork.</p>
+              </li>
+            </ol>
           </div>
         </li>
 
