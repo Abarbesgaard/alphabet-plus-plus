@@ -56,11 +56,12 @@
 
   <nav class="site-nav" aria-label="Phases of the run">
     <a href="#context">Task</a>
-    <a href="#before">Read</a>
-    <a href="#recall">Begin</a>
-    <a href="#found">Recorded</a>
+    <a href="#before">Begin</a>
+    <a href="#recall">Recorded</a>
+    <a href="#found">Read</a>
     <a href="#gap">Fix</a>
     <a href="#record">Save</a>
+    <a href="#publish">Publish</a>
   </nav>
 
   <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Switch to light theme" title="Switch theme">
@@ -128,9 +129,9 @@
 
       <div class="stats reveal" data-delay="2">
         <div class="stat"><span class="stat-n">~3<span class="stat-u">m</span></span><span class="stat-l">start to green</span></div>
-        <div class="stat"><span class="stat-n">4</span><span class="stat-l">sara commands</span></div>
-        <div class="stat is-hot"><span class="stat-n">1</span><span class="stat-l">command opens the task</span></div>
-        <div class="stat"><span class="stat-n">20<span class="stat-u">ms</span></span><span class="stat-l">the recall that knew the fix</span></div>
+        <div class="stat"><span class="stat-n">1,874</span><span class="stat-l">tests, none failed</span></div>
+        <div class="stat is-hot"><span class="stat-n">1st</span><span class="stat-l">act was sara begin</span></div>
+        <div class="stat"><span class="stat-n">80<span class="stat-u">ms</span></span><span class="stat-l">to open the whole task</span></div>
       </div>
 
       <div class="cta-row reveal" data-delay="3">
@@ -157,9 +158,10 @@
         and duration of each sara command, read from sara&rsquo;s own usage log.
       </p>
       <p class="lead-para narrow">
-        The interesting part is that one command &mdash; <code class="tl-cmd">sara begin</code>
-        &mdash; opens the whole task, looks up the fix and sets the pass/fail check before a
-        single file is touched; the fixing that follows leaves almost no trace in the log.
+        The striking part is the order. The very first thing the agent does &mdash; before it
+        has even read the failing build &mdash; is a single command, <code class="tl-cmd">sara begin</code>,
+        that opens the task, looks up the fix and sets the pass/fail check. Everything after that
+        hangs on a task that already exists.
       </p>
     </div>
   </section>
@@ -170,67 +172,34 @@
       <ol class="tl tl-full" role="list">
 
         <li class="tl-mark reveal" id="before">
-          <span class="tl-time">08:44:25</span>
+          <span class="tl-time">09:45:16</span>
           <div class="tl-body">
-            <p class="tl-phase-name"><span class="tl-rom">I</span> Before the first command</p>
-            <p class="tl-phase-sub">The agent reads its way into the problem. No sara command runs yet &mdash; this stretch is reconstructed from the shell commands it typed.</p>
-          </div>
-        </li>
-
-        <li class="tl-node is-ghost reveal">
-          <div class="tl-body">
-            <p class="tl-head"><span class="tl-kind">read</span> Read the pull request&rsquo;s checks.</p>
-            <p class="tl-note">One check was failing: &ldquo;Run tests&rdquo;. The change was an automated update bumping a group of developer dependencies.</p>
-          </div>
-        </li>
-        <li class="tl-node is-ghost reveal">
-          <div class="tl-body">
-            <p class="tl-head"><span class="tl-kind">read</span> Read the failing job&rsquo;s log.</p>
-            <p class="tl-note">The end of the log was just database noise, so the log was searched for the real error instead.</p>
-          </div>
-        </li>
-        <li class="tl-node is-ghost reveal">
-          <div class="tl-body">
-            <p class="tl-head"><span class="tl-kind">cause</span> Find the conflict.</p>
-            <p class="tl-note">A testing library had been raised to a new major version, but another library it works with only accepts the older versions. The two can&rsquo;t be installed together, so the build refuses to restore.</p>
-          </div>
-        </li>
-        <li class="tl-node is-ghost reveal">
-          <div class="tl-body">
-            <p class="tl-head"><span class="tl-kind">read</span> Fetch the branch and read the change.</p>
-            <p class="tl-note">Check out the update&rsquo;s branch and look at exactly which package versions were changed.</p>
-          </div>
-        </li>
-
-        <li class="tl-mark reveal" id="recall">
-          <span class="tl-time">08:44:41</span>
-          <div class="tl-body">
-            <p class="tl-phase-name"><span class="tl-rom">II</span> One command starts everything</p>
-            <p class="tl-phase-sub">A single call opens the task, looks up the past, and sets the pass/fail check &mdash; all at once, before a file is touched.</p>
+            <p class="tl-phase-name"><span class="tl-rom">I</span> It starts with one command</p>
+            <p class="tl-phase-sub">Before reading a single line of the failing build, the agent opens the task. This one call is the first thing it does.</p>
           </div>
         </li>
 
         <li class="tl-node reveal is-proof">
-          <span class="tl-time">08:44:41</span>
+          <span class="tl-time">09:45:16</span>
           <div class="tl-body">
             <p class="tl-head"><code class="tl-cmd">sara begin</code><span class="tl-flags"><span class="flag">opens the task</span><span class="flag is-hot">recalled the fix</span></span></p>
-            <p class="tl-meta"><span class="tl-dur">119 ms</span><span class="tl-ok">exit 0</span></p>
-            <p class="tl-note">One command does the whole start. Folded inside it, a lookup of the saved notes returned this exact recurring problem and its known fix &mdash; pin the testing library back to the last version that still works. The answer existed before any of the fixing did.</p>
+            <p class="tl-meta"><span class="tl-dur">80 ms</span><span class="tl-ok">exit 0</span></p>
+            <p class="tl-note">One command does the whole start. Folded inside it, a lookup of the saved notes returned this exact recurring problem and its known fix &mdash; pin the testing library back to the last version that still works. The answer existed before the agent had even looked at the build.</p>
           </div>
         </li>
 
-        <li class="tl-mark reveal" id="found">
-          <span class="tl-time">08:44:41</span>
+        <li class="tl-mark reveal" id="recall">
+          <span class="tl-time">09:45:16</span>
           <div class="tl-body">
-            <p class="tl-phase-name"><span class="tl-rom">III</span> What the one command set down</p>
+            <p class="tl-phase-name"><span class="tl-rom">II</span> What the one command set down</p>
             <p class="tl-phase-sub">Everything below was folded inside that single <code class="tl-cmd">sara begin</code>: the task exists, with its terms and its check, before any file is changed.</p>
           </div>
         </li>
 
         <li class="tl-node reveal">
           <div class="tl-body">
-            <p class="tl-head"><span class="tl-kind">task</span> Create the task &mdash; task&nbsp;#36 &mdash; and tag it.</p>
-            <p class="tl-note">ci, dependabot, restitutio, dotnet &mdash; the labels that tie this work to every other run like it.</p>
+            <p class="tl-head"><span class="tl-kind">task</span> Create the task &mdash; task&nbsp;#37 &mdash; and tag it.</p>
+            <p class="tl-note">ci, build, restitutio &mdash; the labels that tie this work to every other run like it.</p>
           </div>
         </li>
         <li class="tl-node reveal">
@@ -242,65 +211,80 @@
         <li class="tl-node reveal">
           <div class="tl-body">
             <p class="tl-head"><span class="tl-kind">rationale</span> Save why it matters.</p>
-            <p class="tl-note">An automated update raised a group of developer dependencies and the test job now fails; it is a known, recurring block that keeps the update from merging.</p>
-          </div>
-        </li>
-        <li class="tl-node reveal">
-          <div class="tl-body">
-            <p class="tl-head"><span class="tl-kind">finding</span> Write the cause onto the task.</p>
-            <p class="tl-note">The lookup&rsquo;s answer is recorded against the work, so it is tied to this task and not lost.</p>
+            <p class="tl-note">The build is red on the pull request; it needs a working, consistent state again before it can merge.</p>
           </div>
         </li>
         <li class="tl-node reveal is-proof">
           <div class="tl-body">
-            <p class="tl-head"><span class="tl-kind">check</span> Add one pass/fail check &mdash; and it is a command.</p>
-            <p class="tl-note">The test job must go green. It is written before the change, so &ldquo;done&rdquo; has a precise meaning the fix can be measured against.</p>
+            <p class="tl-head"><span class="tl-kind">check</span> Add one pass/fail check.</p>
+            <p class="tl-note">The build must go green and the whole test suite must still pass. It is written before the change, so &ldquo;done&rdquo; has a precise meaning the fix can be measured against.</p>
+          </div>
+        </li>
+
+        <li class="tl-mark reveal" id="found">
+          <span class="tl-time">09:45:25</span>
+          <div class="tl-body">
+            <p class="tl-phase-name"><span class="tl-rom">III</span> Read, then reproduce</p>
+            <p class="tl-phase-sub">Only now does the agent open the build and confirm the cause. Reconstructed from the shell commands, with the one note it wrote back onto the task.</p>
+          </div>
+        </li>
+
+        <li class="tl-node is-ghost reveal">
+          <div class="tl-body">
+            <p class="tl-head"><span class="tl-kind">read</span> Read the pull request&rsquo;s checks.</p>
+            <p class="tl-note">One check was failing: &ldquo;Run tests&rdquo;. The change was an automated update bumping a group of developer dependencies &mdash; a testing library among them, raised to a new major version.</p>
+          </div>
+        </li>
+        <li class="tl-node is-ghost reveal">
+          <div class="tl-body">
+            <p class="tl-head"><span class="tl-kind">read</span> Look at which versions changed.</p>
+            <p class="tl-note">Check out the branch and read the exact package bumps across the projects that use the testing library.</p>
+          </div>
+        </li>
+        <li class="tl-node reveal">
+          <span class="tl-time">09:46:14</span>
+          <div class="tl-body">
+            <p class="tl-head"><code class="tl-cmd">sara annotate</code><span class="tl-flags"><span class="flag">kind: finding</span></span></p>
+            <p class="tl-meta"><span class="tl-dur">5 ms</span><span class="tl-ok">exit 0</span></p>
+            <p class="tl-note">Write the confirmed cause onto the task: the testing library was raised to a new major across eight projects, and a coupled helper bump pulled in the same conflict &mdash; all of which another required library refuses. It is the same recurring failure the lookup had already named.</p>
+          </div>
+        </li>
+        <li class="tl-node is-ghost reveal">
+          <div class="tl-body">
+            <p class="tl-head"><span class="tl-kind">reproduce</span> See the failure for real.</p>
+            <p class="tl-note">Run the restore locally and watch it fail with the same version-conflict errors the CI job hit. Now the failure can be seen directly, not just as a red check.</p>
           </div>
         </li>
 
         <li class="tl-gaphead reveal" id="gap">
-          <span class="tl-time">08:44:42</span>
+          <span class="tl-time">09:46:22</span>
           <div class="tl-body">
-            <p class="gap-dur">2&#8202;min 28&#8202;s &mdash; almost no sara command</p>
-            <p class="gap-lead">This is where the fix is actually made. Only one sara command runs in it &mdash; a single note, mid-fix, confirming the cause. The version changes and the rebuild themselves leave no trace in the log. The task already exists, with a check waiting to be met. Reconstructed from the shell commands:</p>
+            <p class="gap-dur">1&#8202;min 44&#8202;s &mdash; no sara command</p>
+            <p class="gap-lead">This is where the fix is actually made. No sara command runs, so none of it is in the log &mdash; but the task already exists, with a check waiting to be met. Reconstructed from the shell commands:</p>
           </div>
         </li>
 
         <li class="tl-node is-ghost reveal">
           <div class="tl-body">
-            <p class="tl-head"><span class="tl-kind">reproduce</span> See the failure for real.</p>
-            <p class="tl-note">Run the restore locally and watch it fail in seven test projects with the same version-conflict error the CI job hit. Now the failure can be seen directly, not just as a red check.</p>
-          </div>
-        </li>
-        <li class="tl-node reveal">
-          <span class="tl-time">08:45:46</span>
-          <div class="tl-body">
-            <p class="tl-head"><code class="tl-cmd">sara annotate</code><span class="tl-flags"><span class="flag">kind: finding</span></span></p>
-            <p class="tl-meta"><span class="tl-dur">5 ms</span><span class="tl-ok">exit 0</span></p>
-            <p class="tl-note">Record the confirmed cause on the task: an automated bump raised the testing library to a new major across five projects, and two coupled helper bumps pulled in the same conflict &mdash; all of which an older, required version refuses.</p>
-          </div>
-        </li>
-        <li class="tl-node is-ghost reveal">
-          <div class="tl-body">
             <p class="tl-head"><span class="tl-kind">fix</span> Apply the known fix.</p>
-            <p class="tl-note">Pin the testing library back to the last working version across the five projects that use it, and undo the two coupled bumps that had pulled in the same conflict. Every other update in the group is kept.</p>
+            <p class="tl-note">Pin the testing library back to the last working version across the eight projects that use it, and undo the coupled helper bump that had pulled in the same conflict. Every other update in the group is kept.</p>
           </div>
         </li>
         <li class="tl-node is-ghost reveal">
           <div class="tl-body">
             <p class="tl-head"><span class="tl-kind">witness</span> Rebuild.</p>
-            <p class="tl-note">The build now restores and compiles cleanly &mdash; no warnings, no errors. The once-red command is green.</p>
+            <p class="tl-note">The build now restores and compiles cleanly &mdash; no warnings, no errors, even with warnings treated as errors. The once-red command is green.</p>
           </div>
         </li>
         <li class="tl-node is-ghost reveal">
           <div class="tl-body">
             <p class="tl-head"><span class="tl-kind">witness</span> Run the tests.</p>
-            <p class="tl-note">Run the unit tests to be sure nothing else broke: 125 passed, none failed.</p>
+            <p class="tl-note">Run the full unit suite to be sure nothing else broke: 1,874 passed, none failed, across seven test projects.</p>
           </div>
         </li>
 
         <li class="tl-mark reveal" id="record">
-          <span class="tl-time">08:47:10</span>
+          <span class="tl-time">09:48:06</span>
           <div class="tl-body">
             <p class="tl-phase-name"><span class="tl-rom">IV</span> Save the result</p>
             <p class="tl-phase-sub">Tick the check now that it passes, and save the note so the next run does not have to work it out again.</p>
@@ -308,19 +292,56 @@
         </li>
 
         <li class="tl-node reveal">
-          <span class="tl-time">08:47:10</span>
+          <span class="tl-time">09:48:06</span>
           <div class="tl-body">
             <p class="tl-head"><code class="tl-cmd">sara step_done</code><span class="tl-flags"><span class="flag">kind: acceptance</span><span class="flag">result</span></span></p>
-            <p class="tl-meta"><span class="tl-dur">88 ms</span><span class="tl-ok">exit 0</span></p>
-            <p class="tl-note">Mark the check met, with the clean build and 125 passing tests as the evidence. The task can only close because the check actually passed.</p>
+            <p class="tl-meta"><span class="tl-dur">25 ms</span><span class="tl-ok">exit 0</span></p>
+            <p class="tl-note">Mark the check met, with the clean build and 1,874 passing tests as the evidence. The task can only close because the check actually passed.</p>
           </div>
         </li>
         <li class="tl-node reveal">
-          <span class="tl-time">08:47:10</span>
+          <span class="tl-time">09:48:21</span>
           <div class="tl-body">
             <p class="tl-head"><code class="tl-cmd">sara learn</code></p>
-            <p class="tl-meta"><span class="tl-dur">91 ms</span><span class="tl-ok">exit 0</span></p>
-            <p class="tl-note">Save a note about the cause and the fix (m527), linked to task&nbsp;#36 &mdash; the same note the lookup at the start had found, now reinforced. The change is committed; pushing it is a separate, later step.</p>
+            <p class="tl-meta"><span class="tl-dur">77 ms</span><span class="tl-ok">exit 0</span></p>
+            <p class="tl-note">Save a note about the cause and the fix (m533), linked to task&nbsp;#37 &mdash; the same note the lookup at the start had found, now reinforced for the next run that hits it.</p>
+          </div>
+        </li>
+
+        <li class="tl-mark reveal" id="publish">
+          <span class="tl-time">09:50:08</span>
+          <div class="tl-body">
+            <p class="tl-phase-name"><span class="tl-rom">V</span> Publish and close</p>
+            <p class="tl-phase-sub">The fix is committed; now it is pushed, explained, and the task is closed against the pull request it fixed.</p>
+          </div>
+        </li>
+
+        <li class="tl-node is-ghost reveal">
+          <div class="tl-body">
+            <p class="tl-head"><span class="tl-kind">push</span> Push the fix to the branch.</p>
+            <p class="tl-note">Send the one mend commit to the pull request&rsquo;s branch so its checks re-run.</p>
+          </div>
+        </li>
+        <li class="tl-node is-ghost reveal">
+          <div class="tl-body">
+            <p class="tl-head"><span class="tl-kind">comment</span> Explain the fix in plain language.</p>
+            <p class="tl-note">Leave a short comment on the pull request: what failed, why, and what was changed.</p>
+          </div>
+        </li>
+        <li class="tl-node reveal">
+          <span class="tl-time">09:50:27</span>
+          <div class="tl-body">
+            <p class="tl-head"><code class="tl-cmd">sara link</code></p>
+            <p class="tl-meta"><span class="tl-dur">9 ms</span><span class="tl-ok">exit 0</span></p>
+            <p class="tl-note">Tie the task to the pull request it fixed, so the work and its result point at each other.</p>
+          </div>
+        </li>
+        <li class="tl-node reveal is-proof">
+          <span class="tl-time">09:50:47</span>
+          <div class="tl-body">
+            <p class="tl-head"><code class="tl-cmd">sara done</code></p>
+            <p class="tl-meta"><span class="tl-dur">192 ms</span><span class="tl-ok">exit 0</span></p>
+            <p class="tl-note">Close the task. It carries a met check, a linked pull request, and a saved note (m534) &mdash; a complete record, from the first command to the last.</p>
           </div>
         </li>
 
@@ -332,31 +353,32 @@
   <section class="band" id="point">
     <div class="wrap">
       <p class="kicker"><span class="num">&rarr;</span> Summary</p>
-      <h2 class="h2">One command founded the task &mdash; so the fix had something to aim at.</h2>
+      <h2 class="h2">The task came first &mdash; so everything after it had somewhere to hang.</h2>
       <p class="lead-para">
-        Two things stand out in this run. The first is that a single command did the whole
-        start: <code class="tl-cmd">sara begin</code> created the task, looked up the past
-        &mdash; and the lookup already held the exact fix &mdash; recorded the cause, and set
-        the pass/fail check, all before one file was changed. The second is that, because the
-        check existed first, the near-silent stretch of fixing was aimed at a clear target, and
-        the task could only close once that check truly passed.
+        Two things stand out in this run. The first is the order: the agent&rsquo;s opening
+        move, before it read the build at all, was a single command &mdash;
+        <code class="tl-cmd">sara begin</code> &mdash; that created the task, looked up the past
+        (the lookup already held the exact fix), and set the pass/fail check. The second is that
+        the whole charge then closed against that task: the fix was made to meet the check, the
+        result was recorded, and the task was linked to the pull request and closed &mdash; a
+        complete record from the first command to the last.
       </p>
 
       <div class="two-up">
         <div class="up-card">
           <p class="up-n">01</p>
-          <p class="up-t">Start with one command.</p>
-          <p class="up-b">One <code class="tl-cmd">sara begin</code> opened the task, recalled the prior fix, recorded the cause, and set the check &mdash; folded into a single call, before any change was made.</p>
+          <p class="up-t">Open with one command.</p>
+          <p class="up-b">One <code class="tl-cmd">sara begin</code> created the task, recalled the prior fix, and set the check &mdash; folded into a single call, before the build was even read.</p>
         </div>
         <div class="up-card">
           <p class="up-n">02</p>
-          <p class="up-t">Define done before fixing.</p>
-          <p class="up-b">The check &mdash; &ldquo;the test job goes green&rdquo; &mdash; was written before the change. The fix then had a target, and closing the task required the check to pass for real.</p>
+          <p class="up-t">Close against the task.</p>
+          <p class="up-b">The check &mdash; &ldquo;the build goes green&rdquo; &mdash; was met with real evidence, the note was saved, and the task was linked to the pull request and closed. Nothing was left implicit.</p>
         </div>
       </div>
 
       <p class="lead-para narrow">
-        The one stretch still left in near-silence is the mechanical fix itself &mdash; changing
+        The one stretch left in silence is the mechanical fix itself &mdash; changing
         versions and rebuilding. That is fine: it is bracketed by a task that says what it
         was for and a check that proves it worked.
       </p>
@@ -364,7 +386,7 @@
       <p class="footnote">
         <span class="fn-star">*</span> Every time, duration and exit code here comes from
         sara&rsquo;s usage log for one real run on 2026&#8209;09&#8209;10. The dashed steps in
-        the two grey stretches are reconstructed from the record of shell commands, because
+        the grey stretches are reconstructed from the record of shell commands, because
         those are the steps the log could not see.
       </p>
     </div>
