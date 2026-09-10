@@ -62,6 +62,7 @@
     <a href="#gap">Fix</a>
     <a href="#record">Save</a>
     <a href="#publish">Publish</a>
+    <a href="#recall-how">Recall</a>
   </nav>
 
   <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Switch to light theme" title="Switch theme">
@@ -388,6 +389,89 @@
         sara&rsquo;s usage log for one real run on 2026&#8209;09&#8209;10. The dashed steps in
         the grey stretches are reconstructed from the record of shell commands, because
         those are the steps the log could not see.
+      </p>
+    </div>
+  </section>
+
+  <!-- ================= HOW RECALL WORKS ================= -->
+  <section class="band alt" id="recall-how">
+    <div class="wrap">
+      <p class="kicker"><span class="num">&rarr;</span> The lookup, up close</p>
+      <h2 class="h2">How the recall already knew the fix.</h2>
+      <p class="lead-para">
+        The one surprising beat of the run is that the fix was known before the build was read.
+        That was not luck: it is what <code class="tl-cmd">sara recall</code> does, folded inside
+        <code class="tl-cmd">begin</code>. Given the new task&rsquo;s own words, it searched every
+        saved note and returned a short, ranked shortlist &mdash; in fifteen milliseconds.
+      </p>
+
+      <div class="stats">
+        <div class="stat"><span class="stat-n">15<span class="stat-u">ms</span></span><span class="stat-l">to search every note</span></div>
+        <div class="stat"><span class="stat-n">5</span><span class="stat-l">notes matched, ranked</span></div>
+        <div class="stat"><span class="stat-n">2</span><span class="stat-l">ways at once: words &amp; meaning</span></div>
+        <div class="stat is-hot"><span class="stat-n">1</span><span class="stat-l">canonical note held the fix</span></div>
+      </div>
+
+      <p class="lead-para narrow">
+        This is the actual shortlist it returned, strongest first. The left column is each
+        note&rsquo;s label; the tags show how it matched and how strong it is.
+      </p>
+
+      <ol class="tl tl-full" role="list">
+        <li class="tl-node reveal">
+          <span class="tl-time">m529</span>
+          <div class="tl-body">
+            <p class="tl-head"><span class="tl-kind">by meaning</span> The same failure, from the previous pull request.<span class="tl-flags"><span class="flag">cosine 0.45</span><span class="flag">strength 2.1</span></span></p>
+            <p class="tl-note">The closest match by meaning: the identical dependency conflict, fixed the same way one pull request earlier. Ranked first because it is both recent and often reinforced.</p>
+          </div>
+        </li>
+        <li class="tl-node reveal is-proof">
+          <span class="tl-time">m228</span>
+          <div class="tl-body">
+            <p class="tl-head"><span class="tl-kind">by words</span> The root note of the whole failure family.<span class="tl-flags"><span class="flag is-hot">canonical</span><span class="flag">strength 2.0</span></span></p>
+            <p class="tl-note">The one note every recurrence points back to: it names the cause in general and the exact fix &mdash; pin the testing library back below the breaking major. This is the note that made the answer known.</p>
+          </div>
+        </li>
+        <li class="tl-node reveal">
+          <span class="tl-time">m517</span>
+          <div class="tl-body">
+            <p class="tl-head"><span class="tl-kind">by words</span> The same failure again, an earlier pull request.<span class="tl-flags"><span class="flag">strength 2.0</span></span></p>
+            <p class="tl-note">Another recurrence of the same fault, kept on the list as corroboration: the pattern has happened before, more than once.</p>
+          </div>
+        </li>
+        <li class="tl-node reveal">
+          <span class="tl-time">m215</span>
+          <div class="tl-body">
+            <p class="tl-head"><span class="tl-kind">by meaning</span> A different, but related, build failure.<span class="tl-flags"><span class="flag">cosine 0.46</span><span class="flag">strength 2.0</span></span></p>
+            <p class="tl-note">Close in meaning &mdash; another red pipeline over package versions &mdash; but a different cause. A near-miss the ranking keeps, and keeps below the exact hits, so it informs without misleading.</p>
+          </div>
+        </li>
+        <li class="tl-node reveal">
+          <span class="tl-time">m6</span>
+          <div class="tl-body">
+            <p class="tl-head"><span class="tl-kind">by words</span> General background about the service.<span class="tl-flags"><span class="flag">strength 1.5</span></span></p>
+            <p class="tl-note">Weakly related context, ranked last. Present for completeness, not weight &mdash; the lower strength keeps it at the bottom.</p>
+          </div>
+        </li>
+      </ol>
+
+      <div class="two-up">
+        <div class="up-card">
+          <p class="up-n">01</p>
+          <p class="up-t">Two ways at once.</p>
+          <p class="up-b">Recall searches by shared words <em>and</em> by meaning &mdash; a vector similarity, shown here as a cosine score. The two arms are fused into one ranked list, so a note can surface because it uses the same terms, because it means the same thing, or both.</p>
+        </div>
+        <div class="up-card">
+          <p class="up-n">02</p>
+          <p class="up-t">Notes that strengthen.</p>
+          <p class="up-b">Every note carries a strength that grows each time it proves useful, and one note per family is marked canonical &mdash; the root the recurrences point back to. So the more often a failure returns, the faster its fix rises to the top.</p>
+        </div>
+      </div>
+
+      <p class="lead-para narrow">
+        That is the whole trick. Recall is not a cache of one answer; it is a ranked memory that
+        returns a small family of prior notes, strongest first &mdash; so the exact fix and the
+        canonical note that explains it arrive together, before the first file is read.
       </p>
     </div>
   </section>
