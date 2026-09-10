@@ -922,59 +922,7 @@ code {
   padding: 0.1rem 0.42rem;
 }
 
-/* ---------- the operations folded inside one sara begin call ---------- */
-.fold-lead {
-  margin: 1.1rem 0 0.2rem;
-  font-family: var(--font-mono);
-  font-size: 0.66rem;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--ink-mute);
-}
-.tl-fold {
-  list-style: none;
-  margin: 0.55rem 0 0.1rem;
-  padding: 0.15rem 0 0.15rem 1.15rem;
-  border-left: 2px solid var(--accent-dim);
-  display: grid;
-  gap: 0.85rem;
-}
-.fold-op { position: relative; }
-.fold-op::before {
-  content: "";
-  position: absolute;
-  left: -1.15rem; top: 0.5rem;
-  width: 7px; height: 7px; margin-left: -4.5px;
-  border-radius: 50%;
-  background: var(--band-bg, var(--bg));
-  border: 1.5px solid var(--accent-dim);
-}
-.fold-op.is-hot::before { background: var(--accent); border-color: var(--accent); box-shadow: 0 0 0 3px var(--glow); }
-.fold-head {
-  margin: 0;
-  display: flex; align-items: baseline; flex-wrap: wrap; gap: 0.5rem;
-  font-size: var(--step--1);
-  color: var(--ink);
-}
-.fold-n {
-  flex: none;
-  font-family: var(--font-mono);
-  font-size: 0.62rem;
-  width: 1.2rem; height: 1.2rem;
-  display: inline-flex; align-items: center; justify-content: center;
-  color: var(--ink-mute);
-  background: var(--bg-alt);
-  border: 1px solid var(--line-soft);
-  border-radius: 999px;
-}
-.fold-op.is-hot .fold-n { color: var(--accent-ink); background: var(--accent); border-color: var(--accent); font-weight: 600; }
-.fold-note {
-  margin: 0.32rem 0 0;
-  font-size: 0.82rem;
-  line-height: 1.55;
-  color: var(--ink-soft);
-  max-width: 60ch;
-}
+/* ---------- the silence ---------- */
 .gap-dur {
   margin: 0.5rem 0 0.6rem;
   font-family: var(--font-display);
