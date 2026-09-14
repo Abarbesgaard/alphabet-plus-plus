@@ -63,6 +63,7 @@
     <a href="#record">Save</a>
     <a href="#publish">Publish</a>
     <a href="#recall-how">Recall</a>
+    <a href="#build">Build</a>
   </nav>
 
   <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Switch to light theme" title="Switch theme">
@@ -124,8 +125,9 @@
       </h1>
 
       <p class="lede reveal" data-delay="1">
-        One failing build, restored step by step &mdash; every command the agent ran, with
-        the real time and duration of each, read from the task manager&rsquo;s own log.
+        Two real runs &mdash; a failing build restored, and a new capability built &mdash; step
+        by step, with the real time and duration of every command the agent ran, read from the
+        task manager&rsquo;s own log.
       </p>
 
       <div class="stats reveal" data-delay="2">
@@ -137,6 +139,7 @@
 
       <div class="cta-row reveal" data-delay="3">
         <a class="btn btn-primary" href="#before">See the steps</a>
+        <a class="btn btn-ghost" href="#build">See a build</a>
         <a class="btn btn-ghost" href="https://github.com/Abarbesgaard/alphabet-plus-plus" rel="noopener">
           GitHub
           <svg viewBox="0 0 24 24" aria-hidden="true" class="btn-arrow"><path d="M7 17 17 7M9 7h8v8"/></svg>
@@ -490,6 +493,205 @@
         sara&rsquo;s usage log for one real run on 2026&#8209;09&#8209;10. The dashed steps in
         the grey stretches are reconstructed from the record of shell commands, because
         those are the steps the log could not see.
+      </p>
+    </div>
+  </section>
+
+  <!-- ================= SECOND RUN — VIA GENESIS ================= -->
+  <section class="band" id="build">
+    <div class="wrap">
+      <p class="kicker"><span class="num">&rarr;</span> Another run</p>
+      <h2 class="h2">A new capability, founded &mdash; step by step.</h2>
+      <p class="lead-para">
+        The first run mended something broken. This one builds something that was never
+        there: a request to add a new domain event and an endpoint to close a case. There is
+        no fix to look up &mdash; and yet the opening move is identical. Before a single new
+        file exists, the agent runs one command, <code class="tl-cmd">sara begin</code>, and the
+        whole charge hangs on the task it creates. Every time and duration below is read from
+        the same run&rsquo;s log.
+      </p>
+      <p class="lead-para narrow">
+        What changes is what the memory returns. Here recall does not hand back a fix &mdash; it
+        hands back the <em>pattern to imitate</em>: how this codebase already adds an
+        event-sourced change. And &ldquo;done&rdquo; is written as three pass/fail checks
+        <em>before</em> any code is typed, so the build has a target from its first line.
+      </p>
+
+      <div class="stats">
+        <div class="stat"><span class="stat-n">~10<span class="stat-u">m</span></span><span class="stat-l">founded to proven</span></div>
+        <div class="stat is-hot"><span class="stat-n">3</span><span class="stat-l">checks, set before any code</span></div>
+        <div class="stat"><span class="stat-n">12</span><span class="stat-l">unit tests, none failed</span></div>
+        <div class="stat"><span class="stat-n">1st</span><span class="stat-l">act was sara begin</span></div>
+      </div>
+
+      <ol class="tl tl-full" role="list">
+
+        <li class="tl-mark reveal" id="build-begin">
+          <span class="tl-time">12:01:26</span>
+          <div class="tl-body">
+            <p class="tl-phase-name"><span class="tl-rom">I</span> It starts with one command</p>
+            <p class="tl-phase-sub">There is nothing to fix and nothing yet to read. The first act is still to open the task &mdash; new ground gets an anchor before it gets a line of code.</p>
+          </div>
+        </li>
+
+        <li class="tl-node reveal is-proof">
+          <span class="tl-time">12:01:26</span>
+          <div class="tl-body">
+            <p class="tl-head"><code class="tl-cmd">sara begin</code><span class="tl-flags"><span class="flag">opens the task</span><span class="flag is-hot">recalled the pattern</span></span></p>
+            <p class="tl-meta"><span class="tl-dur">72 ms</span><span class="tl-ok">exit 0</span></p>
+            <p class="tl-note">One command opens task&nbsp;#48 and, folded inside it, looks up the saved notes. It does not return a fix &mdash; there is none &mdash; but it surfaces how this codebase already makes a change like this: as an event. The template to follow exists before the agent has written anything.</p>
+          </div>
+        </li>
+
+        <li class="tl-mark reveal" id="build-ladder">
+          <span class="tl-time">12:01:38</span>
+          <div class="tl-body">
+            <p class="tl-phase-name"><span class="tl-rom">II</span> Lay the ladder</p>
+            <p class="tl-phase-sub">Before any building, the agent writes down the ordered phases of the rite &mdash; recall, research, declare the checks, plan, build, witness &mdash; so the work has rungs to climb.</p>
+          </div>
+        </li>
+
+        <li class="tl-node reveal">
+          <span class="tl-time">12:01:38</span>
+          <div class="tl-body">
+            <p class="tl-head"><code class="tl-cmd">sara check</code><span class="tl-flags"><span class="flag">&times;10 steps</span></span></p>
+            <p class="tl-meta"><span class="tl-dur">~120 ms each</span><span class="tl-ok">exit 0</span></p>
+            <p class="tl-note">Ten ordered steps are laid down in one burst &mdash; the shape of the whole run, written before the first one is worked. The task now knows not just what &ldquo;done&rdquo; is, but the path to it.</p>
+          </div>
+        </li>
+
+        <li class="tl-mark reveal" id="build-recall">
+          <span class="tl-time">12:02:03</span>
+          <div class="tl-body">
+            <p class="tl-phase-name"><span class="tl-rom">III</span> Recall the pattern, then read the code</p>
+            <p class="tl-phase-sub">Deepen the lookup, bind what it finds onto the task, then open the real files it points at to confirm the shape.</p>
+          </div>
+        </li>
+
+        <li class="tl-node reveal is-proof">
+          <span class="tl-time">12:02:03</span>
+          <div class="tl-body">
+            <p class="tl-head"><code class="tl-cmd">sara recall</code><span class="tl-flags"><span class="flag">&times;2 queries</span></span></p>
+            <p class="tl-meta"><span class="tl-dur">8 ms &amp; 17 ms</span><span class="tl-ok">exit 0</span></p>
+            <p class="tl-note">Two targeted lookups &mdash; how a domain event mutates the aggregate, and how a command, handler and endpoint are wired &mdash; each answered in milliseconds from the saved notes.</p>
+          </div>
+        </li>
+        <li class="tl-node reveal">
+          <span class="tl-time">12:02:18</span>
+          <div class="tl-body">
+            <p class="tl-head"><code class="tl-cmd">sara annotate</code><span class="tl-flags"><span class="flag">kind: finding</span><span class="flag">&times;3</span></span></p>
+            <p class="tl-meta"><span class="tl-dur">43&ndash;47 ms</span><span class="tl-ok">exit 0</span></p>
+            <p class="tl-note">Bind the recalled prior art onto the task: the event-sourced mutation pattern, where backoffice endpoints live and how they are authorised, and that the tests assert real domain state, not just an HTTP code. The pattern now travels with the task.</p>
+          </div>
+        </li>
+        <li class="tl-node is-ghost reveal">
+          <div class="tl-body">
+            <p class="tl-head"><span class="tl-kind">read</span> Open the closest existing template.</p>
+            <p class="tl-note">Read the existing &ldquo;update a case&rdquo; event, command, handler and controller &mdash; the nearest thing already in the codebase &mdash; to copy their exact shape rather than invent one.</p>
+          </div>
+        </li>
+        <li class="tl-node reveal">
+          <span class="tl-time">12:03:46</span>
+          <div class="tl-body">
+            <p class="tl-head"><code class="tl-cmd">sara annotate</code><span class="tl-flags"><span class="flag">kind: decision</span><span class="flag">kind: risk</span></span></p>
+            <p class="tl-meta"><span class="tl-dur">18&ndash;22 ms</span><span class="tl-ok">exit 0</span></p>
+            <p class="tl-note">Commit to one road: a new event plus a command, handler and endpoint that mirror the update path &mdash; everything flows through the event, no bespoke status write. The one risk &mdash; the acceptance tests need a database container &mdash; is written down, not left to surprise.</p>
+          </div>
+        </li>
+
+        <li class="tl-mark reveal" id="build-declare">
+          <span class="tl-time">12:04:11</span>
+          <div class="tl-body">
+            <p class="tl-phase-name"><span class="tl-rom">IV</span> Declare &ldquo;done&rdquo; before building</p>
+            <p class="tl-phase-sub">Three pass/fail checks, each with a command that proves it, written while the code is still empty. This is the target the build will be measured against.</p>
+          </div>
+        </li>
+
+        <li class="tl-node reveal is-proof">
+          <span class="tl-time">12:04:11</span>
+          <div class="tl-body">
+            <p class="tl-head"><code class="tl-cmd">sara check</code><span class="tl-flags"><span class="flag">kind: acceptance</span><span class="flag">&times;3</span></span></p>
+            <p class="tl-meta"><span class="tl-dur">13&ndash;16 ms</span><span class="tl-ok">exit 0</span></p>
+            <p class="tl-note">The event exists and sets each terminal status; the endpoint closes a case and the whole solution builds clean; the handler emits and dispatches the event. Each is written with a runnable check, so none can be waved through.</p>
+          </div>
+        </li>
+
+        <li class="tl-mark reveal" id="build-slices">
+          <span class="tl-time">12:04:19</span>
+          <div class="tl-body">
+            <p class="tl-phase-name"><span class="tl-rom">V</span> Build, smallest whole first</p>
+            <p class="tl-phase-sub">One slice per check, the smallest complete piece first &mdash; the event &mdash; then the command that raises it, then the endpoint that calls it. Each slice is proved before the next begins.</p>
+          </div>
+        </li>
+
+        <li class="tl-node reveal">
+          <span class="tl-time">12:05:20</span>
+          <div class="tl-body">
+            <p class="tl-head"><code class="tl-cmd">sara step_done</code><span class="tl-flags"><span class="flag">slice 1 &mdash; the event</span></span></p>
+            <p class="tl-meta"><span class="tl-dur">24 ms</span><span class="tl-ok">exit 0</span></p>
+            <p class="tl-note">Add the new case-closed event and its unit test: constructing it with a non-terminal status is rejected, and each terminal status sets the aggregate correctly. Nine tests pass, none fail.</p>
+          </div>
+        </li>
+        <li class="tl-node reveal">
+          <span class="tl-time">12:05:58</span>
+          <div class="tl-body">
+            <p class="tl-head"><code class="tl-cmd">sara step_done</code><span class="tl-flags"><span class="flag">slice 2 &mdash; the command</span></span></p>
+            <p class="tl-meta"><span class="tl-dur">25 ms</span><span class="tl-ok">exit 0</span></p>
+            <p class="tl-note">Add the command and its handler, mirroring the update path: load the case, raise the event, dispatch it. Three handler tests pass, none fail.</p>
+          </div>
+        </li>
+        <li class="tl-node reveal is-proof">
+          <span class="tl-time">12:07:50</span>
+          <div class="tl-body">
+            <p class="tl-head"><code class="tl-cmd">sara step_done</code><span class="tl-flags"><span class="flag">slice 3 &mdash; the endpoint</span></span></p>
+            <p class="tl-meta"><span class="tl-dur">24 ms</span><span class="tl-ok">exit 0</span></p>
+            <p class="tl-note">Add the endpoint that closes a case by its id, its request body and an acceptance test, with the same authorisation and error handling as its template. The whole solution builds in release with zero warnings and zero errors.</p>
+          </div>
+        </li>
+
+        <li class="tl-mark reveal" id="build-witness">
+          <span class="tl-time">12:10:43</span>
+          <div class="tl-body">
+            <p class="tl-phase-name"><span class="tl-rom">VI</span> Witness &mdash; prove every check</p>
+            <p class="tl-phase-sub">One command runs all three checks&rsquo; own proofs at once. Only then are they marked met, each with its evidence.</p>
+          </div>
+        </li>
+
+        <li class="tl-node reveal is-proof">
+          <span class="tl-time">12:10:43</span>
+          <div class="tl-body">
+            <p class="tl-head"><code class="tl-cmd">sara validate</code><span class="tl-flags"><span class="flag is-hot">all 3 checks</span></span></p>
+            <p class="tl-meta"><span class="tl-dur">5.5 s</span><span class="tl-ok">exit 0</span></p>
+            <p class="tl-note">Run the verify command behind every acceptance check in one go &mdash; the event tests, the handler tests and the clean release build. They pass together, so &ldquo;done&rdquo; is proven, not asserted.</p>
+          </div>
+        </li>
+        <li class="tl-node reveal">
+          <span class="tl-time">12:10:59</span>
+          <div class="tl-body">
+            <p class="tl-head"><code class="tl-cmd">sara step_done</code><span class="tl-flags"><span class="flag">kind: acceptance</span><span class="flag">&times;3</span></span></p>
+            <p class="tl-meta"><span class="tl-dur">56&ndash;59 ms</span><span class="tl-ok">exit 0</span></p>
+            <p class="tl-note">Tick each of the three checks now that its proof has run, carrying the passing tests and the clean build as evidence. The new capability stands, and every claim about it is backed by a command that passed.</p>
+          </div>
+        </li>
+      </ol>
+
+      <div class="two-up">
+        <div class="up-card">
+          <p class="up-n">01</p>
+          <p class="up-t">Recall returns a pattern, not just a fix.</p>
+          <p class="up-b">On a mend, the memory hands back the exact change. On new ground it hands back the <em>shape</em> the codebase already uses &mdash; here, how an event-sourced change is wired &mdash; so the new work copies a proven template instead of inventing one.</p>
+        </div>
+        <div class="up-card">
+          <p class="up-n">02</p>
+          <p class="up-t">The checks come before the code.</p>
+          <p class="up-b">Three pass/fail checks were written while the files were still empty, then built to, slice by slice, and proven together at the end with one <code class="tl-cmd">sara validate</code>. The target existed before the first line did.</p>
+        </div>
+      </div>
+
+      <p class="footnote">
+        <span class="fn-star">*</span> Every time, duration and exit code here comes from the
+        record of one real run on 2026&#8209;09&#8209;14. The dashed steps are the file reads
+        and writes the log could not see, reconstructed from the record of the session.
       </p>
     </div>
   </section>
